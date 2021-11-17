@@ -1,10 +1,4 @@
-﻿namespace PandocNet
-{
-    
-}
-public class HtmlInputOptions: InputOptions
-{
-}
+﻿namespace PandocNet;
 
 public class InputOptions
 {

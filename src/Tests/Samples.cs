@@ -11,8 +11,10 @@ public class Samples
         await using var input = File.OpenRead("sample.md");
         await using (var output = File.Create("output.html"))
         {
-            await (input | Cli.Wrap("pandoc.exe")
-                    .WithArguments("--from commonmark_x --to html") | output)
+            var command = Cli.Wrap("pandoc.exe")
+                .WithArguments("--from commonmark_x --to html");
+
+            await (input | command | output)
                 .ExecuteAsync();
         }
 
