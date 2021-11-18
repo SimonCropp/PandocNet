@@ -37,7 +37,7 @@ var engine = new PandocEngine(@"D:\Tools\pandoc.exe");
 <a id='snippet-text'></a>
 ```cs
 var engine = new PandocEngine();
-var result = await engine.ConvertText<CommonMarkIn, HtmlOut>("*text*");
+var html = await engine.ConvertText<CommonMarkIn, HtmlOut>("*text*");
 ```
 <sup><a href='/src/Tests/Samples.cs#L75-L80' title='Snippet source file'>snippet source</a> | <a href='#snippet-text' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
@@ -91,7 +91,7 @@ await engine.ConvertFile("sample.md", "output.html");
 <a id='snippet-custom-options'></a>
 ```cs
 var engine = new PandocEngine();
-var result = await engine.ConvertText(@"
+var html = await engine.ConvertText(@"
 # Heading1
 
 text

@@ -75,11 +75,11 @@ public class Samples
         #region text
 
         var engine = new PandocEngine();
-        var result = await engine.ConvertText<CommonMarkIn, HtmlOut>("*text*");
+        var html = await engine.ConvertText<CommonMarkIn, HtmlOut>("*text*");
 
         #endregion
 
-        await Verifier.Verify(result).UseExtension("html");
+        await Verifier.Verify(html).UseExtension("html");
     }
 
     [Test]
@@ -88,7 +88,7 @@ public class Samples
         #region custom-options
 
         var engine = new PandocEngine();
-        var result = await engine.ConvertText(@"
+        var html = await engine.ConvertText(@"
 # Heading1
 
 text
@@ -108,6 +108,6 @@ text
 
         #endregion
 
-        await Verifier.Verify(result).UseExtension("html");
+        await Verifier.Verify(html).UseExtension("html");
     }
 }
