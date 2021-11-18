@@ -5,7 +5,7 @@ public class S5Out :
 {
     public override string Format => "s5";
 
-    //https://pandoc.org/MANUAL.html#options-affecting-specific-writers
+    
     public bool SelfContained { get; set; }
     public bool HtmlQTags { get; set; }
     public bool Ascii { get; set; }

@@ -2,7 +2,7 @@
 
 public abstract class InOptions
 {
-    //https://pandoc.org/MANUAL.html#reader-options
+    
     public int ShiftHeadingLevelBy { get; set; }
     public int? TabStop { get; set; }
     public IList<string>? IndentedCodeClasses { get; set; }
@@ -61,25 +61,16 @@ public abstract class InOptions
             yield return $"--tab-stop={TabStop}";
         }
 
-        if (TrackChanges == PandocNet.TrackChanges.Accept)
+        if (TrackChanges != null)
         {
-            yield return "--track-changes=accept";
-        }
-
-        if (TrackChanges == PandocNet.TrackChanges.All)
-        {
-            yield return "--track-changes=all";
-        }
-
-        if (TrackChanges == PandocNet.TrackChanges.Reject)
-        {
-            yield return "--track-changes=reject";
+            yield return $"--track-changes=accept{TrackChanges.Value.ToString().ToLower()}";
         }
 
         if (ExtractMedia != null)
         {
             yield return $"--extract-media={ExtractMedia}";
         }
+
         if (Abbreviations != null)
         {
             yield return $"--abbreviations={Abbreviations}";

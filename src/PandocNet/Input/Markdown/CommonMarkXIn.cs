@@ -5,7 +5,7 @@ public class CommonMarkXIn :
 {
     public override string Format => "commonmark_x";
 
-    //https://pandoc.org/MANUAL.html#reader-options
+    
 
     public string? DefaultImageExtension { get; set; }
 

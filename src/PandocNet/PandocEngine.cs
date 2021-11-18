@@ -4,7 +4,29 @@ namespace PandocNet;
 
 public class PandocEngine
 {
-    public async Task<string> ConvertContent<TIn, TOut>(string content, TIn? inOptions = null, TOut? outOptions = null)
+    public virtual async Task ConvertFile<TIn, TOut>(string inFile, string outFile, TIn? inOptions = null, TOut? outOptions = null)
+        where TIn : InOptions, new()
+        where TOut : OutOptions, new()
+    {
+        inOptions ??= new TIn();
+        outOptions ??= new TOut();
+        var errors = new StringBuilder();
+
+        var arguments = new List<string>();
+        arguments.AddRange(inOptions.GetArguments());
+        arguments.AddRange(outOptions.GetArguments());
+        var command = Cli.Wrap("pandoc.exe")
+            .WithArguments(arguments)
+            .WithStandardInputPipe(PipeSource.FromFile(inFile))
+            .WithStandardErrorPipe(PipeTarget.ToStringBuilder(errors))
+            .WithStandardOutputPipe(PipeTarget.ToFile(outFile))
+            .WithValidation(CommandResultValidation.None);
+
+        var result = await command.ExecuteAsync();
+        CheckErrorCodes(result, errors, command);
+    }
+
+    public virtual async Task<string> ConvertContent<TIn, TOut>(string content, TIn? inOptions = null, TOut? outOptions = null)
         where TIn : InOptions, new()
         where TOut : OutOptions, new()
     {
@@ -28,7 +50,7 @@ public class PandocEngine
         return output.ToString();
     }
 
-    public async Task Convert<TIn, TOut>(Stream inStream, Stream outStream, TIn? inOptions = null, TOut? outOptions = null)
+    public virtual async Task Convert<TIn, TOut>(Stream inStream, Stream outStream, TIn? inOptions = null, TOut? outOptions = null)
         where TIn : InOptions, new()
         where TOut : OutOptions, new()
     {

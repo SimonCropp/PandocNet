@@ -5,7 +5,7 @@ public class PandocMdOut :
 {
     public override string Format => "markdown";
 
-    //https://pandoc.org/MANUAL.html#options-affecting-specific-writers
+    
     public bool Ascii { get; set; }
     public bool ReferenceLinks { get; set; }
     public ReferenceLocation? ReferenceLocation { get; set; }

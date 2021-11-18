@@ -3,7 +3,7 @@
 public class RstOut :
     OutOptions
 {
-    public override string Format => "rst";   //https://pandoc.org/MANUAL.html#options-affecting-specific-writers
+    public override string Format => "rst";   
     public bool ReferenceLinks { get; set; }
 
     public override IEnumerable<string> GetArguments()

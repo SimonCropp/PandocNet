@@ -4,7 +4,7 @@ public class MultiMdIn :
     InOptions
 {
     public override string Format => "markdown_mmd";
-    //https://pandoc.org/MANUAL.html#reader-options
+    
     public string? DefaultImageExtension { get; set; }
 
     public override IEnumerable<string> GetArguments()

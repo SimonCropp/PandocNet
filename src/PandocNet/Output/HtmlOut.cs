@@ -4,7 +4,7 @@ public class HtmlOut :
     OutOptions
 {
     public override string Format => "html";
-    //https://pandoc.org/MANUAL.html#options-affecting-specific-writers
+    
     public bool SelfContained { get; set; }
     public bool HtmlQTags { get; set; }
     public bool SectionDivs { get; set; }

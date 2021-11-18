@@ -5,7 +5,7 @@ public class RevealJsOut :
 {
     public override string Format => "revealjs";
 
-    //https://pandoc.org/MANUAL.html#options-affecting-specific-writers
+    
     public bool SelfContained { get; set; }
     public bool HtmlQTags { get; set; }
     public bool SectionDivs { get; set; }

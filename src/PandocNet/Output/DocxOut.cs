@@ -4,7 +4,7 @@ public class DocxOut :
     OutOptions
 {
     public override string Format => "docx";
-    //https://pandoc.org/MANUAL.html#options-affecting-specific-writers
+    
     public bool NumberSections { get; set; }
     public string? ReferenceDoc { get; set; }
 

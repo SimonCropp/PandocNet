@@ -4,7 +4,7 @@ public class RoffMsOut :
     OutOptions
 {
     public override string Format => "ms";
-    //https://pandoc.org/MANUAL.html#options-affecting-specific-writers
+    
     public bool Ascii { get; set; }
     public bool NumberSections { get; set; }
 

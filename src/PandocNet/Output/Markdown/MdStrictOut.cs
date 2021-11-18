@@ -4,7 +4,7 @@ public class MdStrictOut :
     OutOptions
 {
     public override string Format => "markdown_strict";
-    //https://pandoc.org/MANUAL.html#options-affecting-specific-writers
+    
     public bool Ascii { get; set; }
     public bool ReferenceLinks { get; set; }
     public ReferenceLocation? ReferenceLocation { get; set; }

@@ -4,7 +4,7 @@ public class OdtOut :
     OutOptions
 {
     public override string Format => "odt"; 
-    //https://pandoc.org/MANUAL.html#options-affecting-specific-writers
+    
     public string? ReferenceDoc { get; set; }
 
     public override IEnumerable<string> GetArguments()

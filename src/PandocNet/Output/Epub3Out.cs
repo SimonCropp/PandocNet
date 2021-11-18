@@ -5,7 +5,7 @@ public class Epub3Out :
 {
     public override string Format => "epub3";
 
-    //https://pandoc.org/MANUAL.html#options-affecting-specific-writers
+    
     public ReferenceLocation? ReferenceLocation { get; set; }
     public bool NumberSections { get; set; }
     public string? Css { get; set; }

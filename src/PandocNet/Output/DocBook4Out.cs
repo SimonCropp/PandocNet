@@ -5,7 +5,7 @@ public class DocBook4Out :
 {
     public override string Format => "docbook4";
 
-    //https://pandoc.org/MANUAL.html#options-affecting-specific-writers
+    
     public TopLevelDivision? TopLevelDivision { get; set; }
     public string? IdPrefix { get; set; }
 

@@ -4,7 +4,7 @@ public class LaTeXOut :
     OutOptions
 {
     public override string Format => "latex";
-    //https://pandoc.org/MANUAL.html#options-affecting-specific-writers
+    
     public bool Ascii { get; set; }
     public TopLevelDivision? TopLevelDivision { get; set; }
     public bool NumberSections { get; set; }

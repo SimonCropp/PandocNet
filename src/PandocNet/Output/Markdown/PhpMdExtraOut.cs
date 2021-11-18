@@ -5,7 +5,7 @@ public class PhpMdExtraOut :
 {
     public override string Format => "markdown_phpextra"; 
     
-    //https://pandoc.org/MANUAL.html#options-affecting-specific-writers
+    
     public bool Ascii { get; set; }
     public bool ReferenceLinks { get; set; }
     public ReferenceLocation? ReferenceLocation { get; set; }

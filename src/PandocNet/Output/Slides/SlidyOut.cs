@@ -5,7 +5,7 @@ public class SlidyOut :
 {
     public override string Format => "slidy";
 
-    //https://pandoc.org/MANUAL.html#options-affecting-specific-writers
+    
     public bool SelfContained { get; set; }
     public bool HtmlQTags { get; set; }
     public bool Ascii { get; set; }

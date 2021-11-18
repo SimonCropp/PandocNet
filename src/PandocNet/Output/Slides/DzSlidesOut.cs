@@ -5,7 +5,7 @@ public class DzSlidesOut :
 {
     public override string Format => "dzslides";
 
-    //https://pandoc.org/MANUAL.html#options-affecting-specific-writers
+    
     public bool SelfContained { get; set; }
     public bool HtmlQTags { get; set; }
     public bool Incremental { get; set; }

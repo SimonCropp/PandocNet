@@ -4,7 +4,7 @@ public class TeiOut :
     OutOptions
 {
     public override string Format => "tei";  
-    //https://pandoc.org/MANUAL.html#options-affecting-specific-writers
+    
     public TopLevelDivision? TopLevelDivision { get; set; }
     public bool NumberSections { get; set; }
 

@@ -6,7 +6,7 @@ public abstract class OutOptions
 {
     public abstract string Format { get; }
 
-    //https://pandoc.org/MANUAL.html#reader-options
+    
     public bool Standalone { get; set; }
     public bool StripComments { get; set; }
     public bool NoHighlight { get; set; }

@@ -5,8 +5,6 @@ public class ConTeXtOut :
 {
     public override string Format => "context";
 
-    //https://pandoc.org/MANUAL.html#options-affecting-specific-writers
-
     public bool NumberSections { get; set; }
     public TopLevelDivision? TopLevelDivision { get; set; }
 

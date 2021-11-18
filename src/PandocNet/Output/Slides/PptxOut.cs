@@ -4,7 +4,7 @@ public class PptxOut :
     OutOptions
 {
     public override string Format => "pptx";
-    //https://pandoc.org/MANUAL.html#options-affecting-specific-writers
+    
     public string? ReferenceDoc { get; set; }
 
     public override IEnumerable<string> GetArguments()
