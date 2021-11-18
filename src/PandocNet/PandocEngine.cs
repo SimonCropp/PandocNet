@@ -26,7 +26,7 @@ public class PandocEngine
         CheckErrorCodes(result, errors, command);
     }
 
-    public virtual async Task<string> ConvertContent<TIn, TOut>(string content, TIn? inOptions = null, TOut? outOptions = null)
+    public virtual async Task<string> ConvertText<TIn, TOut>(string content, TIn? inOptions = null, TOut? outOptions = null)
         where TIn : InOptions, new()
         where TOut : OutOptions, new()
     {

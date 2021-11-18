@@ -9,9 +9,11 @@ public class Samples
     [Test]
     public async Task Files()
     {
+        #region files
         var engine = new PandocEngine();
         await engine.ConvertFile<CommonMarkIn, HtmlOut>("sample.md", "output.html");
 
+        #endregion
         await Verifier.VerifyFile("output.html");
     }
 
@@ -19,22 +21,28 @@ public class Samples
     public async Task Streams()
     {
         {
+            #region streams
+
             var engine = new PandocEngine();
             await using var inStream = File.OpenRead("sample.md");
             await using var outStream = File.OpenWrite("output.html");
             await engine.Convert<CommonMarkIn, HtmlOut>(
                 inStream,
                 outStream);
+
+            #endregion
         }
 
         await Verifier.VerifyFile("output.html");
     }
 
     [Test]
-    public async Task Content()
+    public async Task Text()
     {
+        #region text
         var engine = new PandocEngine();
-        var result = await engine.ConvertContent<CommonMarkIn, HtmlOut>("*text*");
+        var result = await engine.ConvertText<CommonMarkIn, HtmlOut>("*text*");
+        #endregion
 
         await Verifier.Verify(result).UseExtension("html");
     }
@@ -42,8 +50,9 @@ public class Samples
     [Test]
     public async Task CustomOptions()
     {
+        #region custom-options
         var engine = new PandocEngine();
-        var result = await engine.ConvertContent(@"
+        var result = await engine.ConvertText(@"
 # Heading1
 
 text
@@ -60,7 +69,7 @@ text
             {
                 NumberOffsets = new List<int> {3}
             });
-
+        #endregion
         await Verifier.Verify(result).UseExtension("html");
     }
 }
