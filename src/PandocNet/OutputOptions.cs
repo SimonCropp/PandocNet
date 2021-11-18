@@ -1,20 +1,19 @@
 ﻿namespace PandocNet;
 
-public abstract class InputOptions :
-    IDisposable
+public abstract class OutputOptions
 {
     bool isOwned;
     public Stream Stream { get; }
     public abstract string Format { get; }
 
-    public InputOptions(Stream stream)
+    public OutputOptions(Stream stream)
     {
         Stream = stream;
     }
 
-    public InputOptions(string file)
+    public OutputOptions(string file)
     {
-        Stream = File.OpenRead(file);
+        Stream = File.OpenWrite(file);
         isOwned = true;
     }
 

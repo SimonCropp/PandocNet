@@ -1,14 +1,14 @@
 ﻿namespace PandocNet;
 
-public class HtmlInput :
-    InputOptions
+public class HtmlOutput :
+    OutputOptions
 {
-    public HtmlInput(Stream stream) :
+    public HtmlOutput(Stream stream) :
         base(stream)
     {
     }
 
-    public HtmlInput(string file) :
+    public HtmlOutput(string file) :
         base(file)
     {
     }
