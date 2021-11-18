@@ -1,4 +1,4 @@
-﻿namespace PandocNet;
+﻿namespace Pandoc;
 
 public class OdtOut :
     OutOptions

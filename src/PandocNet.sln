@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.31903.286
 MinimumVisualStudioVersion = 16.0.29201.188
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PandocNet", "PandocNet\PandocNet.csproj", "{C35E31DE-40A9-45C0-817B-41BE5B7D076E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pandoc", "PandocNet\Pandoc.csproj", "{C35E31DE-40A9-45C0-817B-41BE5B7D076E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests", "Tests\Tests.csproj", "{76FE87D9-EF6B-4D31-99F2-7099C719AE99}"
 EndProject

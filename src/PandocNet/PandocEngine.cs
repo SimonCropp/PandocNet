@@ -1,6 +1,6 @@
 ﻿using CliWrap;
 
-namespace PandocNet;
+namespace Pandoc;
 
 public class PandocEngine
 {

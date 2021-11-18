@@ -1,6 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 
-namespace PandocNet;
+namespace Pandoc;
 
 public abstract class OutOptions
 {
@@ -46,34 +46,14 @@ public abstract class OutOptions
             yield return "--sandbox";
         }
 
-        if (Eol == PandocNet.Eol.Crlf)
+        if (Eol != null)
         {
-            yield return "--eol=crlf";
+            yield return $"--eol={Eol.Value.ToString().ToLower()}";
         }
 
-        if (Eol == PandocNet.Eol.Lf)
+        if (Wrap != null)
         {
-            yield return "--eol=lf";
-        }
-
-        if (Eol == PandocNet.Eol.Native)
-        {
-            yield return "--eol=native";
-        }
-
-        if (Wrap == PandocNet.Wrap.Auto)
-        {
-            yield return "--wrap=auto";
-        }
-
-        if (Wrap == PandocNet.Wrap.None)
-        {
-            yield return "--wrap=none";
-        }
-
-        if (Wrap == PandocNet.Wrap.Preserve)
-        {
-            yield return "--wrap=preserve";
+            yield return $"--wrap=={Wrap.Value.ToString().ToLower()}";
         }
 
         if (Dpi != null)

@@ -11,7 +11,7 @@
     <PackageReference Include="NUnit3TestAdapter" Version="4.1.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.0.0" />
     <PackageReference Include="Verify.NUnit" Version="14.3.0" />
-    <ProjectReference Include="..\PandocNet\PandocNet.csproj" />
+    <ProjectReference Include="..\PandocNet\Pandoc.csproj" />
     <PackageReference Include="ProjectDefaults" Version="1.0.61" PrivateAssets="All" />
 
     <None Update="sample.*">
