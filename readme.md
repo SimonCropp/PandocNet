@@ -39,7 +39,7 @@ var engine = new PandocEngine(@"D:\Tools\pandoc.exe");
 var engine = new PandocEngine();
 var html = await engine.ConvertText<CommonMarkIn, HtmlOut>("*text*");
 ```
-<sup><a href='/src/Tests/Samples.cs#L75-L80' title='Snippet source file'>snippet source</a> | <a href='#snippet-text' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.cs#L73-L78' title='Snippet source file'>snippet source</a> | <a href='#snippet-text' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 
@@ -51,11 +51,9 @@ var html = await engine.ConvertText<CommonMarkIn, HtmlOut>("*text*");
 var engine = new PandocEngine();
 await using var inStream = File.OpenRead("sample.md");
 await using var outStream = File.OpenWrite("output.html");
-await engine.Convert<CommonMarkIn, HtmlOut>(
-    inStream,
-    outStream);
+await engine.Convert<CommonMarkIn, HtmlOut>(inStream, outStream);
 ```
-<sup><a href='/src/Tests/Samples.cs#L57-L66' title='Snippet source file'>snippet source</a> | <a href='#snippet-streams' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.cs#L57-L64' title='Snippet source file'>snippet source</a> | <a href='#snippet-streams' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 
@@ -109,7 +107,7 @@ text
         NumberOffsets = new List<int> {3}
     });
 ```
-<sup><a href='/src/Tests/Samples.cs#L88-L109' title='Snippet source file'>snippet source</a> | <a href='#snippet-custom-options' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.cs#L86-L107' title='Snippet source file'>snippet source</a> | <a href='#snippet-custom-options' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 
