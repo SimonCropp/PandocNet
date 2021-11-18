@@ -11,8 +11,8 @@ public class Samples
     {
         var engine = new PandocEngine();
         await engine.Convert(
-            new CommonMarkInput("sample.md"),
-            new HtmlOutput("output.html"));
+            new CommonMarkIn("sample.md"),
+            new HtmlOut("output.html"));
 
         await Verifier.VerifyFile("output.html");
     }

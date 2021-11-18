@@ -4,7 +4,7 @@ namespace PandocNet;
 
 public class PandocEngine
 {
-    public async Task Convert(InputOptions input, OutputOptions output)
+    public async Task Convert(InOptions input, OutOptions @out)
     {
         var errors = new StringBuilder();
         var command = Cli.Wrap("pandoc.exe")
@@ -15,20 +15,20 @@ public class PandocEngine
             // Force binary to stdout https://pandoc.org/MANUAL.html#option--output
             .WithArguments("-o -")
 
-            .WithArguments($"--to {output.Format}")
-            .WithArguments(output.GetArguments())
+            .WithArguments($"--to {@out.Format}")
+            .WithArguments(@out.GetArguments())
 
             .WithStandardErrorPipe(PipeTarget.ToStringBuilder(errors));
         try
         {
-            var result = await (input.Stream | command | output.Stream)
+            var result = await (input.Stream | command | @out.Stream)
                 .ExecuteAsync();
             CheckErrorCodes(result, errors);
         }
         finally
         {
             input.Dispose();
-            output.Dispose();
+            @out.Dispose();
         }
     }
 
