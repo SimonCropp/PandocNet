@@ -3,16 +3,6 @@
 public class JatsArticleAuthoringOut :
     OutOptions
 {
-    public JatsArticleAuthoringOut(Stream stream) :
-        base(stream)
-    {
-    }
-
-    public JatsArticleAuthoringOut(string file) :
-        base(file)
-    {
-    }
-
     public override string Format => "jats_articleauthoring";
     //https://pandoc.org/MANUAL.html#options-affecting-specific-writers
     public bool Ascii { get; set; }

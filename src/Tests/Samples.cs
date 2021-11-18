@@ -7,13 +7,30 @@ using PandocNet;
 public class Samples
 {
     [Test]
-    public async Task MdToHtml()
+    public async Task Streams()
     {
         var engine = new PandocEngine();
-        await engine.Convert(
-            new CommonMarkIn("sample.md"),
-            new HtmlOut("output.html"));
+        using (var inStream = File.OpenRead("sample.md"))
+        using (var outStream = File.OpenWrite("output.html"))
+        {
+            await engine.Convert(
+                inStream,
+                outStream,
+                new CommonMarkIn(),
+                new HtmlOut());
+        }
 
         await Verifier.VerifyFile("output.html");
+    }
+
+    [Test]
+    public async Task Content()
+    {
+        var engine = new PandocEngine();
+        var result = await engine.ConvertContent(@"*text*",
+            new CommonMarkIn(),
+            new HtmlOut());
+
+        await Verifier.Verify(result).UseExtension("html");
     }
 }

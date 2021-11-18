@@ -3,16 +3,6 @@
 public class TeiOut :
     OutOptions
 {
-    public TeiOut(Stream stream) :
-        base(stream)
-    {
-    }
-
-    public TeiOut(string file) :
-        base(file)
-    {
-    }
-
     public override string Format => "tei";  
     //https://pandoc.org/MANUAL.html#options-affecting-specific-writers
     public TopLevelDivision? TopLevelDivision { get; set; }

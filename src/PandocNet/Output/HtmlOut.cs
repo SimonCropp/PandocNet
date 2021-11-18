@@ -3,16 +3,6 @@
 public class HtmlOut :
     OutOptions
 {
-    public HtmlOut(Stream stream) :
-        base(stream)
-    {
-    }
-
-    public HtmlOut(string file) :
-        base(file)
-    {
-    }
-
     public override string Format => "html";
     //https://pandoc.org/MANUAL.html#options-affecting-specific-writers
     public bool SelfContained { get; set; }

@@ -3,16 +3,6 @@
 public class PptxOut :
     OutOptions
 {
-    public PptxOut(Stream stream) :
-        base(stream)
-    {
-    }
-
-    public PptxOut(string file) :
-        base(file)
-    {
-    }
-
     public override string Format => "pptx";
     //https://pandoc.org/MANUAL.html#options-affecting-specific-writers
     public string? ReferenceDoc { get; set; }

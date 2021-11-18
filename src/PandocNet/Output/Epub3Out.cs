@@ -3,16 +3,6 @@
 public class Epub3Out :
     OutOptions
 {
-    public Epub3Out(Stream stream) :
-        base(stream)
-    {
-    }
-
-    public Epub3Out(string file) :
-        base(file)
-    {
-    }
-
     public override string Format => "epub3";
 
     //https://pandoc.org/MANUAL.html#options-affecting-specific-writers

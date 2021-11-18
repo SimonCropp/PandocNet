@@ -3,16 +3,6 @@
 public class PandocMdOut :
     OutOptions
 {
-    public PandocMdOut(Stream stream) :
-        base(stream)
-    {
-    }
-
-    public PandocMdOut(string file) :
-        base(file)
-    {
-    }
-
     public override string Format => "markdown";
 
     //https://pandoc.org/MANUAL.html#options-affecting-specific-writers

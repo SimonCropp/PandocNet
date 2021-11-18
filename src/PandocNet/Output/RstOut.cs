@@ -3,16 +3,6 @@
 public class RstOut :
     OutOptions
 {
-    public RstOut(Stream stream) :
-        base(stream)
-    {
-    }
-
-    public RstOut(string file) :
-        base(file)
-    {
-    }
-
     public override string Format => "rst";   //https://pandoc.org/MANUAL.html#options-affecting-specific-writers
     public bool ReferenceLinks { get; set; }
 

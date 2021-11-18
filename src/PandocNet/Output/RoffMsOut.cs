@@ -3,16 +3,6 @@
 public class RoffMsOut :
     OutOptions
 {
-    public RoffMsOut(Stream stream) :
-        base(stream)
-    {
-    }
-
-    public RoffMsOut(string file) :
-        base(file)
-    {
-    }
-
     public override string Format => "ms";
     //https://pandoc.org/MANUAL.html#options-affecting-specific-writers
     public bool Ascii { get; set; }

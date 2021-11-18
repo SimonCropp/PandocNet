@@ -3,16 +3,6 @@
 public class JatsPublishingOut :
     OutOptions
 {
-    public JatsPublishingOut(Stream stream) :
-        base(stream)
-    {
-    }
-
-    public JatsPublishingOut(string file) :
-        base(file)
-    {
-    }
-
     public override string Format => "jats_publishing";
     //https://pandoc.org/MANUAL.html#options-affecting-specific-writers
     public bool Ascii { get; set; }

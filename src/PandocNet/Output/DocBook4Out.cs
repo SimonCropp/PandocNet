@@ -3,16 +3,6 @@
 public class DocBook4Out :
     OutOptions
 {
-    public DocBook4Out(Stream stream) :
-        base(stream)
-    {
-    }
-
-    public DocBook4Out(string file) :
-        base(file)
-    {
-    }
-
     public override string Format => "docbook4";
 
     //https://pandoc.org/MANUAL.html#options-affecting-specific-writers

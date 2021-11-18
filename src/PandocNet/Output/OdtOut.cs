@@ -3,16 +3,6 @@
 public class OdtOut :
     OutOptions
 {
-    public OdtOut(Stream stream) :
-        base(stream)
-    {
-    }
-
-    public OdtOut(string file) :
-        base(file)
-    {
-    }
-
     public override string Format => "odt"; 
     //https://pandoc.org/MANUAL.html#options-affecting-specific-writers
     public string? ReferenceDoc { get; set; }

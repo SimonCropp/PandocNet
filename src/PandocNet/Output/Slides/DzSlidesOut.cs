@@ -3,16 +3,6 @@
 public class DzSlidesOut :
     OutOptions
 {
-    public DzSlidesOut(Stream stream) :
-        base(stream)
-    {
-    }
-
-    public DzSlidesOut(string file) :
-        base(file)
-    {
-    }
-
     public override string Format => "dzslides";
 
     //https://pandoc.org/MANUAL.html#options-affecting-specific-writers

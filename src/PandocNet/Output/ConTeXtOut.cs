@@ -3,16 +3,6 @@
 public class ConTeXtOut :
     OutOptions
 {
-    public ConTeXtOut(Stream stream) :
-        base(stream)
-    {
-    }
-
-    public ConTeXtOut(string file) :
-        base(file)
-    {
-    }
-
     public override string Format => "context";
 
     //https://pandoc.org/MANUAL.html#options-affecting-specific-writers

@@ -3,16 +3,6 @@
 public class LaTeXOut :
     OutOptions
 {
-    public LaTeXOut(Stream stream) :
-        base(stream)
-    {
-    }
-
-    public LaTeXOut(string file) :
-        base(file)
-    {
-    }
-
     public override string Format => "latex";
     //https://pandoc.org/MANUAL.html#options-affecting-specific-writers
     public bool Ascii { get; set; }

@@ -3,16 +3,6 @@
 public class DocxOut :
     OutOptions
 {
-    public DocxOut(Stream stream) :
-        base(stream)
-    {
-    }
-
-    public DocxOut(string file) :
-        base(file)
-    {
-    }
-
     public override string Format => "docx";
     //https://pandoc.org/MANUAL.html#options-affecting-specific-writers
     public bool NumberSections { get; set; }

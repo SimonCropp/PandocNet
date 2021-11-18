@@ -3,16 +3,6 @@
 public class GhMdOut :
     OutOptions
 {
-    public GhMdOut(Stream stream) :
-        base(stream)
-    {
-    }
-
-    public GhMdOut(string file) :
-        base(file)
-    {
-    }
-
     public override string Format => "gfm";
 
     //https://pandoc.org/MANUAL.html#options-affecting-specific-writers

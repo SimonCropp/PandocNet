@@ -3,16 +3,6 @@
 public class BeamerOut :
     OutOptions
 {
-    public BeamerOut(Stream stream) :
-        base(stream)
-    {
-    }
-
-    public BeamerOut(string file) :
-        base(file)
-    {
-    }
-
     public override string Format => "beamer";
     //https://pandoc.org/MANUAL.html#options-affecting-specific-writers
     public bool SelfContained { get; set; }

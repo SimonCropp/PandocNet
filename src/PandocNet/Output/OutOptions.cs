@@ -4,20 +4,7 @@ namespace PandocNet;
 
 public abstract class OutOptions
 {
-    bool isOwned;
-    public Stream Stream { get; }
     public abstract string Format { get; }
-
-    public OutOptions(Stream stream)
-    {
-        Stream = stream;
-    }
-
-    public OutOptions(string file)
-    {
-        Stream = File.OpenWrite(file);
-        isOwned = true;
-    }
 
     //https://pandoc.org/MANUAL.html#reader-options
     public bool Standalone { get; set; }
@@ -42,6 +29,8 @@ public abstract class OutOptions
     //TODO: variables
     public virtual IEnumerable<string> GetArguments()
     {
+        yield return $"--to={Format}";
+
         if (Standalone)
         {
             yield return "--standalone";
@@ -141,14 +130,6 @@ public abstract class OutOptions
         {
             var split = RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? ";" : ":";
             yield return $"--resource-path={string.Join(split, ResourcePaths)}";
-        }
-    }
-
-    public void Dispose()
-    {
-        if (isOwned)
-        {
-            Stream.Dispose();
         }
     }
 }

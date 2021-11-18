@@ -3,16 +3,6 @@
 public class MdStrictOut :
     OutOptions
 {
-    public MdStrictOut(Stream stream) :
-        base(stream)
-    {
-    }
-
-    public MdStrictOut(string file) :
-        base(file)
-    {
-    }
-
     public override string Format => "markdown_strict";
     //https://pandoc.org/MANUAL.html#options-affecting-specific-writers
     public bool Ascii { get; set; }

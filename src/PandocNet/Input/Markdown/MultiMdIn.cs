@@ -3,16 +3,6 @@
 public class MultiMdIn :
     InOptions
 {
-    public MultiMdIn(Stream stream) :
-        base(stream)
-    {
-    }
-
-    public MultiMdIn(string file) :
-        base(file)
-    {
-    }
-
     public override string Format => "markdown_mmd";
     //https://pandoc.org/MANUAL.html#reader-options
     public string? DefaultImageExtension { get; set; }

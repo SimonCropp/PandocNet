@@ -1,11 +1,7 @@
 ﻿namespace PandocNet;
 
-public abstract class InOptions :
-    IDisposable
+public abstract class InOptions
 {
-    bool isOwned;
-    public Stream Stream { get; }
-
     //https://pandoc.org/MANUAL.html#reader-options
     public int ShiftHeadingLevelBy { get; set; }
     public int? TabStop { get; set; }
@@ -23,6 +19,8 @@ public abstract class InOptions :
 
     public virtual IEnumerable<string> GetArguments()
     {
+        yield return $"--from={Format}";
+
         if (ShiftHeadingLevelBy != 0)
         {
             yield return $"--shift-heading-level-by={ShiftHeadingLevelBy}";
@@ -87,30 +85,4 @@ public abstract class InOptions :
             yield return $"--abbreviations={Abbreviations}";
         }
     }
-
-    public InOptions(Stream stream)
-    {
-        Stream = stream;
-    }
-
-    public InOptions(string file)
-    {
-        Stream = File.OpenRead(file);
-        isOwned = true;
-    }
-
-    public void Dispose()
-    {
-        if (isOwned)
-        {
-            Stream.Dispose();
-        }
-    }
-}
-
-public enum TrackChanges
-{
-    Accept,
-    Reject,
-    All
 }

@@ -3,16 +3,6 @@
 public class PandocMdIn :
     InOptions
 {
-    public PandocMdIn(Stream stream) :
-        base(stream)
-    {
-    }
-
-    public PandocMdIn(string file) :
-        base(file)
-    {
-    }
-
     public override string Format => "markdown";
     //https://pandoc.org/MANUAL.html#reader-options
     public string? DefaultImageExtension { get; set; }

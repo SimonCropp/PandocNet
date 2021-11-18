@@ -3,16 +3,6 @@
 public class PdfOut :
     OutOptions
 {
-    public PdfOut(Stream stream) :
-        base(stream)
-    {
-    }
-
-    public PdfOut(string file) :
-        base(file)
-    {
-    }
-
     public override string Format => "pdf";
     //https://pandoc.org/MANUAL.html#options-affecting-specific-writers
     public PdfEngine? Engine { get; set; }

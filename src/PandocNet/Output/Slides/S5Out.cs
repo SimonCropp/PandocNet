@@ -3,16 +3,6 @@
 public class S5Out :
     OutOptions
 {
-    public S5Out(Stream stream) :
-        base(stream)
-    {
-    }
-
-    public S5Out(string file) :
-        base(file)
-    {
-    }
-
     public override string Format => "s5";
 
     //https://pandoc.org/MANUAL.html#options-affecting-specific-writers

@@ -4,165 +4,92 @@ namespace PandocNet;
 
 public class PandocEngine
 {
-    public async Task Convert(InOptions input, OutOptions @out)
+    public async Task<string> ConvertContent(string content, InOptions input, OutOptions @out)
     {
         var errors = new StringBuilder();
+        var output = new StringBuilder();
+
+        var arguments = new List<string>();
+        arguments.AddRange(input.GetArguments());
+        arguments.AddRange(@out.GetArguments());
         var command = Cli.Wrap("pandoc.exe")
+            .WithArguments(arguments)
+            .WithStandardInputPipe(PipeSource.FromString(content))
+            .WithStandardErrorPipe(PipeTarget.ToStringBuilder(errors))
+            .WithStandardOutputPipe(PipeTarget.ToStringBuilder(output))
+            .WithValidation(CommandResultValidation.None);
 
-            .WithArguments($"--from {input.Format} ")
-            .WithArguments(input.GetArguments())
-
-            // Force binary to stdout https://pandoc.org/MANUAL.html#option--output
-            .WithArguments("-o -")
-
-            .WithArguments($"--to {@out.Format}")
-            .WithArguments(@out.GetArguments())
-
-            .WithStandardErrorPipe(PipeTarget.ToStringBuilder(errors));
-        try
-        {
-            var result = await (input.Stream | command | @out.Stream)
-                .ExecuteAsync();
-            CheckErrorCodes(result, errors);
-        }
-        finally
-        {
-            input.Dispose();
-            @out.Dispose();
-        }
+        var result = await command.ExecuteAsync();
+        CheckErrorCodes(result, errors, command);
+        return output.ToString();
     }
 
-    static void CheckErrorCodes(CommandResult result, StringBuilder errors)
+    public async Task Convert(Stream inStream, Stream outStream, InOptions input, OutOptions @out)
+    {
+        var errors = new StringBuilder();
+        var arguments = new List<string>
+        {
+            // Force binary to stdout
+            "-o -"
+        };
+        arguments.AddRange(input.GetArguments());
+        arguments.AddRange(@out.GetArguments());
+        var command = Cli.Wrap("pandoc.exe")
+            .WithArguments(arguments)
+            .WithStandardErrorPipe(PipeTarget.ToStringBuilder(errors))
+            .WithValidation(CommandResultValidation.None);
+
+        var result = await (inStream | command | outStream)
+            .ExecuteAsync();
+        CheckErrorCodes(result, errors, command);
+    }
+
+    static void CheckErrorCodes(CommandResult result, StringBuilder errors, Command command)
     {
         var exitCode = result.ExitCode;
-        //https://pandoc.org/MANUAL.html#exit-codes
-        if (exitCode == 3)
+
+        if (exitCode == 0)
         {
-            throw new($"PandocFailOnWarningError ({exitCode}): {errors}");
+            return;
         }
 
-        if (exitCode == 4)
-        {
-            throw new($"PandocAppError ({exitCode}): {errors}");
-        }
+        var errorType = GetErrorType(exitCode);
+        throw new($@"{errorType} ({exitCode}):
+{command}
+{errors}");
+    }
 
-        if (exitCode == 5)
+    //https://pandoc.org/MANUAL.html#exit-codes
+    static string GetErrorType(int exitCode)
+    {
+        return exitCode switch
         {
-            throw new($"PandocTemplateError ({exitCode}): {errors}");
-        }
-
-        if (exitCode == 6)
-        {
-            throw new($"PandocOptionError ({exitCode}): {errors}");
-        }
-
-        if (exitCode == 21)
-        {
-            throw new($"PandocUnknownReaderError ({exitCode}): {errors}");
-        }
-
-        if (exitCode == 22)
-        {
-            throw new($"PandocUnknownWriterError ({exitCode}): {errors}");
-        }
-
-        if (exitCode == 24)
-        {
-            throw new($"PandocCiteprocError ({exitCode}): {errors}");
-        }
-
-        if (exitCode == 25)
-        {
-            throw new($"PandocBibliographyError ({exitCode}): {errors}");
-        }
-
-        if (exitCode == 31)
-        {
-            throw new($"PandocEpubSubdirectoryError ({exitCode}): {errors}");
-        }
-
-        if (exitCode == 43)
-        {
-            throw new($"PandocPDFError ({exitCode}): {errors}");
-        }
-
-        if (exitCode == 44)
-        {
-            throw new($"PandocXMLError ({exitCode}): {errors}");
-        }
-
-        if (exitCode == 47)
-        {
-            throw new($"PandocPDFProgramNotFoundError: {errors}");
-        }
-
-        if (exitCode == 61)
-        {
-            throw new($"PandocHttpError ({exitCode}): {errors}");
-        }
-
-        if (exitCode == 62)
-        {
-            throw new($"PandocShouldNeverHappenError ({exitCode}): {errors}");
-        }
-
-        if (exitCode == 63)
-        {
-            throw new($"PandocSomeError ({exitCode}): {errors}");
-        }
-
-        if (exitCode == 64)
-        {
-            throw new("PandocParseError ({exitCode}): {errors}");
-        }
-
-        if (exitCode == 65)
-        {
-            throw new($"PandocParsecError ({exitCode}): {errors}");
-        }
-
-        if (exitCode == 67)
-        {
-            throw new($"PandocSyntaxMapError ({exitCode}): {errors}");
-        }
-
-        if (exitCode == 83)
-        {
-            throw new($"PandocFilterError ({exitCode}): {errors}");
-        }
-
-        if (exitCode == 91)
-        {
-            throw new($"PandocMacroLoop ({exitCode}): {errors}");
-        }
-
-        if (exitCode == 92)
-        {
-            throw new($"PandocUTF8DecodingError ({exitCode}): {errors}");
-        }
-
-        if (exitCode == 93)
-        {
-            throw new($"PandocIpynbDecodingError ({exitCode}): {errors}");
-        }
-
-        if (exitCode == 94)
-        {
-            throw new($"PandocUnsupportedCharsetError ({exitCode}): {errors}");
-        }
-
-        if (exitCode == 97)
-        {
-            throw new($"PandocCouldNotFindDataFileError ({exitCode}): {errors}");
-        }
-
-        if (exitCode == 99)
-        {
-            throw new($"PandocResourceNotFound ({exitCode}): {errors}");
-        }
-        if (exitCode != 0)
-        {
-            throw new($"PandocUnknownError ({exitCode}): {errors}");
-        }
+            3 => "PandocFailOnWarningError",
+            4 => "PandocAppError",
+            5 => "PandocTemplateError",
+            6 => "PandocOptionError",
+            21 => "PandocUnknownReaderError",
+            22 => "PandocUnknownWriterError",
+            24 => "PandocCiteprocError",
+            25 => "PandocBibliographyError",
+            31 => "PandocEpubSubdirectoryError",
+            43 => "PandocPDFError",
+            44 => "PandocXMLError",
+            47 => "PandocPDFProgramNotFoundError",
+            61 => "PandocHttpError",
+            62 => "PandocShouldNeverHappenError",
+            63 => "PandocSomeError",
+            64 => "PandocParseError",
+            65 => "PandocParsecError",
+            67 => "PandocSyntaxMapError",
+            83 => "PandocFilterError",
+            91 => "PandocMacroLoop",
+            92 => "PandocUTF8DecodingError",
+            93 => "PandocIpynbDecodingError",
+            94 => "PandocUnsupportedCharsetError",
+            97 => "PandocCouldNotFindDataFileError",
+            99 => "PandocResourceNotFound",
+            _ => "PandocUnknownError"
+        };
     }
 }

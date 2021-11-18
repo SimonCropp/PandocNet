@@ -3,18 +3,10 @@
 public class CommonMarkXIn :
     InOptions
 {
-    public CommonMarkXIn(Stream stream) :
-        base(stream)
-    {
-    }
-
-    public CommonMarkXIn(string file) :
-        base(file)
-    {
-    }
-
     public override string Format => "commonmark_x";
+
     //https://pandoc.org/MANUAL.html#reader-options
+
     public string? DefaultImageExtension { get; set; }
 
     public override IEnumerable<string> GetArguments()

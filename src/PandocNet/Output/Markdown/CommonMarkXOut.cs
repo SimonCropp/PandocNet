@@ -3,16 +3,6 @@
 public class CommonMarkXOut :
     OutOptions
 {
-    public CommonMarkXOut(Stream stream) :
-        base(stream)
-    {
-    }
-
-    public CommonMarkXOut(string file) :
-        base(file)
-    {
-    }
-
     public override string Format => "commonmark_x";   
     
     //https://pandoc.org/MANUAL.html#options-affecting-specific-writers

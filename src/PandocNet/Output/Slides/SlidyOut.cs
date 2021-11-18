@@ -3,16 +3,6 @@
 public class SlidyOut :
     OutOptions
 {
-    public SlidyOut(Stream stream) :
-        base(stream)
-    {
-    }
-
-    public SlidyOut(string file) :
-        base(file)
-    {
-    }
-
     public override string Format => "slidy";
 
     //https://pandoc.org/MANUAL.html#options-affecting-specific-writers

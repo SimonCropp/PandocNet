@@ -3,16 +3,6 @@
 public class RevealJsOut :
     OutOptions
 {
-    public RevealJsOut(Stream stream) :
-        base(stream)
-    {
-    }
-
-    public RevealJsOut(string file) :
-        base(file)
-    {
-    }
-
     public override string Format => "revealjs";
 
     //https://pandoc.org/MANUAL.html#options-affecting-specific-writers

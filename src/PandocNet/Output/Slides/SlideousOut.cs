@@ -3,16 +3,6 @@
 public class SlideousOut :
     OutOptions
 {
-    public SlideousOut(Stream stream) :
-        base(stream)
-    {
-    }
-
-    public SlideousOut(string file) :
-        base(file)
-    {
-    }
-
     public override string Format => "slideous";
 
     //https://pandoc.org/MANUAL.html#options-affecting-specific-writers
