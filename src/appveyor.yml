@@ -1,4 +1,6 @@
 image: Visual Studio 2022
+init:
+  - choco install pandoc
 # https://ci.appveyor.com/tools/encrypt
 environment:
   SyncfusionLicense:
