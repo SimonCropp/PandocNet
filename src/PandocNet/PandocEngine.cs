@@ -4,14 +4,18 @@ namespace PandocNet;
 
 public class PandocEngine
 {
-    public async Task<string> ConvertContent(string content, InOptions input, OutOptions @out)
+    public async Task<string> ConvertContent<TIn, TOut>(string content, TIn? inOptions = null, TOut? outOptions = null)
+        where TIn : InOptions, new()
+        where TOut : OutOptions, new()
     {
+        inOptions ??= new TIn();
+        outOptions ??= new TOut();
         var errors = new StringBuilder();
         var output = new StringBuilder();
 
         var arguments = new List<string>();
-        arguments.AddRange(input.GetArguments());
-        arguments.AddRange(@out.GetArguments());
+        arguments.AddRange(inOptions.GetArguments());
+        arguments.AddRange(outOptions.GetArguments());
         var command = Cli.Wrap("pandoc.exe")
             .WithArguments(arguments)
             .WithStandardInputPipe(PipeSource.FromString(content))
@@ -24,16 +28,21 @@ public class PandocEngine
         return output.ToString();
     }
 
-    public async Task Convert(Stream inStream, Stream outStream, InOptions input, OutOptions @out)
+    public async Task Convert<TIn, TOut>(Stream inStream, Stream outStream, TIn? inOptions = null, TOut? outOptions = null)
+        where TIn : InOptions, new()
+        where TOut : OutOptions, new()
     {
+        inOptions ??= new TIn();
+        outOptions ??= new TOut();
+
         var errors = new StringBuilder();
         var arguments = new List<string>
         {
             // Force binary to stdout
             "-o -"
         };
-        arguments.AddRange(input.GetArguments());
-        arguments.AddRange(@out.GetArguments());
+        arguments.AddRange(inOptions.GetArguments());
+        arguments.AddRange(outOptions.GetArguments());
         var command = Cli.Wrap("pandoc.exe")
             .WithArguments(arguments)
             .WithStandardErrorPipe(PipeTarget.ToStringBuilder(errors))

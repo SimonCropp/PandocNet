@@ -13,11 +13,9 @@ public class Samples
         using (var inStream = File.OpenRead("sample.md"))
         using (var outStream = File.OpenWrite("output.html"))
         {
-            await engine.Convert(
+            await engine.Convert<CommonMarkIn, HtmlOut>(
                 inStream,
-                outStream,
-                new CommonMarkIn(),
-                new HtmlOut());
+                outStream);
         }
 
         await Verifier.VerifyFile("output.html");
@@ -27,9 +25,7 @@ public class Samples
     public async Task Content()
     {
         var engine = new PandocEngine();
-        var result = await engine.ConvertContent(@"*text*",
-            new CommonMarkIn(),
-            new HtmlOut());
+        var result = await engine.ConvertContent<CommonMarkIn, HtmlOut>(@"*text*");
 
         await Verifier.Verify(result).UseExtension("html");
     }
