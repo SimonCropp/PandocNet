@@ -5,8 +5,6 @@ public class CommonMarkXIn :
 {
     public override string Format => "commonmark_x";
 
-    
-
     public string? DefaultImageExtension { get; set; }
 
     public override IEnumerable<string> GetArguments()

@@ -3,7 +3,6 @@
 public class LaTexIn :
     InOptions
 {
-
     public string? DefaultImageExtension { get; set; }
 
     public override IEnumerable<string> GetArguments()

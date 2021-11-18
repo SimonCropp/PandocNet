@@ -62,7 +62,7 @@ public abstract class InOptions
 
         if (TrackChanges != null)
         {
-            yield return $"--track-changes=accept{TrackChanges.Value.ToString().ToLower()}";
+            yield return $"--track-changes={TrackChanges.Value.ToString().ToLower()}";
         }
 
         if (ExtractMedia != null)
