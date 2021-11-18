@@ -1,22 +1,21 @@
 ﻿namespace PandocNet;
 
-public class RoffMsOutput :
+public class PptxOutput :
     OutputOptions
 {
-    public RoffMsOutput(Stream stream) :
+    public PptxOutput(Stream stream) :
         base(stream)
     {
     }
 
-    public RoffMsOutput(string file) :
+    public PptxOutput(string file) :
         base(file)
     {
     }
 
-    public override string Format => "ms";
+    public override string Format => "pptx";
     //https://pandoc.org/MANUAL.html#options-affecting-specific-writers
-    public bool Ascii { get; set; }
-    public bool NumberSections { get; set; }
+    public string? ReferenceDoc { get; set; }
 
     public override IEnumerable<string> GetArguments()
     {
@@ -25,14 +24,9 @@ public class RoffMsOutput :
             yield return argument;
         }
 
-        if (Ascii)
+        if (ReferenceDoc != null)
         {
-            yield return "--ascii";
-        }
-
-        if (NumberSections)
-        {
-            yield return "--number-sections";
+            yield return $"--reference-doc={ReferenceDoc}";
         }
     }
 }

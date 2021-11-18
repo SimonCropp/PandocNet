@@ -1,14 +1,14 @@
 ﻿namespace PandocNet;
 
-public class MultiMarkdownInput :
-    InputOptions
+public class MultiMdInput :
+    BaseMdInput
 {
-    public MultiMarkdownInput(Stream stream) :
+    public MultiMdInput(Stream stream) :
         base(stream)
     {
     }
 
-    public MultiMarkdownInput(string file) :
+    public MultiMdInput(string file) :
         base(file)
     {
     }

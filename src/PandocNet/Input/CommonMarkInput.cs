@@ -1,7 +1,7 @@
 ﻿namespace PandocNet;
 
 public class CommonMarkInput :
-    InputOptions
+    BaseMdInput
 {
     public CommonMarkInput(Stream stream) :
         base(stream)

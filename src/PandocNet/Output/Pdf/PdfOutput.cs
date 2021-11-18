@@ -1,22 +1,21 @@
 ﻿namespace PandocNet;
 
-public class RoffMsOutput :
+public class PdfOutput :
     OutputOptions
 {
-    public RoffMsOutput(Stream stream) :
+    public PdfOutput(Stream stream) :
         base(stream)
     {
     }
 
-    public RoffMsOutput(string file) :
+    public PdfOutput(string file) :
         base(file)
     {
     }
 
-    public override string Format => "ms";
+    public override string Format => "pdf";
     //https://pandoc.org/MANUAL.html#options-affecting-specific-writers
-    public bool Ascii { get; set; }
-    public bool NumberSections { get; set; }
+    public PdfEngine? Engine { get; set; }
 
     public override IEnumerable<string> GetArguments()
     {
@@ -25,14 +24,9 @@ public class RoffMsOutput :
             yield return argument;
         }
 
-        if (Ascii)
+        if (Engine != null)
         {
-            yield return "--ascii";
-        }
-
-        if (NumberSections)
-        {
-            yield return "--number-sections";
+            yield return $"---engine={Engine.Value.ToString().ToLower()}";
         }
     }
 }

@@ -1,14 +1,14 @@
 ﻿namespace PandocNet;
 
-public class PhpMdExtraOutput :
-    OutputOptions
+public class PhpMdExtraInput :
+    BaseMdInput
 {
-    public PhpMdExtraOutput(Stream stream) :
+    public PhpMdExtraInput(Stream stream) :
         base(stream)
     {
     }
 
-    public PhpMdExtraOutput(string file) :
+    public PhpMdExtraInput(string file) :
         base(file)
     {
     }

@@ -1,27 +1,27 @@
 ﻿namespace PandocNet;
 
-public class HtmlOutput :
+public class BeamerOutput :
     OutputOptions
 {
-    public HtmlOutput(Stream stream) :
+    public BeamerOutput(Stream stream) :
         base(stream)
     {
     }
 
-    public HtmlOutput(string file) :
+    public BeamerOutput(string file) :
         base(file)
     {
     }
 
-    public override string Format => "html";
+    public override string Format => "beamer";
     //https://pandoc.org/MANUAL.html#options-affecting-specific-writers
     public bool SelfContained { get; set; }
     public bool HtmlQTags { get; set; }
+    public bool Incremental { get; set; }
+    public int? SlideLevel { get; set; }
     public bool SectionDivs { get; set; }
     public bool Ascii { get; set; }
     public ReferenceLocation? ReferenceLocation { get; set; }
-    public bool NumberSections { get; set; }
-    public IList<int>? NumberOffsets { get; set; }
     public string? IdPrefix { get; set; }
     public string? Css { get; set; }
     public string? TitlePrefix { get; set; }
@@ -51,13 +51,13 @@ public class HtmlOutput :
         {
             yield return $"--reference-location={ReferenceLocation}";
         }
-        if (NumberSections)
+        if (SlideLevel != null)
         {
-            yield return "--number-sections";
+            yield return $"--slide-level={SlideLevel}";
         }
-        if (NumberOffsets!= null)
+        if (Incremental)
         {
-            yield return $"--number-offset={string.Join(",", NumberOffsets)}";
+            yield return "--incremental";
         }
         if (SectionDivs)
         {
@@ -76,5 +76,4 @@ public class HtmlOutput :
             yield return $"--title-prefix={TitlePrefix}";
         }
     }
-
 }

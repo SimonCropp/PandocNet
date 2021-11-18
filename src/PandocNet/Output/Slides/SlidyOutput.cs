@@ -1,27 +1,27 @@
 ﻿namespace PandocNet;
 
-public class HtmlOutput :
+public class SlidyOutput :
     OutputOptions
 {
-    public HtmlOutput(Stream stream) :
+    public SlidyOutput(Stream stream) :
         base(stream)
     {
     }
 
-    public HtmlOutput(string file) :
+    public SlidyOutput(string file) :
         base(file)
     {
     }
 
-    public override string Format => "html";
+    public override string Format => "slidy";
+
     //https://pandoc.org/MANUAL.html#options-affecting-specific-writers
     public bool SelfContained { get; set; }
     public bool HtmlQTags { get; set; }
-    public bool SectionDivs { get; set; }
     public bool Ascii { get; set; }
+    public bool SectionDivs { get; set; }
+    public int? SlideLevel { get; set; }
     public ReferenceLocation? ReferenceLocation { get; set; }
-    public bool NumberSections { get; set; }
-    public IList<int>? NumberOffsets { get; set; }
     public string? IdPrefix { get; set; }
     public string? Css { get; set; }
     public string? TitlePrefix { get; set; }
@@ -47,21 +47,22 @@ public class HtmlOutput :
         {
             yield return "--html-q-tags";
         }
-        if (ReferenceLocation != null)
+        if (SectionDivs)
         {
-            yield return $"--reference-location={ReferenceLocation}";
+            yield return "--section-divs";
         }
-        if (NumberSections)
+
+        if (SlideLevel != null)
         {
-            yield return "--number-sections";
-        }
-        if (NumberOffsets!= null)
-        {
-            yield return $"--number-offset={string.Join(",", NumberOffsets)}";
+            yield return $"--slide-level={SlideLevel}";
         }
         if (SectionDivs)
         {
             yield return "--section-divs";
+        }
+        if (ReferenceLocation != null)
+        {
+            yield return $"--reference-location={ReferenceLocation}";
         }
         if (IdPrefix != null)
         {
@@ -76,5 +77,4 @@ public class HtmlOutput :
             yield return $"--title-prefix={TitlePrefix}";
         }
     }
-
 }

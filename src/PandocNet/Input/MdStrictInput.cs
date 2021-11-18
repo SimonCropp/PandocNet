@@ -1,14 +1,14 @@
 ﻿namespace PandocNet;
 
-public class MarkdownStrictInput :
-    InputOptions
+public class MdStrictInput :
+    BaseMdInput
 {
-    public MarkdownStrictInput(Stream stream) :
+    public MdStrictInput(Stream stream) :
         base(stream)
     {
     }
 
-    public MarkdownStrictInput(string file) :
+    public MdStrictInput(string file) :
         base(file)
     {
     }

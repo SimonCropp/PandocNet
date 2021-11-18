@@ -1,14 +1,14 @@
 ﻿namespace PandocNet;
 
-public class GhMarkdownOutput :
-    OutputOptions
+public class GhMdInput :
+    BaseMdInput
 {
-    public GhMarkdownOutput(Stream stream) :
+    public GhMdInput(Stream stream) :
         base(stream)
     {
     }
 
-    public GhMarkdownOutput(string file) :
+    public GhMdInput(string file) :
         base(file)
     {
     }
