@@ -59,9 +59,7 @@ public class Samples
             var engine = new PandocEngine();
             await using var inStream = File.OpenRead("sample.md");
             await using var outStream = File.OpenWrite("output.html");
-            await engine.Convert<CommonMarkIn, HtmlOut>(
-                inStream,
-                outStream);
+            await engine.Convert<CommonMarkIn, HtmlOut>(inStream, outStream);
 
             #endregion
         }
