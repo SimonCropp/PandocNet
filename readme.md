@@ -3,7 +3,7 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/naxouwk164twkgn3?svg=true)](https://ci.appveyor.com/project/SimonCropp/PandocNet)
 [![NuGet Status](https://img.shields.io/nuget/v/Pandoc.svg)](https://www.nuget.org/packages/Pandoc/)
 
-Conversion of documents via [Pandoc](https://pandoc.org/). Wraps the pandoc.exe using [CliWrap](https://github.com/Tyrrrz/CliWrap) and provides storng type options for document formats.
+Conversion of documents via [Pandoc](https://pandoc.org/). Wraps pandoc.exe using [CliWrap](https://github.com/Tyrrrz/CliWrap) and provides strong typed options for document formats.
 
 
 ## NuGet package
@@ -73,7 +73,7 @@ await engine.ConvertFile<CommonMarkIn, HtmlOut>("sample.md", "output.html");
 
 ### Raw Files
 
-Passing in files with no options will result in defering to Pandoc both the file formats and default options.
+Passing in files with no options will result in deferring to Pandoc both the file formats and default options.
 
 <!-- snippet: RawFiles -->
 <a id='snippet-rawfiles'></a>
