@@ -4,17 +4,37 @@ namespace PandocNet;
 
 public class PandocEngine
 {
+    public virtual async Task ConvertFile(string inFile, string outFile)
+    {
+        File.Delete(outFile);
+        var errors = new StringBuilder();
+
+        var arguments = new List<string>
+        {
+            $"--output={outFile}",
+            inFile
+        };
+        var command = Cli.Wrap("pandoc.exe")
+            .WithArguments(arguments)
+            .WithStandardErrorPipe(PipeTarget.ToStringBuilder(errors))
+            .WithValidation(CommandResultValidation.None);
+
+        var result = await command.ExecuteAsync();
+        CheckErrorCodes(result, errors, command);
+    }
+
     public virtual async Task ConvertFile<TIn, TOut>(string inFile, string outFile, TIn? inOptions = null, TOut? outOptions = null)
         where TIn : InOptions, new()
         where TOut : OutOptions, new()
     {
+        File.Delete(outFile);
         inOptions ??= new TIn();
         outOptions ??= new TOut();
         var errors = new StringBuilder();
 
         var arguments = new List<string>();
         arguments.AddRange(inOptions.GetArguments());
-        arguments.Add($"-o {outFile}");
+        arguments.Add($"--output={outFile}");
         arguments.AddRange(outOptions.GetArguments());
         arguments.Add(inFile);
         var command = Cli.Wrap("pandoc.exe")
@@ -61,7 +81,7 @@ public class PandocEngine
         var arguments = new List<string>
         {
             // Force binary to stdout
-            "-o -"
+            "--output=-"
         };
         arguments.AddRange(inOptions.GetArguments());
         arguments.AddRange(outOptions.GetArguments());

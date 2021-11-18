@@ -1,5 +1,4 @@
-﻿using CliWrap;
-using VerifyNUnit;
+﻿using VerifyNUnit;
 using NUnit.Framework;
 using PandocNet;
 
@@ -7,13 +6,37 @@ using PandocNet;
 public class Samples
 {
     [Test]
+    public async Task BinaryToText()
+    {
+        var engine = new PandocEngine();
+        await engine.ConvertFile("sample.docx", "output.html");
+
+        await Verifier.VerifyFile("output.html");
+    }
+
+    [Test]
+    public async Task RawFiles()
+    {
+        #region RawFiles
+
+        var engine = new PandocEngine();
+        await engine.ConvertFile("sample.md", "output.html");
+
+        #endregion
+
+        await Verifier.VerifyFile("output.html");
+    }
+
+    [Test]
     public async Task Files()
     {
         #region files
+
         var engine = new PandocEngine();
         await engine.ConvertFile<CommonMarkIn, HtmlOut>("sample.md", "output.html");
 
         #endregion
+
         await Verifier.VerifyFile("output.html");
     }
 
@@ -40,8 +63,10 @@ public class Samples
     public async Task Text()
     {
         #region text
+
         var engine = new PandocEngine();
         var result = await engine.ConvertText<CommonMarkIn, HtmlOut>("*text*");
+
         #endregion
 
         await Verifier.Verify(result).UseExtension("html");
@@ -51,6 +76,7 @@ public class Samples
     public async Task CustomOptions()
     {
         #region custom-options
+
         var engine = new PandocEngine();
         var result = await engine.ConvertText(@"
 # Heading1
@@ -69,7 +95,9 @@ text
             {
                 NumberOffsets = new List<int> {3}
             });
+
         #endregion
+
         await Verifier.Verify(result).UseExtension("html");
     }
 }
