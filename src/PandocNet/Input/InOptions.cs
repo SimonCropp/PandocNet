@@ -2,7 +2,6 @@
 
 public abstract class InOptions
 {
-    
     public int ShiftHeadingLevelBy { get; set; }
     public int? TabStop { get; set; }
     public IList<string>? IndentedCodeClasses { get; set; }

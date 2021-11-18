@@ -14,12 +14,12 @@ public class PandocEngine
 
         var arguments = new List<string>();
         arguments.AddRange(inOptions.GetArguments());
+        arguments.Add($"-o {outFile}");
         arguments.AddRange(outOptions.GetArguments());
+        arguments.Add(inFile);
         var command = Cli.Wrap("pandoc.exe")
             .WithArguments(arguments)
-            .WithStandardInputPipe(PipeSource.FromFile(inFile))
             .WithStandardErrorPipe(PipeTarget.ToStringBuilder(errors))
-            .WithStandardOutputPipe(PipeTarget.ToFile(outFile))
             .WithValidation(CommandResultValidation.None);
 
         var result = await command.ExecuteAsync();
