@@ -28,6 +28,16 @@ public class Samples
     }
 
     [Test]
+    public void PandocPath()
+    {
+        #region PandocPath
+
+        var engine = new PandocEngine(@"D:\Tools\pandoc.exe");
+
+        #endregion
+    }
+
+    [Test]
     public async Task Files()
     {
         #region files

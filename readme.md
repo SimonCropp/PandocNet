@@ -14,6 +14,21 @@ https://nuget.org/packages/PandocNet/
 ## Usage
 
 
+### Pandoc Path
+
+By default `pandoc.exe` is expected to be accessible in the current environmenst `Path`.
+
+This can be changed:
+
+<!-- snippet: PandocPath -->
+<a id='snippet-pandocpath'></a>
+```cs
+var engine = new PandocEngine(@"D:\Tools\pandoc.exe");
+```
+<sup><a href='/src/Tests/Samples.cs#L33-L37' title='Snippet source file'>snippet source</a> | <a href='#snippet-pandocpath' title='Start of snippet'>anchor</a></sup>
+<!-- endSnippet -->
+
+
 ### Text
 
 <!-- snippet: text -->
@@ -22,7 +37,7 @@ https://nuget.org/packages/PandocNet/
 var engine = new PandocEngine();
 var result = await engine.ConvertText<CommonMarkIn, HtmlOut>("*text*");
 ```
-<sup><a href='/src/Tests/Samples.cs#L65-L70' title='Snippet source file'>snippet source</a> | <a href='#snippet-text' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.cs#L75-L80' title='Snippet source file'>snippet source</a> | <a href='#snippet-text' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 
@@ -38,7 +53,7 @@ await engine.Convert<CommonMarkIn, HtmlOut>(
     inStream,
     outStream);
 ```
-<sup><a href='/src/Tests/Samples.cs#L47-L56' title='Snippet source file'>snippet source</a> | <a href='#snippet-streams' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.cs#L57-L66' title='Snippet source file'>snippet source</a> | <a href='#snippet-streams' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 
@@ -50,7 +65,7 @@ await engine.Convert<CommonMarkIn, HtmlOut>(
 var engine = new PandocEngine();
 await engine.ConvertFile<CommonMarkIn, HtmlOut>("sample.md", "output.html");
 ```
-<sup><a href='/src/Tests/Samples.cs#L33-L38' title='Snippet source file'>snippet source</a> | <a href='#snippet-files' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.cs#L43-L48' title='Snippet source file'>snippet source</a> | <a href='#snippet-files' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 
@@ -92,7 +107,7 @@ text
         NumberOffsets = new List<int> {3}
     });
 ```
-<sup><a href='/src/Tests/Samples.cs#L78-L99' title='Snippet source file'>snippet source</a> | <a href='#snippet-custom-options' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.cs#L88-L109' title='Snippet source file'>snippet source</a> | <a href='#snippet-custom-options' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 

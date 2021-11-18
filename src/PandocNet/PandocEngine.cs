@@ -4,6 +4,13 @@ namespace PandocNet;
 
 public class PandocEngine
 {
+    string pandocPath;
+
+    public PandocEngine(string? pandocPath = null)
+    {
+        this.pandocPath = pandocPath ?? "pandoc.exe";
+    }
+
     public virtual async Task ConvertFile(string inFile, string outFile)
     {
         File.Delete(outFile);
@@ -14,7 +21,7 @@ public class PandocEngine
             $"--output={outFile}",
             inFile
         };
-        var command = Cli.Wrap("pandoc.exe")
+        var command = Cli.Wrap(pandocPath)
             .WithArguments(arguments)
             .WithStandardErrorPipe(PipeTarget.ToStringBuilder(errors))
             .WithValidation(CommandResultValidation.None);
@@ -37,7 +44,7 @@ public class PandocEngine
         arguments.Add($"--output={outFile}");
         arguments.AddRange(outOptions.GetArguments());
         arguments.Add(inFile);
-        var command = Cli.Wrap("pandoc.exe")
+        var command = Cli.Wrap(pandocPath)
             .WithArguments(arguments)
             .WithStandardErrorPipe(PipeTarget.ToStringBuilder(errors))
             .WithValidation(CommandResultValidation.None);
@@ -58,7 +65,7 @@ public class PandocEngine
         var arguments = new List<string>();
         arguments.AddRange(inOptions.GetArguments());
         arguments.AddRange(outOptions.GetArguments());
-        var command = Cli.Wrap("pandoc.exe")
+        var command = Cli.Wrap(pandocPath)
             .WithArguments(arguments)
             .WithStandardInputPipe(PipeSource.FromString(content))
             .WithStandardErrorPipe(PipeTarget.ToStringBuilder(errors))
@@ -85,7 +92,7 @@ public class PandocEngine
         };
         arguments.AddRange(inOptions.GetArguments());
         arguments.AddRange(outOptions.GetArguments());
-        var command = Cli.Wrap("pandoc.exe")
+        var command = Cli.Wrap(pandocPath)
             .WithArguments(arguments)
             .WithStandardErrorPipe(PipeTarget.ToStringBuilder(errors))
             .WithValidation(CommandResultValidation.None);
