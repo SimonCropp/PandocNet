@@ -1,7 +1,7 @@
 ﻿namespace PandocNet;
 
 public class AsciiDoctorOutput :
-    InputOptions
+    OutputOptions
 {
     public AsciiDoctorOutput(Stream stream) :
         base(stream)

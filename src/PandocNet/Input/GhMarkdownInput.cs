@@ -1,14 +1,14 @@
 ﻿namespace PandocNet;
 
-public class GitHubFlavoredMarkdownInput :
+public class GhMarkdownInput :
     InputOptions
 {
-    public GitHubFlavoredMarkdownInput(Stream stream) :
+    public GhMarkdownInput(Stream stream) :
         base(stream)
     {
     }
 
-    public GitHubFlavoredMarkdownInput(string file) :
+    public GhMarkdownInput(string file) :
         base(file)
     {
     }

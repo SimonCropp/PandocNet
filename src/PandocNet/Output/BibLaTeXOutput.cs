@@ -1,7 +1,7 @@
 ﻿namespace PandocNet;
 
 public class BibLaTeXOutput :
-    InputOptions
+    OutputOptions
 {
     public BibLaTeXOutput(Stream stream) :
         base(stream)

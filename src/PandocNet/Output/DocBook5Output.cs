@@ -1,7 +1,7 @@
 ﻿namespace PandocNet;
 
 public class DocBook5Output :
-    InputOptions
+    OutputOptions
 {
     public DocBook5Output(Stream stream) :
         base(stream)

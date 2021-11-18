@@ -1,7 +1,7 @@
 ﻿namespace PandocNet;
 
 public class ConTeXtOutput :
-    InputOptions
+    OutputOptions
 {
     public ConTeXtOutput(Stream stream) :
         base(stream)

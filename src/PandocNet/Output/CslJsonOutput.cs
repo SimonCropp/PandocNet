@@ -1,7 +1,7 @@
 ﻿namespace PandocNet;
 
 public class CslJsonOutput :
-    InputOptions
+    OutputOptions
 {
     public CslJsonOutput(Stream stream) :
         base(stream)

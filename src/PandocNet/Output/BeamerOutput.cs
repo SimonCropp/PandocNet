@@ -1,7 +1,7 @@
 ﻿namespace PandocNet;
 
 public class BeamerOutput :
-    InputOptions
+    OutputOptions
 {
     public BeamerOutput(Stream stream) :
         base(stream)

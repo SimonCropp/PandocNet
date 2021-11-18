@@ -1,14 +1,14 @@
 ﻿namespace PandocNet;
 
-public class NativeHaskellInput :
+public class HaskellInput :
     InputOptions
 {
-    public NativeHaskellInput(Stream stream) :
+    public HaskellInput(Stream stream) :
         base(stream)
     {
     }
 
-    public NativeHaskellInput(string file) :
+    public HaskellInput(string file) :
         base(file)
     {
     }

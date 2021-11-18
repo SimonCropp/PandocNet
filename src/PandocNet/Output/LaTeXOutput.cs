@@ -1,14 +1,14 @@
 ﻿namespace PandocNet;
 
-public class LaTexInput :
-    InputOptions
+public class LaTeXOutput :
+    OutputOptions
 {
-    public LaTexInput(Stream stream) :
+    public LaTeXOutput(Stream stream) :
         base(stream)
     {
     }
 
-    public LaTexInput(string file) :
+    public LaTeXOutput(string file) :
         base(file)
     {
     }

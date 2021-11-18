@@ -17,6 +17,10 @@ public abstract class OutputOptions
         isOwned = true;
     }
 
+    public virtual IEnumerable<string> GetArguments()
+    {
+        yield break;
+    }
     public void Dispose()
     {
         if (isOwned)

@@ -1,7 +1,7 @@
 ﻿namespace PandocNet;
 
 public class CommonMarkXOutput :
-    InputOptions
+    OutputOptions
 {
     public CommonMarkXOutput(Stream stream) :
         base(stream)

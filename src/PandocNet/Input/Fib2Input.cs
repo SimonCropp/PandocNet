@@ -1,14 +1,14 @@
 ﻿namespace PandocNet;
 
-public class FictionBook2Input :
+public class Fib2Input :
     InputOptions
 {
-    public FictionBook2Input(Stream stream) :
+    public Fib2Input(Stream stream) :
         base(stream)
     {
     }
 
-    public FictionBook2Input(string file) :
+    public Fib2Input(string file) :
         base(file)
     {
     }
