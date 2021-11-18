@@ -18,6 +18,8 @@ https://nuget.org/packages/PandocNet/
 
 By default `pandoc.exe` is expected to be accessible in the current environmenst `Path`.
 
+[Installing Pandoc](https://pandoc.org/installing.html).
+
 This can be changed:
 
 <!-- snippet: PandocPath -->
