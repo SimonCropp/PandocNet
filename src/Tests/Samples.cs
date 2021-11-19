@@ -8,8 +8,7 @@ public class Samples
     [Test]
     public async Task BinaryToText()
     {
-        var engine = new PandocEngine();
-        await engine.ConvertFile("sample.docx", "output.html");
+        await PandocInstance.ConvertFile("sample.docx", "output.html");
 
         await Verifier.VerifyFile("output.html");
     }
@@ -19,8 +18,7 @@ public class Samples
     {
         #region RawFiles
 
-        var engine = new PandocEngine();
-        await engine.ConvertFile("sample.md", "output.html");
+        await PandocInstance.ConvertFile("sample.md", "output.html");
 
         #endregion
 
@@ -42,8 +40,7 @@ public class Samples
     {
         #region files
 
-        var engine = new PandocEngine();
-        await engine.ConvertFile<CommonMarkIn, HtmlOut>("sample.md", "output.html");
+        await PandocInstance.ConvertFile<CommonMarkIn, HtmlOut>("sample.md", "output.html");
 
         #endregion
 
@@ -56,10 +53,9 @@ public class Samples
         {
             #region streams
 
-            var engine = new PandocEngine();
             await using var inStream = File.OpenRead("sample.md");
             await using var outStream = File.OpenWrite("output.html");
-            await engine.Convert<CommonMarkIn, HtmlOut>(inStream, outStream);
+            await PandocInstance.Convert<CommonMarkIn, HtmlOut>(inStream, outStream);
 
             #endregion
         }
@@ -72,8 +68,7 @@ public class Samples
     {
         #region text
 
-        var engine = new PandocEngine();
-        var html = await engine.ConvertText<CommonMarkIn, HtmlOut>("*text*");
+        var html = await PandocInstance.ConvertText<CommonMarkIn, HtmlOut>("*text*");
 
         #endregion
 
@@ -85,8 +80,7 @@ public class Samples
     {
         #region custom-options
 
-        var engine = new PandocEngine();
-        var html = await engine.ConvertText(@"
+        var html = await PandocInstance.ConvertText(@"
 # Heading1
 
 text

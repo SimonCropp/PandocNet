@@ -4,14 +4,14 @@ namespace Pandoc;
 
 public class PandocEngine
 {
-    string pandocPath;
+    internal string pandocPath;
 
     public PandocEngine(string? pandocPath = null)
     {
         this.pandocPath = pandocPath ?? "pandoc.exe";
     }
 
-    public virtual async Task ConvertFile(string inFile, string outFile)
+    public virtual async Task ConvertFile(string inFile, string outFile, CancellationToken cancellation = default)
     {
         File.Delete(outFile);
         var errors = new StringBuilder();
@@ -26,11 +26,16 @@ public class PandocEngine
             .WithStandardErrorPipe(PipeTarget.ToStringBuilder(errors))
             .WithValidation(CommandResultValidation.None);
 
-        var result = await command.ExecuteAsync();
+        var result = await command.ExecuteAsync(cancellation);
         CheckErrorCodes(result, errors, command);
     }
 
-    public virtual async Task ConvertFile<TIn, TOut>(string inFile, string outFile, TIn? inOptions = null, TOut? outOptions = null)
+    public virtual async Task ConvertFile<TIn, TOut>(
+        string inFile,
+        string outFile, 
+        TIn? inOptions = null, 
+        TOut? outOptions = null, 
+        CancellationToken cancellation = default)
         where TIn : InOptions, new()
         where TOut : OutOptions, new()
     {
@@ -49,11 +54,15 @@ public class PandocEngine
             .WithStandardErrorPipe(PipeTarget.ToStringBuilder(errors))
             .WithValidation(CommandResultValidation.None);
 
-        var result = await command.ExecuteAsync();
+        var result = await command.ExecuteAsync(cancellation);
         CheckErrorCodes(result, errors, command);
     }
 
-    public virtual async Task<string> ConvertText<TIn, TOut>(string content, TIn? inOptions = null, TOut? outOptions = null)
+    public virtual async Task<string> ConvertText<TIn, TOut>(
+        string content, 
+        TIn? inOptions = null,
+        TOut? outOptions = null, 
+        CancellationToken cancellation = default)
         where TIn : InOptions, new()
         where TOut : OutOptions, new()
     {
@@ -72,12 +81,17 @@ public class PandocEngine
             .WithStandardOutputPipe(PipeTarget.ToStringBuilder(output))
             .WithValidation(CommandResultValidation.None);
 
-        var result = await command.ExecuteAsync();
+        var result = await command.ExecuteAsync(cancellation);
         CheckErrorCodes(result, errors, command);
         return output.ToString();
     }
 
-    public virtual async Task Convert<TIn, TOut>(Stream inStream, Stream outStream, TIn? inOptions = null, TOut? outOptions = null)
+    public virtual async Task Convert<TIn, TOut>(
+        Stream inStream, 
+        Stream outStream,
+        TIn? inOptions = null, 
+        TOut? outOptions = null,
+        CancellationToken cancellation = default)
         where TIn : InOptions, new()
         where TOut : OutOptions, new()
     {
@@ -98,7 +112,7 @@ public class PandocEngine
             .WithValidation(CommandResultValidation.None);
 
         var result = await (inStream | command | outStream)
-            .ExecuteAsync();
+            .ExecuteAsync(cancellation);
         CheckErrorCodes(result, errors, command);
     }
 
