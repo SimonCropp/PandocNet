@@ -40,8 +40,8 @@ public class PandocEngine
         where TOut : OutOptions, new()
     {
         File.Delete(outFile);
-        inOptions ??= new TIn();
-        outOptions ??= new TOut();
+        inOptions ??= new();
+        outOptions ??= new();
         var errors = new StringBuilder();
 
         var arguments = new List<string>();
@@ -66,8 +66,8 @@ public class PandocEngine
         where TIn : InOptions, new()
         where TOut : OutOptions, new()
     {
-        inOptions ??= new TIn();
-        outOptions ??= new TOut();
+        inOptions ??= new();
+        outOptions ??= new();
         var errors = new StringBuilder();
         var output = new StringBuilder();
 
@@ -95,8 +95,8 @@ public class PandocEngine
         where TIn : InOptions, new()
         where TOut : OutOptions, new()
     {
-        inOptions ??= new TIn();
-        outOptions ??= new TOut();
+        inOptions ??= new();
+        outOptions ??= new();
 
         var errors = new StringBuilder();
         var arguments = new List<string>
