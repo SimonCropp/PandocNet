@@ -6,14 +6,6 @@ using Pandoc;
 public class Samples
 {
     [Test]
-    public async Task BinaryToText()
-    {
-        await PandocInstance.ConvertFile("sample.docx", "output.html");
-
-        await Verifier.VerifyFile("output.html");
-    }
-
-    [Test]
     public async Task RawFiles()
     {
         #region RawFiles
@@ -72,7 +64,7 @@ public class Samples
 
         #endregion
 
-        await Verifier.Verify(html).UseExtension("html");
+        await Verifier.Verify(html.Value).UseExtension("html");
     }
 
     [Test]
@@ -100,6 +92,6 @@ text
 
         #endregion
 
-        await Verifier.Verify(html).UseExtension("html");
+        await Verifier.Verify(html.Value).UseExtension("html");
     }
 }

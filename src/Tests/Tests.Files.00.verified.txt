@@ -1,0 +1,4 @@
+﻿{
+  target: null,
+  command: pandoc.exe --from=commonmark --output=output.html --to=html sample.md
+}

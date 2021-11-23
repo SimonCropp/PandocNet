@@ -9,12 +9,12 @@ public static class PandocInstance
         instance.pandocPath = pandocPath;
     }
 
-    public static Task ConvertFile(string inFile, string outFile, CancellationToken cancellation = default)
+    public static Task<Result> ConvertFile(string inFile, string outFile, CancellationToken cancellation = default)
     {
         return instance.ConvertFile(inFile, outFile, cancellation);
     }
 
-    public static Task ConvertFile<TIn, TOut>(
+    public static Task<Result> ConvertFile<TIn, TOut>(
         string inFile,
         string outFile,
         TIn? inOptions = null,
@@ -23,10 +23,10 @@ public static class PandocInstance
         where TIn : InOptions, new()
         where TOut : OutOptions, new()
     {
-        return instance.ConvertFile(inFile, outFile,inOptions,outOptions,cancellation);
+        return instance.ConvertFile(inFile, outFile, inOptions, outOptions, cancellation);
     }
 
-    public static Task<string> ConvertText<TIn, TOut>(
+    public static Task<StringResult> ConvertText<TIn, TOut>(
         string content,
         TIn? inOptions = null,
         TOut? outOptions = null,
@@ -37,7 +37,7 @@ public static class PandocInstance
         return instance.ConvertText(content, inOptions, outOptions, cancellation);
     }
 
-    public static Task Convert<TIn, TOut>(
+    public static Task<Result> Convert<TIn, TOut>(
         Stream inStream,
         Stream outStream,
         TIn? inOptions = null,

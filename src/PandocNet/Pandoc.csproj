@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>net48;net5</TargetFrameworks>
+    <TargetFrameworks>net6</TargetFrameworks>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Nullable" Version="1.3.0" Condition="$(TargetFramework) == 'net48'" PrivateAssets="all" />

@@ -11,7 +11,7 @@ public class PandocEngine
         this.pandocPath = pandocPath ?? "pandoc.exe";
     }
 
-    public virtual async Task ConvertFile(string inFile, string outFile, CancellationToken cancellation = default)
+    public virtual async Task<Result> ConvertFile(string inFile, string outFile, CancellationToken cancellation = default)
     {
         File.Delete(outFile);
         var errors = new StringBuilder();
@@ -26,11 +26,13 @@ public class PandocEngine
             .WithStandardErrorPipe(PipeTarget.ToStringBuilder(errors))
             .WithValidation(CommandResultValidation.None);
 
+
         var result = await command.ExecuteAsync(cancellation);
         CheckErrorCodes(result, errors, command);
+        return new(command.ToString());
     }
 
-    public virtual async Task ConvertFile<TIn, TOut>(
+    public virtual async Task<Result> ConvertFile<TIn, TOut>(
         string inFile,
         string outFile, 
         TIn? inOptions = null, 
@@ -56,12 +58,13 @@ public class PandocEngine
 
         var result = await command.ExecuteAsync(cancellation);
         CheckErrorCodes(result, errors, command);
+        return new(command.ToString());
     }
 
-    public virtual async Task<string> ConvertText<TIn, TOut>(
-        string content, 
+    public virtual async Task<StringResult> ConvertText<TIn, TOut>(
+        string content,
         TIn? inOptions = null,
-        TOut? outOptions = null, 
+        TOut? outOptions = null,
         CancellationToken cancellation = default)
         where TIn : InOptions, new()
         where TOut : OutOptions, new()
@@ -83,10 +86,10 @@ public class PandocEngine
 
         var result = await command.ExecuteAsync(cancellation);
         CheckErrorCodes(result, errors, command);
-        return output.ToString();
+        return new(command.ToString(), output.ToString());
     }
 
-    public virtual async Task Convert<TIn, TOut>(
+    public virtual async Task<Result> Convert<TIn, TOut>(
         Stream inStream, 
         Stream outStream,
         TIn? inOptions = null, 
@@ -114,6 +117,7 @@ public class PandocEngine
         var result = await (inStream | command | outStream)
             .ExecuteAsync(cancellation);
         CheckErrorCodes(result, errors, command);
+        return new(command.ToString());
     }
 
     static void CheckErrorCodes(CommandResult result, StringBuilder errors, Command command)
