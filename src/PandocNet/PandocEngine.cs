@@ -16,7 +16,7 @@ public class PandocEngine
         File.Delete(outFile);
         var errors = new StringBuilder();
 
-        var arguments = new List<string>
+        var arguments = new[]
         {
             $"--output={outFile}",
             inFile
@@ -34,9 +34,9 @@ public class PandocEngine
 
     public virtual async Task<Result> ConvertFile<TIn, TOut>(
         string inFile,
-        string outFile, 
-        TIn? inOptions = null, 
-        TOut? outOptions = null, 
+        string outFile,
+        TIn? inOptions = null,
+        TOut? outOptions = null,
         CancellationToken cancellation = default)
         where TIn : InOptions, new()
         where TOut : OutOptions, new()
@@ -90,9 +90,9 @@ public class PandocEngine
     }
 
     public virtual async Task<Result> Convert<TIn, TOut>(
-        Stream inStream, 
+        Stream inStream,
         Stream outStream,
-        TIn? inOptions = null, 
+        TIn? inOptions = null,
         TOut? outOptions = null,
         CancellationToken cancellation = default)
         where TIn : InOptions, new()

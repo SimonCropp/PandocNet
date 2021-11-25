@@ -65,7 +65,7 @@ public class Tests
             },
             new HtmlOut
             {
-                NumberOffsets = new List<int> { 3 }
+                NumberOffsets = new[] {3}
             });
 
         await Verifier.Verify(value).UseExtension("html")
