@@ -1,8 +1,15 @@
 ﻿namespace Pandoc;
 
+/// <summary>
+/// https://www.latex-project.org/
+/// </summary>
 public class LaTexIn :
     InOptions
 {
+    /// <summary>
+    /// Specify a default extension to use when image paths/URLs have no extension
+    /// https://pandoc.org/MANUAL.html#option--default-image-extension
+    /// </summary>
     public string? DefaultImageExtension { get; set; }
 
     public override IEnumerable<string> GetArguments()
@@ -18,5 +25,5 @@ public class LaTexIn :
         }
     }
 
-    public override string Format => "latex";
+    protected override string Format => "latex";
 }

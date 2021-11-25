@@ -1,7 +1,10 @@
 ﻿namespace Pandoc;
 
+/// <summary>
+/// https://orgmode.org/
+/// </summary>
 public class EmacsOrgIn :
     InOptions
 {
-    public override string Format => "org";
+    protected override string Format => "org";
 }

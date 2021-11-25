@@ -24,6 +24,21 @@ public class Tests
     }
 
     [Test]
+    public async Task DataDirectory()
+    {
+        var result = await PandocInstance.ConvertFile(
+            "sample.md", 
+            "output.html",
+            new Options
+            {
+                DataDirectory = Environment.CurrentDirectory
+            });
+
+        await Verifier.VerifyFile("output.html")
+            .AppendValue("command", result.Command);
+    }
+
+    [Test]
     public async Task Files()
     {
         var result = await PandocInstance.ConvertFile<CommonMarkIn, HtmlOut>("sample.md", "output.html");

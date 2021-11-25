@@ -1,7 +1,10 @@
 ﻿namespace Pandoc;
 
+/// <summary>
+/// http://www.wikicreole.org/wiki/Creole1.0
+/// </summary>
 public class CreoleIn :
     InOptions
 {
-    public override string Format => "creole";
+    protected override string Format => "creole";
 }

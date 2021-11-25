@@ -11,12 +11,16 @@ public class PandocEngine
         this.pandocPath = pandocPath ?? "pandoc.exe";
     }
 
-    public virtual async Task<Result> ConvertFile(string inFile, string outFile, CancellationToken cancellation = default)
+    public virtual async Task<Result> ConvertFile(
+        string inFile,
+        string outFile,
+        Options? options = null,
+        CancellationToken cancellation = default)
     {
         File.Delete(outFile);
         var errors = new StringBuilder();
 
-        var arguments = new[]
+        var arguments = new List<string>(Options.GetArguments(options))
         {
             $"--output={outFile}",
             inFile
@@ -25,7 +29,6 @@ public class PandocEngine
             .WithArguments(arguments)
             .WithStandardErrorPipe(PipeTarget.ToStringBuilder(errors))
             .WithValidation(CommandResultValidation.None);
-
 
         var result = await command.ExecuteAsync(cancellation);
         CheckErrorCodes(result, errors, command);
@@ -37,6 +40,7 @@ public class PandocEngine
         string outFile,
         TIn? inOptions = null,
         TOut? outOptions = null,
+        Options? options = null,
         CancellationToken cancellation = default)
         where TIn : InOptions, new()
         where TOut : OutOptions, new()
@@ -46,7 +50,7 @@ public class PandocEngine
         outOptions ??= new();
         var errors = new StringBuilder();
 
-        var arguments = new List<string>();
+        var arguments = new List<string>(Options.GetArguments(options));
         arguments.AddRange(inOptions.GetArguments());
         arguments.Add($"--output={outFile}");
         arguments.AddRange(outOptions.GetArguments());
@@ -65,6 +69,7 @@ public class PandocEngine
         string content,
         TIn? inOptions = null,
         TOut? outOptions = null,
+        Options? options = null,
         CancellationToken cancellation = default)
         where TIn : InOptions, new()
         where TOut : OutOptions, new()
@@ -74,7 +79,7 @@ public class PandocEngine
         var errors = new StringBuilder();
         var output = new StringBuilder();
 
-        var arguments = new List<string>();
+        var arguments = new List<string>(Options.GetArguments(options));
         arguments.AddRange(inOptions.GetArguments());
         arguments.AddRange(outOptions.GetArguments());
         var command = Cli.Wrap(pandocPath)
@@ -94,6 +99,7 @@ public class PandocEngine
         Stream outStream,
         TIn? inOptions = null,
         TOut? outOptions = null,
+        Options? options = null,
         CancellationToken cancellation = default)
         where TIn : InOptions, new()
         where TOut : OutOptions, new()
@@ -102,7 +108,7 @@ public class PandocEngine
         outOptions ??= new();
 
         var errors = new StringBuilder();
-        var arguments = new List<string>
+        var arguments = new List<string>(Options.GetArguments(options))
         {
             // Force binary to stdout
             "--output=-"

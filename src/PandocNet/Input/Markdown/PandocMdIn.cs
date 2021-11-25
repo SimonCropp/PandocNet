@@ -1,10 +1,17 @@
 ﻿namespace Pandoc;
 
+/// <summary>
+/// https://pandoc.org/MANUAL.html#pandocs-markdown
+/// </summary>
 public class PandocMdIn :
     InOptions
 {
-    public override string Format => "markdown";
-    
+    protected override string Format => "markdown";
+
+    /// <summary>
+    /// Specify a default extension to use when image paths/URLs have no extension
+    /// https://pandoc.org/MANUAL.html#option--default-image-extension
+    /// </summary>
     public string? DefaultImageExtension { get; set; }
 
     public override IEnumerable<string> GetArguments()

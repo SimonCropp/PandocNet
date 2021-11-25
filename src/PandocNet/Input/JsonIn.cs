@@ -3,5 +3,5 @@
 public class JsonIn :
     InOptions
 {
-    public override string Format => "json";
+    protected override string Format => "json";
 }

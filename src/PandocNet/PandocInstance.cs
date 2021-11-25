@@ -9,9 +9,13 @@ public static class PandocInstance
         instance.pandocPath = pandocPath;
     }
 
-    public static Task<Result> ConvertFile(string inFile, string outFile, CancellationToken cancellation = default)
+    public static Task<Result> ConvertFile(
+        string inFile,
+        string outFile,
+        Options? options = null,
+        CancellationToken cancellation = default)
     {
-        return instance.ConvertFile(inFile, outFile, cancellation);
+        return instance.ConvertFile(inFile, outFile, options, cancellation);
     }
 
     public static Task<Result> ConvertFile<TIn, TOut>(
@@ -19,22 +23,24 @@ public static class PandocInstance
         string outFile,
         TIn? inOptions = null,
         TOut? outOptions = null,
+        Options? options = null,
         CancellationToken cancellation = default)
         where TIn : InOptions, new()
         where TOut : OutOptions, new()
     {
-        return instance.ConvertFile(inFile, outFile, inOptions, outOptions, cancellation);
+        return instance.ConvertFile(inFile, outFile, inOptions, outOptions, options, cancellation);
     }
 
     public static Task<StringResult> ConvertText<TIn, TOut>(
         string content,
         TIn? inOptions = null,
         TOut? outOptions = null,
+        Options? options = null,
         CancellationToken cancellation = default)
         where TIn : InOptions, new()
         where TOut : OutOptions, new()
     {
-        return instance.ConvertText(content, inOptions, outOptions, cancellation);
+        return instance.ConvertText(content, inOptions, outOptions, options, cancellation);
     }
 
     public static Task<Result> Convert<TIn, TOut>(
@@ -42,10 +48,11 @@ public static class PandocInstance
         Stream outStream,
         TIn? inOptions = null,
         TOut? outOptions = null,
+        Options? options = null,
         CancellationToken cancellation = default)
         where TIn : InOptions, new()
         where TOut : OutOptions, new()
     {
-        return instance.Convert(inStream, outStream, inOptions, outOptions, cancellation);
+        return instance.Convert(inStream, outStream, inOptions, outOptions, options, cancellation);
     }
 }

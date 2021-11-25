@@ -1,7 +1,10 @@
 ﻿namespace Pandoc;
 
+/// <summary>
+/// https://vimwiki.github.io/
+/// </summary>
 public class VimWikiIn :
     InOptions
 {
-    public override string Format => "vimwiki";
+    protected override string Format => "vimwiki";
 }

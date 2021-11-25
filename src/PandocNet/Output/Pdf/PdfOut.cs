@@ -1,5 +1,8 @@
 ﻿namespace Pandoc;
 
+/// <summary>
+/// https://www.adobe.com/acrobat/about-adobe-pdf.html
+/// </summary>
 public class PdfOut :
     OutOptions
 {

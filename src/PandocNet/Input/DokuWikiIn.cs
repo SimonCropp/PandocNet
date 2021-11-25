@@ -1,7 +1,10 @@
 ﻿namespace Pandoc;
 
+/// <summary>
+/// https://www.dokuwiki.org/dokuwiki
+/// </summary>
 public class DokuWikiIn :
     InOptions
 {
-    public override string Format => "dokuwiki";
+    protected override string Format => "dokuwiki";
 }

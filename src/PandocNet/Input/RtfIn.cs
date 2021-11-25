@@ -1,7 +1,10 @@
 ﻿namespace Pandoc;
 
+/// <summary>
+/// https://en.wikipedia.org/wiki/Rich_Text_Format
+/// </summary>
 public class RtfIn :
     InOptions
 {
-    public override string Format => "rtf";
+    protected override string Format => "rtf";
 }

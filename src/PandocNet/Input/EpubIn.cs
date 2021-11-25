@@ -1,7 +1,10 @@
 ﻿namespace Pandoc;
 
+/// <summary>
+/// http://idpf.org/epub
+/// </summary>
 public class EpubIn :
     InOptions
 {
-    public override string Format => "epub";
+    protected override string Format => "epub";
 }

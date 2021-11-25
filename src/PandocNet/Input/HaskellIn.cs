@@ -3,5 +3,5 @@
 public class HaskellIn :
     InOptions
 {
-    public override string Format => "native ";
+    protected override string Format => "native ";
 }

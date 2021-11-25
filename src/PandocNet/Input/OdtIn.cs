@@ -1,7 +1,10 @@
 ﻿namespace Pandoc;
 
+/// <summary>
+/// https://en.wikipedia.org/wiki/OpenDocument
+/// </summary>
 public class OdtIn :
     InOptions
 {
-    public override string Format => "odt";
+    protected override string Format => "odt";
 }

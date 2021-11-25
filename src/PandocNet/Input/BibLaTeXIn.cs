@@ -1,7 +1,10 @@
 ﻿namespace Pandoc;
 
+/// <summary>
+/// https://ctan.org/pkg/biblatex
+/// </summary>
 public class BibLaTeXIn :
     InOptions
 {
-    public override string Format => "biblatex";
+    protected override string Format => "biblatex";
 }

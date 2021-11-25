@@ -3,5 +3,5 @@
 public class HtmlIn :
     InOptions
 {
-    public override string Format => "html";
+    protected override string Format => "html";
 }
