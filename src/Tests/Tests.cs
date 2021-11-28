@@ -29,7 +29,7 @@ public class Tests
         var result = await PandocInstance.ConvertFile(
             "sample.md", 
             "output.html",
-            new Options
+            new()
             {
                 DataDirectory = Environment.CurrentDirectory
             });
@@ -51,12 +51,13 @@ public class Tests
     public async Task Streams()
     {
         Result result;
+
         {
             await using var inStream = File.OpenRead("sample.md");
             await using var outStream = File.OpenWrite("output.html");
             result = await PandocInstance.Convert<CommonMarkIn, HtmlOut>(inStream, outStream);
         }
-
+        
         await Verifier.VerifyFile("output.html")
             .AppendValue("command", result.Command);
     }
@@ -73,7 +74,8 @@ public class Tests
     [Test]
     public async Task CustomOptions()
     {
-        var (command, value) = await PandocInstance.ConvertText(@"# Heading1",
+        var (command, value) = await PandocInstance.ConvertText(
+            @"# Heading1",
             new CommonMarkIn
             {
                 ShiftHeadingLevelBy = 2
