@@ -1,4 +1,7 @@
-﻿namespace Pandoc;
+﻿using CliWrap;
+using Replicant;
+
+namespace Pandoc;
 
 public class Input
 {
@@ -17,78 +20,13 @@ public class Input
             return;
         }
 
-        if (System.IO.File.Exists(value))
+        if (File.Exists(value))
         {
             file = value;
             return;
         }
 
         content = value;
-    }
-
-    public string Url
-    {
-        get
-        {
-            if (!IsUrl)
-            {
-                throw new("Not a url");
-            }
-
-            return url!;
-        }
-    }
-
-    public string File
-    {
-        get
-        {
-            if (!IsFile)
-            {
-                throw new("Not a file");
-            }
-
-            return file!;
-        }
-    }
-
-    public string Content
-    {
-        get
-        {
-            if (!IsContent)
-            {
-                throw new("Not content");
-            }
-
-            return content!;
-        }
-    }
-
-    public Stream Stream
-    {
-        get
-        {
-            if (!IsStream)
-            {
-                throw new("Not a stream");
-            }
-
-            return stream!;
-        }
-    }
-
-    public byte[] Bytes
-    {
-        get
-        {
-            if (!IsBytes)
-            {
-                throw new("Not bytes");
-            }
-
-            return bytes!;
-        }
     }
 
     public Input(Stream stream)
@@ -100,33 +38,40 @@ public class Input
     {
         this.bytes = bytes;
     }
-
-    public bool IsStream
-    {
-        get => stream != null;
-    }
-
-    public bool IsContent
-    {
-        get => content != null;
-    }
-
-    public bool IsUrl
-    {
-        get => url != null;
-    }
-
-    public bool IsFile
-    {
-        get => file != null;
-    }
-
-    public bool IsBytes
-    {
-        get => bytes != null;
-    }
-
+    
     public static implicit operator Input(string value) => new(value);
     public static implicit operator Input(Stream stream) => new(stream);
     public static implicit operator Input(byte[] bytes) => new(bytes);
+
+    
+    public PipeSource GetPipeSource()
+    {
+        if (file != null)
+        {
+            return PipeSource.FromFile(file);
+        }
+
+        if (stream != null)
+        {
+            return PipeSource.FromStream(stream);
+        }
+
+        if (bytes != null)
+        {
+            return PipeSource.FromBytes(bytes);
+        }
+
+        if (url != null)
+        {
+            var stream = HttpCache.Default.Stream(url);
+            return PipeSource.FromStream(stream);
+        }
+
+        if (content != null)
+        {
+            return PipeSource.FromString(content);
+        }
+
+        throw new("Unknown output");
+    }
 }
