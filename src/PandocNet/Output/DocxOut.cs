@@ -13,6 +13,7 @@ public class DocxOut :
     /// https://pandoc.org/MANUAL.html#option--number-sections
     /// </summary>
     public bool NumberSections { get; set; }
+
     /// <summary>
     /// Use the specified file as a style reference in producing
     /// https://pandoc.org/MANUAL.html#option--reference-doc
@@ -30,7 +31,8 @@ public class DocxOut :
         {
             yield return "--number-sections";
         }
-        if (ReferenceDoc!= null)
+
+        if (ReferenceDoc != null)
         {
             yield return $"--reference-doc={ReferenceDoc}";
         }
