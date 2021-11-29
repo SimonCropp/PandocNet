@@ -1,6 +1,4 @@
-﻿namespace Pandoc;
-
-//https://pandoc.org/MANUAL.html#exit-codes
+﻿//https://pandoc.org/MANUAL.html#exit-codes
 static class ErrorCodes
 {
     public static string GetErrorType(int exitCode)
