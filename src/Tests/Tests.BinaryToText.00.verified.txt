@@ -1,4 +1,4 @@
 ﻿{
   target: null,
-  command: pandoc.exe --output=output.html sample.docx
+  command: pandoc.exe --output=- --from=docx --to=html
 }

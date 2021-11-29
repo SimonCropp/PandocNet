@@ -6,18 +6,6 @@ using Pandoc;
 public class Samples
 {
     [Test]
-    public async Task RawFiles()
-    {
-        #region RawFiles
-
-        await PandocInstance.ConvertFile("sample.md", "output.html");
-
-        #endregion
-
-        await Verifier.VerifyFile("output.html");
-    }
-
-    [Test]
     public void PandocPath()
     {
         #region PandocPath
@@ -32,7 +20,7 @@ public class Samples
     {
         #region files
 
-        await PandocInstance.ConvertFile<CommonMarkIn, HtmlOut>("sample.md", "output.html");
+        await PandocInstance.Convert<CommonMarkIn, HtmlOut>("sample.md", "output.html");
 
         #endregion
 
@@ -60,7 +48,7 @@ public class Samples
     {
         #region text
 
-        var html = await PandocInstance.ConvertText<CommonMarkIn, HtmlOut>("*text*");
+        var html = await PandocInstance.ConvertToText<CommonMarkIn, HtmlOut>("*text*");
 
         #endregion
 
@@ -72,7 +60,7 @@ public class Samples
     {
         #region custom-options
 
-        var html = await PandocInstance.ConvertText(@"
+        var html = await PandocInstance.ConvertToText(@"
 # Heading1
 
 text

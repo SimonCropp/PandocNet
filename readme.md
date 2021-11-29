@@ -27,7 +27,7 @@ This can be changed:
 ```cs
 var engine = new PandocEngine(@"D:\Tools\pandoc.exe");
 ```
-<sup><a href='/src/Tests/Samples.cs#L23-L27' title='Snippet source file'>snippet source</a> | <a href='#snippet-pandocpath' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.cs#L11-L15' title='Snippet source file'>snippet source</a> | <a href='#snippet-pandocpath' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 
@@ -36,9 +36,9 @@ var engine = new PandocEngine(@"D:\Tools\pandoc.exe");
 <!-- snippet: text -->
 <a id='snippet-text'></a>
 ```cs
-var html = await PandocInstance.ConvertText<CommonMarkIn, HtmlOut>("*text*");
+var html = await PandocInstance.ConvertToText<CommonMarkIn, HtmlOut>("*text*");
 ```
-<sup><a href='/src/Tests/Samples.cs#L61-L65' title='Snippet source file'>snippet source</a> | <a href='#snippet-text' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.cs#L49-L53' title='Snippet source file'>snippet source</a> | <a href='#snippet-text' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 
@@ -51,7 +51,7 @@ await using var inStream = File.OpenRead("sample.md");
 await using var outStream = File.OpenWrite("output.html");
 await PandocInstance.Convert<CommonMarkIn, HtmlOut>(inStream, outStream);
 ```
-<sup><a href='/src/Tests/Samples.cs#L46-L52' title='Snippet source file'>snippet source</a> | <a href='#snippet-streams' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.cs#L34-L40' title='Snippet source file'>snippet source</a> | <a href='#snippet-streams' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 
@@ -60,22 +60,9 @@ await PandocInstance.Convert<CommonMarkIn, HtmlOut>(inStream, outStream);
 <!-- snippet: files -->
 <a id='snippet-files'></a>
 ```cs
-await PandocInstance.ConvertFile<CommonMarkIn, HtmlOut>("sample.md", "output.html");
+await PandocInstance.Convert<CommonMarkIn, HtmlOut>("sample.md", "output.html");
 ```
-<sup><a href='/src/Tests/Samples.cs#L33-L37' title='Snippet source file'>snippet source</a> | <a href='#snippet-files' title='Start of snippet'>anchor</a></sup>
-<!-- endSnippet -->
-
-
-### Raw Files
-
-Passing in files with no options will result in deferring to Pandoc both the file formats and default options.
-
-<!-- snippet: RawFiles -->
-<a id='snippet-rawfiles'></a>
-```cs
-await PandocInstance.ConvertFile("sample.md", "output.html");
-```
-<sup><a href='/src/Tests/Samples.cs#L11-L15' title='Snippet source file'>snippet source</a> | <a href='#snippet-rawfiles' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.cs#L21-L25' title='Snippet source file'>snippet source</a> | <a href='#snippet-files' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 
@@ -84,7 +71,7 @@ await PandocInstance.ConvertFile("sample.md", "output.html");
 <!-- snippet: custom-options -->
 <a id='snippet-custom-options'></a>
 ```cs
-var html = await PandocInstance.ConvertText(@"
+var html = await PandocInstance.ConvertToText(@"
 # Heading1
 
 text
@@ -102,7 +89,7 @@ text
         NumberOffsets = new List<int> {3}
     });
 ```
-<sup><a href='/src/Tests/Samples.cs#L73-L93' title='Snippet source file'>snippet source</a> | <a href='#snippet-custom-options' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.cs#L61-L81' title='Snippet source file'>snippet source</a> | <a href='#snippet-custom-options' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 

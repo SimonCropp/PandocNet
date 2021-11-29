@@ -8,16 +8,7 @@ public class Tests
     [Test]
     public async Task BinaryToText()
     {
-        var result = await PandocInstance.ConvertFile("sample.docx", "output.html");
-
-        await Verifier.VerifyFile("output.html")
-            .AppendValue("command", result.Command);
-    }
-
-    [Test]
-    public async Task RawFiles()
-    {
-        var result = await PandocInstance.ConvertFile("sample.md", "output.html");
+        var result = await PandocInstance.Convert<DocxIn, HtmlOut>("sample.docx", "output.html");
 
         await Verifier.VerifyFile("output.html")
             .AppendValue("command", result.Command);
@@ -26,10 +17,10 @@ public class Tests
     [Test]
     public async Task DataDirectory()
     {
-        var result = await PandocInstance.ConvertFile(
+        var result = await PandocInstance.Convert<CommonMarkIn, HtmlOut>(
             "sample.md", 
             "output.html",
-            new()
+            options: new()
             {
                 DataDirectory = Environment.CurrentDirectory
             });
@@ -41,7 +32,7 @@ public class Tests
     [Test]
     public async Task Files()
     {
-        var result = await PandocInstance.ConvertFile<CommonMarkIn, HtmlOut>("sample.md", "output.html");
+        var result = await PandocInstance.Convert<CommonMarkIn, HtmlOut>("sample.md", "output.html");
 
         await Verifier.VerifyFile("output.html")
             .AppendValue("command", result.Command);
@@ -50,7 +41,15 @@ public class Tests
     [Test]
     public async Task Streams()
     {
-        Result result;
+        var result = await PandocInstance.Convert<CommonMarkIn, HtmlOut>("sample.md", "output.html");
+
+        await Verifier.VerifyFile("output.html")
+            .AppendValue("command", result.Command);
+    }
+    [Test]
+    public async Task InputOutput()
+    {
+        Pandoc.Result result;
 
         {
             await using var inStream = File.OpenRead("sample.md");
@@ -65,7 +64,7 @@ public class Tests
     [Test]
     public async Task Text()
     {
-        var (command, value) = await PandocInstance.ConvertText<CommonMarkIn, HtmlOut>("*text*");
+        var (command, value) = await PandocInstance.ConvertToText<CommonMarkIn, HtmlOut>("*text*");
 
         await Verifier.Verify(value).UseExtension("html")
             .AppendValue("command", command);
@@ -74,7 +73,7 @@ public class Tests
     [Test]
     public async Task CustomOptions()
     {
-        var (command, value) = await PandocInstance.ConvertText(
+        var (command, value) = await PandocInstance.ConvertToText(
             @"# Heading1",
             new CommonMarkIn
             {
