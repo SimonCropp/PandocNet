@@ -43,7 +43,6 @@ public class Input
     public static implicit operator Input(Stream stream) => new(stream);
     public static implicit operator Input(byte[] bytes) => new(bytes);
 
-    
     public PipeSource GetPipeSource()
     {
         if (file != null)
