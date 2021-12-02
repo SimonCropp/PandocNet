@@ -1,7 +1,10 @@
 ﻿namespace Pandoc;
 
+/// <summary>
+/// https://datatracker.ietf.org/doc/html/rfc4180
+/// </summary>
 public class CsvIn :
     InOptions
 {
-    public override string Format => "csv";
+    protected override string Format => "csv";
 }

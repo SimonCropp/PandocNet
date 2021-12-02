@@ -1,7 +1,10 @@
 ﻿namespace Pandoc;
 
+/// <summary>
+/// https://nbformat.readthedocs.io/en/latest/
+/// </summary>
 public class JupyterIn :
     InOptions
 {
-    public override string Format => "ipynb";
+    protected override string Format => "ipynb";
 }

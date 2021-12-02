@@ -1,5 +1,8 @@
 ﻿namespace Pandoc;
 
+/// <summary>
+/// https://www.dokuwiki.org/dokuwiki
+/// </summary>
 public class DokuWikiOut :
     OutOptions
 {

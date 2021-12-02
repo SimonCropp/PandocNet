@@ -2,5 +2,7 @@
 
 public enum Eol
 {
-    Crlf,Lf,Native
+    Crlf,
+    Lf,
+    Native
 }

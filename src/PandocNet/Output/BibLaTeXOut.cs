@@ -1,5 +1,8 @@
 ﻿namespace Pandoc;
 
+/// <summary>
+/// https://ctan.org/pkg/biblatex
+/// </summary>
 public class BibLaTeXOut :
     OutOptions
 {

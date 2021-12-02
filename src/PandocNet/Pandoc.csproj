@@ -8,5 +8,6 @@
     <PackageReference Include="ProjectDefaults" Version="1.0.61" PrivateAssets="All" />
     <PackageReference Include="CliWrap" Version="3.3.3" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" Condition="$(Configuration) == 'Release'" />
+    <PackageReference Include="Replicant" Version="1.2.0" />
   </ItemGroup>
 </Project>

@@ -1,7 +1,10 @@
 ﻿namespace Pandoc;
 
+/// <summary>
+/// https://jira.atlassian.com/secure/WikiRendererHelpAction.jspa?section=all
+/// </summary>
 public class JiraIn :
     InOptions
 {
-    public override string Format => "jira";
+    protected override string Format => "jira";
 }

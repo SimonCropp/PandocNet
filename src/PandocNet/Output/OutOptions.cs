@@ -5,7 +5,6 @@ namespace Pandoc;
 public abstract class OutOptions
 {
     public abstract string Format { get; }
-
     
     public bool Standalone { get; set; }
     public bool StripComments { get; set; }

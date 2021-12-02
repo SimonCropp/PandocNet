@@ -2,5 +2,5 @@
   target:
 <p><em>text</em></p>
 ,
-  command: pandoc.exe --from=commonmark --to=html
+  command: pandoc.exe --output=- --from=commonmark --to=html
 }

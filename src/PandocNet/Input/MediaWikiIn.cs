@@ -1,7 +1,10 @@
 ﻿namespace Pandoc;
 
+/// <summary>
+/// https://www.mediawiki.org/wiki/Help:Formatting
+/// </summary>
 public class MediaWikiIn :
     InOptions
 {
-    public override string Format => "mediawiki";
+    protected override string Format => "mediawiki";
 }

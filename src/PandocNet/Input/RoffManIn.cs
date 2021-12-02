@@ -1,7 +1,10 @@
 ﻿namespace Pandoc;
 
+/// <summary>
+/// https://man.cx/groff_man(7)
+/// </summary>
 public class RoffManIn :
     InOptions
 {
-    public override string Format => "man";
+    protected override string Format => "man";
 }

@@ -1,7 +1,10 @@
 ﻿namespace Pandoc;
 
+/// <summary>
+/// https://jats.nlm.nih.gov/
+/// </summary>
 public class JatsIn :
     InOptions
 {
-    public override string Format => "jats";
+    protected override string Format => "jats";
 }

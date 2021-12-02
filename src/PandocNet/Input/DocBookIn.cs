@@ -1,7 +1,10 @@
 ﻿namespace Pandoc;
 
+/// <summary>
+/// https://docbook.org/
+/// </summary>
 public class DocBookIn :
     InOptions
 {
-    public override string Format => "docbook";
+    protected override string Format => "docbook";
 }

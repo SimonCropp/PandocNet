@@ -2,6 +2,7 @@
 
 public enum JupyterCellOutput
 {
-    All,None,Best
-
+    All,
+    None,
+    Best
 }

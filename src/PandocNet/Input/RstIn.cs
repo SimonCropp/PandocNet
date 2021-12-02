@@ -1,7 +1,10 @@
 ﻿namespace Pandoc;
 
+/// <summary>
+/// https://docutils.sourceforge.io/docs/ref/rst/introduction.html
+/// </summary>
 public class RstIn :
     InOptions
 {
-    public override string Format => "rst";
+    protected override string Format => "rst";
 }

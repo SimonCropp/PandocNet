@@ -1,7 +1,10 @@
 ﻿namespace Pandoc;
 
+/// <summary>
+/// https://twiki.org/cgi-bin/view/TWiki/TextFormattingRules
+/// </summary>
 public class TikiWikiIn :
     InOptions
 {
-    public override string Format => "tikiwiki";
+    protected override string Format => "tikiwiki";
 }
