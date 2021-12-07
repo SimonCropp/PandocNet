@@ -1,6 +1,4 @@
-﻿using VerifyNUnit;
-using NUnit.Framework;
-using Pandoc;
+﻿using Pandoc;
 
 [TestFixture]
 public class Samples
