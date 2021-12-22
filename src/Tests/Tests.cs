@@ -8,7 +8,7 @@ public class Tests
     {
         var result = await PandocInstance.Convert<DocxIn, HtmlOut>("sample.docx", "output.html");
 
-        await Verifier.VerifyFile("output.html")
+        await VerifyFile("output.html")
             .AppendValue("command", result.Command);
     }
 
@@ -23,7 +23,7 @@ public class Tests
                 DataDirectory = Environment.CurrentDirectory
             });
 
-        await Verifier.VerifyFile("output.html")
+        await VerifyFile("output.html")
             .AppendValue("command", result.Command);
     }
 
@@ -32,7 +32,7 @@ public class Tests
     {
         var result = await PandocInstance.Convert<CommonMarkIn, HtmlOut>("sample.md", "output.html");
 
-        await Verifier.VerifyFile("output.html")
+        await VerifyFile("output.html")
             .AppendValue("command", result.Command);
     }
 
@@ -41,7 +41,7 @@ public class Tests
     {
         var result = await PandocInstance.Convert<CommonMarkIn, HtmlOut>("sample.md", "output.html");
 
-        await Verifier.VerifyFile("output.html")
+        await VerifyFile("output.html")
             .AppendValue("command", result.Command);
     }
     [Test]
@@ -55,7 +55,7 @@ public class Tests
             result = await PandocInstance.Convert<CommonMarkIn, HtmlOut>(inStream, outStream);
         }
         
-        await Verifier.VerifyFile("output.html")
+        await VerifyFile("output.html")
             .AppendValue("command", result.Command);
     }
 
@@ -64,7 +64,7 @@ public class Tests
     {
         var (command, value) = await PandocInstance.ConvertToText<CommonMarkIn, HtmlOut>("*text*");
 
-        await Verifier.Verify(value).UseExtension("html")
+        await Verify(value).UseExtension("html")
             .AppendValue("command", command);
     }
 
@@ -82,7 +82,7 @@ public class Tests
                 NumberOffsets = new[] {3}
             });
 
-        await Verifier.Verify(value).UseExtension("html")
+        await Verify(value).UseExtension("html")
             .AppendValue("command", command);
     }
 }

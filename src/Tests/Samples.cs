@@ -22,7 +22,7 @@ public class Samples
 
         #endregion
 
-        await Verifier.VerifyFile("output.html");
+        await VerifyFile("output.html");
     }
 
     [Test]
@@ -38,7 +38,7 @@ public class Samples
             #endregion
         }
 
-        await Verifier.VerifyFile("output.html");
+        await VerifyFile("output.html");
     }
 
     [Test]
@@ -50,7 +50,7 @@ public class Samples
 
         #endregion
 
-        await Verifier.Verify(html.Value).UseExtension("html");
+        await Verify(html.Value).UseExtension("html");
     }
 
     [Test]
@@ -78,6 +78,6 @@ text
 
         #endregion
 
-        await Verifier.Verify(html.Value).UseExtension("html");
+        await Verify(html.Value).UseExtension("html");
     }
 }
