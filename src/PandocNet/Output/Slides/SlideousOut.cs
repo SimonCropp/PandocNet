@@ -7,7 +7,7 @@ public class SlideousOut :
     OutOptions
 {
     public override string Format => "slideous";
-    
+
     /// <summary>
     /// Produce a standalone HTML file with no external dependencies, using data: URIs to incorporate the contents of linked scripts, stylesheets, images, and videos
     /// https://pandoc.org/MANUAL.html#option--self-contained

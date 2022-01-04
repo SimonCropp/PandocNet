@@ -23,7 +23,7 @@ public abstract class InOptions
     /// </summary>
     public bool FileScope { get; set; }
     /// <summary>
-    /// Preserve tabs instead of converting them to spaces. (By default, pandoc converts tabs to spaces before parsing its input.) 
+    /// Preserve tabs instead of converting them to spaces. (By default, pandoc converts tabs to spaces before parsing its input.)
     /// https://pandoc.org/MANUAL.html#option--preserve-tabs
     /// </summary>
     public bool PreserveTabs { get; set; }
@@ -39,7 +39,7 @@ public abstract class InOptions
     public string? LuaFilter { get; set; }
     //TODO:--metadata
     /// <summary>
-    /// Set the metadata field KEY to the value VAL. A value specified on the command line overrides a value specified in the document using YAML metadata blocks. Values will be parsed as YAML boolean or string values. If no value is specified, the value will be treated as Boolean true. 
+    /// Set the metadata field KEY to the value VAL. A value specified on the command line overrides a value specified in the document using YAML metadata blocks. Values will be parsed as YAML boolean or string values. If no value is specified, the value will be treated as Boolean true.
     /// https://pandoc.org/MANUAL.html#option--metadata
     /// </summary>
     public string? Metadata { get; set; }

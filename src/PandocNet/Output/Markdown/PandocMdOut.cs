@@ -7,7 +7,7 @@ public class PandocMdOut :
     OutOptions
 {
     public override string Format => "markdown";
-    
+
     /// <summary>
     /// Use only ASCII characters in output
     /// https://pandoc.org/MANUAL.html#option--ascii

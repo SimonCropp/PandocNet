@@ -7,7 +7,7 @@ public class CommonMarkOut :
     OutOptions
 {
     public override string Format => "commonmark";
-    
+
     /// <summary>
     /// Use only ASCII characters in output
     /// https://pandoc.org/MANUAL.html#option--ascii
@@ -35,7 +35,7 @@ public class CommonMarkOut :
         {
             yield return argument;
         }
-        
+
         if (Ascii)
         {
             yield return "--ascii";

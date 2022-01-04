@@ -24,14 +24,14 @@ public class PandocEngine
         var command = await Convert(input, output, inOptions, outOptions, options, cancellation);
         return new(command.Command, output.ToString());
     }
-    
+
     public async Task<Result> Convert<TIn, TOut>(Input input,
         Output output,
         TIn? inOptions,
         TOut? outOptions,
         Options? options,
         CancellationToken cancellation)
-        where TIn : InOptions, new() 
+        where TIn : InOptions, new()
         where TOut : OutOptions, new()
     {
         inOptions ??= new();

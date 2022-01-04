@@ -38,7 +38,7 @@ public class Input
     {
         this.bytes = bytes;
     }
-    
+
     public static implicit operator Input(string value) => new(value);
     public static implicit operator Input(Stream stream) => new(stream);
     public static implicit operator Input(byte[] bytes) => new(bytes);

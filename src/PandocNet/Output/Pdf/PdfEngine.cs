@@ -6,10 +6,10 @@ public enum PdfEngine
     LuaLatex,
     XeLatex,
     LatexMk,
-    Tectonic, 
+    Tectonic,
     WkHtmlToPdf,
-    WeasyPrint, 
-    Prince, 
+    WeasyPrint,
+    Prince,
     Context,
     PdfRoff
 }

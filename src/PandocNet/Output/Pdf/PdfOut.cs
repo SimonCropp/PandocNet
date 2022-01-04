@@ -7,7 +7,7 @@ public class PdfOut :
     OutOptions
 {
     public override string Format => "pdf";
-    
+
     public PdfEngine? Engine { get; set; }
 
     public override IEnumerable<string> GetArguments()

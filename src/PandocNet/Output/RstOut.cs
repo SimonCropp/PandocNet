@@ -19,7 +19,7 @@ public class RstOut :
         {
             yield return argument;
         }
-        
+
         if (ReferenceLinks)
         {
             yield return "--reference-links";

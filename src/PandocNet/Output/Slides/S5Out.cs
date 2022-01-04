@@ -7,7 +7,7 @@ public class S5Out :
     OutOptions
 {
     public override string Format => "s5";
-    
+
     /// <summary>
     /// Produce a standalone HTML file with no external dependencies, using data: URIs to incorporate the contents of linked scripts, stylesheets, images, and videos
     /// https://pandoc.org/MANUAL.html#option--self-contained

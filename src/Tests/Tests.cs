@@ -16,7 +16,7 @@ public class Tests
     public async Task DataDirectory()
     {
         var result = await PandocInstance.Convert<CommonMarkIn, HtmlOut>(
-            "sample.md", 
+            "sample.md",
             "output.html",
             options: new()
             {
@@ -54,7 +54,7 @@ public class Tests
             await using var outStream = File.OpenWrite("output.html");
             result = await PandocInstance.Convert<CommonMarkIn, HtmlOut>(inStream, outStream);
         }
-        
+
         await VerifyFile("output.html")
             .AppendValue("command", result.Command);
     }

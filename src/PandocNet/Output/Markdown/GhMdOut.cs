@@ -7,7 +7,7 @@ public class GhMdOut :
     OutOptions
 {
     public override string Format => "gfm";
-    
+
     /// <summary>
     /// Use only ASCII characters in output
     /// https://pandoc.org/MANUAL.html#option--ascii

@@ -7,7 +7,7 @@ public class PhpMdExtraOut :
     OutOptions
 {
     public override string Format => "markdown_phpextra";
-    
+
     /// <summary>
     /// Use only ASCII characters in output
     /// https://pandoc.org/MANUAL.html#option--ascii

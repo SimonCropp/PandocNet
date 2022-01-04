@@ -9,7 +9,7 @@ public class DocxIn :
     protected override string Format => "docx";
 
     /// <summary>
-    /// Specifies what to do with insertions, deletions, and comments produced 
+    /// Specifies what to do with insertions, deletions, and comments produced
     /// https://pandoc.org/MANUAL.html#option--track-changes
     /// </summary>
     public TrackChanges? TrackChanges { get; set; }

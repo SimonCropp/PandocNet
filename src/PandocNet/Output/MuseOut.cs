@@ -20,7 +20,7 @@ public class MuseOut :
         {
             yield return argument;
         }
-        
+
         if (ReferenceLocation != null)
         {
             yield return $"--reference-location={ReferenceLocation}";
