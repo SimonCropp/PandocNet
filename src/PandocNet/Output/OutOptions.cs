@@ -52,7 +52,7 @@ public abstract class OutOptions
 
         if (Wrap != null)
         {
-            yield return $"--wrap=={Wrap.Value.ToString().ToLower()}";
+            yield return $"--wrap={Wrap.Value.ToString().ToLower()}";
         }
 
         if (Dpi != null)
