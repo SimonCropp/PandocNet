@@ -8,20 +8,14 @@ public class Output
     StringBuilder? stringBuilder;
     Stream? stream;
 
-    public Output(string file)
-    {
+    public Output(string file) =>
         this.file = file;
-    }
 
-    public Output(Stream stream)
-    {
+    public Output(Stream stream) =>
         this.stream = stream;
-    }
 
-    public Output(StringBuilder stringBuilder)
-    {
+    public Output(StringBuilder stringBuilder) =>
         this.stringBuilder = stringBuilder;
-    }
 
     public static implicit operator Output(string value) => new(value);
     public static implicit operator Output(Stream stream) => new(stream);

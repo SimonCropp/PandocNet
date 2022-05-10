@@ -6,10 +6,8 @@ public class PandocEngine
 {
     internal string pandocPath;
 
-    public PandocEngine(string? pandocPath = null)
-    {
+    public PandocEngine(string? pandocPath = null) =>
         this.pandocPath = pandocPath ?? "pandoc.exe";
-    }
 
     public virtual async Task<StringResult> ConvertToText<TIn, TOut>(
         Input input,

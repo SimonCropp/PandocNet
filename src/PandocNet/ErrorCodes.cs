@@ -1,9 +1,8 @@
 ﻿//https://pandoc.org/MANUAL.html#exit-codes
 static class ErrorCodes
 {
-    public static string GetErrorType(int exitCode)
-    {
-        return exitCode switch
+    public static string GetErrorType(int exitCode) =>
+        exitCode switch
         {
             3 => "PandocFailOnWarningError",
             4 => "PandocAppError",
@@ -32,5 +31,4 @@ static class ErrorCodes
             99 => "PandocResourceNotFound",
             _ => "PandocUnknownError"
         };
-    }
 }

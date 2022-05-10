@@ -29,15 +29,11 @@ public class Input
         content = value;
     }
 
-    public Input(Stream stream)
-    {
+    public Input(Stream stream) =>
         this.stream = stream;
-    }
 
-    public Input(byte[] bytes)
-    {
+    public Input(byte[] bytes) =>
         this.bytes = bytes;
-    }
 
     public static implicit operator Input(string value) => new(value);
     public static implicit operator Input(Stream stream) => new(stream);
