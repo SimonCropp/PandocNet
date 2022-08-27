@@ -82,7 +82,8 @@ public class Tests
                 NumberOffsets = new[] {3}
             });
 
-        await Verify(value).UseExtension("html")
+        await Verify(value)
+            .UseExtension("html")
             .AppendValue("command", command);
     }
 }
