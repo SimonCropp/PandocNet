@@ -1,8 +1,7 @@
 ﻿{
   target:
 <section data-number="0.0.1">
-<h3 data-number="3.0.1"><span class="header-section-number">3.0.1</span>
-Heading1</h3>
+<h3 data-number="3.0.1"><span class="header-section-number">3.0.1</span> Heading1</h3>
 </section>
 ,
   command: pandoc.exe --output=- --from=commonmark --shift-heading-level-by=2 --to=html --number-offset=3
