@@ -44,11 +44,11 @@ public class Tests
         await VerifyFile("output.html")
             .AppendValue("command", result.Command);
     }
+
     [Test]
     public async Task InputOutput()
     {
         Pandoc.Result result;
-
         {
             await using var inStream = File.OpenRead("sample.md");
             await using var outStream = File.OpenWrite("output.html");
