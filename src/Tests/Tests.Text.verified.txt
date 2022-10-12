@@ -1,6 +1,4 @@
 ﻿{
-  target:
-<p><em>text</em></p>
-,
+  target: null,
   command: pandoc.exe --output=- --from=commonmark --to=html
 }

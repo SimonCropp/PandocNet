@@ -50,7 +50,7 @@ public class Samples
 
         #endregion
 
-        await Verify(html.Value).UseExtension("html");
+        await Verify(html.Value, "html");
     }
 
     [Test]
@@ -78,6 +78,6 @@ text
 
         #endregion
 
-        await Verify(html.Value).UseExtension("html");
+        await Verify(html.Value, "html");
     }
 }

@@ -64,7 +64,7 @@ public class Tests
     {
         var (command, value) = await PandocInstance.ConvertToText<CommonMarkIn, HtmlOut>("*text*");
 
-        await Verify(value).UseExtension("html")
+        await Verify(value, "html")
             .AppendValue("command", command);
     }
 
@@ -82,8 +82,7 @@ public class Tests
                 NumberOffsets = new[] {3}
             });
 
-        await Verify(value)
-            .UseExtension("html")
+        await Verify(value, "html")
             .AppendValue("command", command);
     }
 }
