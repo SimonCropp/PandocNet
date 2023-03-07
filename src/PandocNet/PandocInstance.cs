@@ -12,7 +12,7 @@ public static class PandocInstance
         TIn? inOptions = null,
         TOut? outOptions = null,
         Options? options = null,
-        CancellationToken cancellation = default)
+        Cancellation cancellation = default)
         where TIn : InOptions, new()
         where TOut : OutOptions, new() =>
         instance.ConvertToText(content, inOptions, outOptions, options, cancellation);
@@ -23,7 +23,7 @@ public static class PandocInstance
         TIn? inOptions = null,
         TOut? outOptions = null,
         Options? options = null,
-        CancellationToken cancellation = default)
+        Cancellation cancellation = default)
         where TIn : InOptions, new()
         where TOut : OutOptions, new() =>
         instance.Convert(input, output, inOptions, outOptions, options, cancellation);

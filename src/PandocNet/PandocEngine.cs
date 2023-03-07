@@ -14,7 +14,7 @@ public class PandocEngine
         TIn? inOptions = null,
         TOut? outOptions = null,
         Options? options = null,
-        CancellationToken cancellation = default)
+        Cancellation cancellation = default)
         where TIn : InOptions, new()
         where TOut : OutOptions, new()
     {
@@ -28,7 +28,7 @@ public class PandocEngine
         TIn? inOptions,
         TOut? outOptions,
         Options? options,
-        CancellationToken cancellation)
+        Cancellation cancellation)
         where TIn : InOptions, new()
         where TOut : OutOptions, new()
     {
