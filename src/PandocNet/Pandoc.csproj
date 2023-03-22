@@ -3,7 +3,7 @@
     <TargetFramework>net6.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Polyfill" Version="0.14.0" PrivateAssets="All" />
+    <PackageReference Include="Polyfill" Version="1.0.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="6.0.0" Condition="$(TargetFramework) == 'net48'" />
     <PackageReference Include="ProjectDefaults" Version="1.0.90" PrivateAssets="all" />
     <PackageReference Include="CliWrap" Version="3.6.0" />
