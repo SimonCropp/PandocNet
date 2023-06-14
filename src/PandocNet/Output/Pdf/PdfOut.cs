@@ -19,7 +19,7 @@ public class PdfOut :
 
         if (Engine != null)
         {
-            yield return $"---engine={Engine.Value.ToString().ToLower()}";
+            yield return $"--pdf-engine={Engine.Value.ToString().ToLower()}";
         }
     }
 }
