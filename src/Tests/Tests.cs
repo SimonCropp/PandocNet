@@ -72,7 +72,7 @@ public class Tests
     public async Task CustomOptions()
     {
         var (command, value) = await PandocInstance.ConvertToText(
-            @"# Heading1",
+            "# Heading1",
             new CommonMarkIn
             {
                 ShiftHeadingLevelBy = 2
