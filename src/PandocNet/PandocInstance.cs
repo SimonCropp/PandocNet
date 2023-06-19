@@ -12,10 +12,10 @@ public static class PandocInstance
         TIn? inOptions = null,
         TOut? outOptions = null,
         Options? options = null,
-        Cancellation cancellation = default)
+        Cancel cancel = default)
         where TIn : InOptions, new()
         where TOut : OutOptions, new() =>
-        instance.ConvertToText(content, inOptions, outOptions, options, cancellation);
+        instance.ConvertToText(content, inOptions, outOptions, options, cancel);
 
     public static Task<Result> Convert<TIn, TOut>(
         Input input,
@@ -23,8 +23,8 @@ public static class PandocInstance
         TIn? inOptions = null,
         TOut? outOptions = null,
         Options? options = null,
-        Cancellation cancellation = default)
+        Cancel cancel = default)
         where TIn : InOptions, new()
         where TOut : OutOptions, new() =>
-        instance.Convert(input, output, inOptions, outOptions, options, cancellation);
+        instance.Convert(input, output, inOptions, outOptions, options, cancel);
 }

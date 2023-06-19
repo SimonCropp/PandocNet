@@ -14,21 +14,22 @@ public class PandocEngine
         TIn? inOptions = null,
         TOut? outOptions = null,
         Options? options = null,
-        Cancellation cancellation = default)
+        Cancel cancel = default)
         where TIn : InOptions, new()
         where TOut : OutOptions, new()
     {
         var output = new StringBuilder();
-        var command = await Convert(input, output, inOptions, outOptions, options, cancellation);
+        var command = await Convert(input, output, inOptions, outOptions, options, cancel);
         return new(command.Command, output.ToString());
     }
 
-    public async Task<Result> Convert<TIn, TOut>(Input input,
+    public async Task<Result> Convert<TIn, TOut>(
+        Input input,
         Output output,
         TIn? inOptions,
         TOut? outOptions,
         Options? options,
-        Cancellation cancellation)
+        Cancel cancel = default)
         where TIn : InOptions, new()
         where TOut : OutOptions, new()
     {
@@ -51,7 +52,7 @@ public class PandocEngine
             .WithStandardErrorPipe(PipeTarget.ToStringBuilder(errors))
             .WithValidation(CommandResultValidation.None);
 
-        var result = await command.ExecuteAsync(cancellation);
+        var result = await command.ExecuteAsync(cancel);
         CheckErrorCodes(result, errors, command);
         return new(command.ToString());
     }
