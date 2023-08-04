@@ -8,8 +8,22 @@ public class PdfOut :
 {
     public override string Format => "pdf";
 
+    /// <summary>
+    /// Specify the name of the engine to look for on the path.
+    /// </summary>
+    /// <remarks>
+    /// 'EnginePath' takes precedence over this property.
+    /// </remarks>
     public PdfEngine? Engine { get; set; }
-
+    
+    /// <summary>
+    /// Specify the location of the engine.
+    /// </summary>
+    /// <remarks>
+    /// This takes precedence over the 'Engine' property.
+    /// </remarks>
+    public string? EnginePath { get; set; }
+    
     public override IEnumerable<string> GetArguments()
     {
         foreach (var argument in base.GetArguments())
@@ -17,7 +31,11 @@ public class PdfOut :
             yield return argument;
         }
 
-        if (Engine != null)
+        if (!string.IsNullOrEmpty(EnginePath))
+        {
+            yield return $"--pdf-engine={EnginePath}";
+        }
+        else if (Engine != null)
         {
             yield return $"--pdf-engine={Engine.Value.ToString().ToLower()}";
         }
