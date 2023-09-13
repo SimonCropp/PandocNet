@@ -71,15 +71,18 @@ await PandocInstance.Convert<CommonMarkIn, HtmlOut>("sample.md", "output.html");
 <!-- snippet: custom-options -->
 <a id='snippet-custom-options'></a>
 ```cs
-var html = await PandocInstance.ConvertToText(@"
-# Heading1
+var html = await PandocInstance.ConvertToText(
+    """
 
-text
+    # Heading1
 
-## Heading2 
+    text
 
-text
-",
+    ## Heading2
+
+    text
+
+    """,
     new CommonMarkIn
     {
         ShiftHeadingLevelBy = 2
@@ -89,7 +92,7 @@ text
         NumberOffsets = new List<int> {3}
     });
 ```
-<sup><a href='/src/Tests/Samples.cs#L59-L79' title='Snippet source file'>snippet source</a> | <a href='#snippet-custom-options' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.cs#L59-L82' title='Snippet source file'>snippet source</a> | <a href='#snippet-custom-options' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 

@@ -2,12 +2,9 @@
 
 namespace Pandoc;
 
-public class PandocEngine
+public class PandocEngine(string? pandocPath = null)
 {
-    internal string pandocPath;
-
-    public PandocEngine(string? pandocPath = null) =>
-        this.pandocPath = pandocPath ?? "pandoc.exe";
+    internal string pandocPath = pandocPath ?? "pandoc.exe";
 
     public virtual async Task<StringResult> ConvertToText<TIn, TOut>(
         Input input,
@@ -67,8 +64,11 @@ public class PandocEngine
         }
 
         var errorType = ErrorCodes.GetErrorType(exitCode);
-        throw new($@"{errorType} ({exitCode}):
-{command}
-{errors}");
+        throw new(
+            $"""
+             {errorType} ({exitCode}):
+             {command}
+             {errors}
+             """);
     }
 }

@@ -1,4 +1,4 @@
-﻿using Pandoc;
+﻿// ReSharper disable UnusedVariable
 
 [TestFixture]
 public class Samples
@@ -58,15 +58,18 @@ public class Samples
     {
         #region custom-options
 
-        var html = await PandocInstance.ConvertToText(@"
-# Heading1
+        var html = await PandocInstance.ConvertToText(
+            """
 
-text
+            # Heading1
 
-## Heading2 
+            text
 
-text
-",
+            ## Heading2
+
+            text
+
+            """,
             new CommonMarkIn
             {
                 ShiftHeadingLevelBy = 2

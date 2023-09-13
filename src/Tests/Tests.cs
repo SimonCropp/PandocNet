@@ -1,6 +1,4 @@
-﻿using Pandoc;
-
-[TestFixture]
+﻿[TestFixture]
 public class Tests
 {
     [Test]

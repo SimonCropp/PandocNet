@@ -15,7 +15,7 @@ public class PdfOut :
     /// 'EnginePath' takes precedence over this property.
     /// </remarks>
     public PdfEngine? Engine { get; set; }
-    
+
     /// <summary>
     /// Specify the location of the engine.
     /// </summary>
@@ -23,7 +23,7 @@ public class PdfOut :
     /// This takes precedence over the 'Engine' property.
     /// </remarks>
     public string? EnginePath { get; set; }
-    
+
     public override IEnumerable<string> GetArguments()
     {
         foreach (var argument in base.GetArguments())
