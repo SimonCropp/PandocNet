@@ -4,12 +4,12 @@
     <TargetFramework>net7.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Argon" Version="0.9.0" />
+    <PackageReference Include="Argon" Version="0.10.0" />
     <PackageReference Include="MarkdownSnippets.MsBuild" Version="25.1.0" PrivateAssets="all" />
     <PackageReference Include="NUnit" Version="3.13.3" />
     <PackageReference Include="NUnit3TestAdapter" Version="4.5.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.7.2" />
-    <PackageReference Include="Verify.NUnit" Version="21.1.4" />
+    <PackageReference Include="Verify.NUnit" Version="21.1.5" />
     <ProjectReference Include="..\PandocNet\Pandoc.csproj" />
     <PackageReference Include="ProjectDefaults" Version="1.0.97" PrivateAssets="all" />
 
