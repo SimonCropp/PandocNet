@@ -106,5 +106,4 @@ public class HtmlOut :
             yield return $"--title-prefix={TitlePrefix}";
         }
     }
-
 }
