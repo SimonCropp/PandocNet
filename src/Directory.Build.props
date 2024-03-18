@@ -8,5 +8,7 @@
     <PackageTags>Pandoc, Document, Conversion</PackageTags>
     <Description>Conversion of document via Pandoc.</Description>
     <ResolveAssemblyReferencesSilent>true</ResolveAssemblyReferencesSilent>
+    <NuGetAuditMode>all</NuGetAuditMode>
+    <NuGetAuditLevel>low</NuGetAuditLevel>
   </PropertyGroup>
 </Project>
