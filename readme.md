@@ -25,11 +25,11 @@ By default `pandoc.exe` is expected to be accessible in the current environmenst
 This can be changed:
 
 <!-- snippet: PandocPath -->
-<a id='snippet-pandocpath'></a>
+<a id='snippet-PandocPath'></a>
 ```cs
 var engine = new PandocEngine(@"D:\Tools\pandoc.exe");
 ```
-<sup><a href='/src/Tests/Samples.cs#L9-L13' title='Snippet source file'>snippet source</a> | <a href='#snippet-pandocpath' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.cs#L9-L13' title='Snippet source file'>snippet source</a> | <a href='#snippet-PandocPath' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 
