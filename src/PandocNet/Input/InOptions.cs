@@ -92,7 +92,7 @@ public abstract class InOptions
 
         if (PreserveTabs)
         {
-            yield return $"--preserve-tabs";
+            yield return "--preserve-tabs";
         }
 
         if (TabStop != null)
