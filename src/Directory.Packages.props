@@ -4,7 +4,7 @@
     <CentralPackageTransitivePinningEnabled>true</CentralPackageTransitivePinningEnabled>
   </PropertyGroup>
   <ItemGroup>
-    <PackageVersion Include="Argon" Version="0.21.0" />
+    <PackageVersion Include="Argon" Version="0.22.0" />
     <PackageVersion Include="CliWrap" Version="3.6.7" />
     <PackageVersion Include="MarkdownSnippets.MsBuild" Version="27.0.2" />
     <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
@@ -12,6 +12,6 @@
     <PackageVersion Include="NUnit3TestAdapter" Version="4.6.0" />
     <PackageVersion Include="ProjectDefaults" Version="1.0.139" />
     <PackageVersion Include="Replicant" Version="2.0.1" />
-    <PackageVersion Include="Verify.Nunit" Version="27.0.0" />
+    <PackageVersion Include="Verify.Nunit" Version="27.1.0" />
   </ItemGroup>
 </Project>
