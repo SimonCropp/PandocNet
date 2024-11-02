@@ -77,7 +77,7 @@ public class Tests
             },
             new HtmlOut
             {
-                NumberOffsets = new[] {3}
+                NumberOffsets = [3]
             });
 
         await Verify(value, "html")
