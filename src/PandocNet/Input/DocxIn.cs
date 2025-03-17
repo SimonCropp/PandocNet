@@ -25,6 +25,5 @@ public class DocxIn :
         {
             yield return $"--track-changes={TrackChanges.Value.ToString().ToLower()}";
         }
-
     }
 }
