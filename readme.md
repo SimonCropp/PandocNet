@@ -293,7 +293,7 @@ public class HaddockIn :
 public class HaskellIn :
     InOptions
 {
-    protected override string Format => "native ";
+    protected override string Format => "native";
 }
 ```
 
