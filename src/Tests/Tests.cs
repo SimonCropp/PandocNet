@@ -2,6 +2,41 @@
 public class Tests
 {
     [Test]
+    public void InputsAndOutputs()
+    {
+        WriteInclude("Input");
+        WriteInclude("Output");
+    }
+
+    static void WriteInclude(string target)
+    {
+        var solutionDirectory = AttributeReader.GetSolutionDirectory();
+        var includePath = Path.Combine(solutionDirectory, $"{target.ToLower()}.include.md");
+        var builder = new StringBuilder();
+        var projectDirectory = Path.Combine(solutionDirectory, "PandocNet");
+        var targetDirectory = Path.Combine(projectDirectory, target);
+        foreach (var file in Directory.EnumerateFiles(targetDirectory, "*", SearchOption.AllDirectories))
+        {
+            var fileContent = File.ReadAllText(file)
+                .Replace("namespace Pandoc;","")
+                .Trim();
+            builder.AppendLine(
+                $"""
+                 #### {Path.GetFileNameWithoutExtension(file)}
+
+                 ```cs
+                 {fileContent}
+                 ```
+
+
+                 """);
+        }
+
+        File.Delete(includePath);
+        File.WriteAllText(includePath, builder.ToString());
+    }
+
+    [Test]
     public async Task BinaryToText()
     {
         var result = await PandocInstance.Convert<DocxIn, HtmlOut>("sample.docx", "output.html");
