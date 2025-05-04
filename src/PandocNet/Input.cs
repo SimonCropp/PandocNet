@@ -61,7 +61,7 @@ public class Input
 
         if (content != null)
         {
-            return PipeSource.FromString(content);
+            return PipeSource.FromString(content, Encoding.UTF8);
         }
 
         throw new("Unknown output");

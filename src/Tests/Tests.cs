@@ -83,4 +83,16 @@ public class Tests
         await Verify(value, "html")
             .AppendValue("command", command);
     }
+
+    [Test]
+    public async Task Encoding()
+    {
+        var (command, value) = await PandocInstance.ConvertToText(
+            "白日依山尽，黄河入海流。欲穷千里目，更上一层楼。",
+            new HtmlIn(),
+            new CommonMarkOut());
+
+        await Verify(value, "md")
+            .AppendValue("command", command);
+    }
 }
