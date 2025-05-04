@@ -1,6 +1,4 @@
-﻿using CliWrap;
-
-namespace Pandoc;
+﻿namespace Pandoc;
 
 public class Output
 {
