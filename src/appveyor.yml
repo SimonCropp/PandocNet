@@ -1,6 +1,7 @@
 image:
   - Visual Studio 2022
   - macOS
+  - Ubuntu
 environment:
   DOTNET_NOLOGO: true
   DOTNET_CLI_TELEMETRY_OPTOUT: true
@@ -10,9 +11,9 @@ init:
     if ($isWindows) {
       choco install pandoc
     }
-    if ($isMacOS) {
-       brew install pandoc
-    }
+#    if ($isMacOS) {
+#       brew install pandoc
+#    }
 build_script:
 - pwsh: |
     if ($isWindows) {
