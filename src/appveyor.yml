@@ -11,12 +11,12 @@ init:
     if ($isWindows) {
       choco install pandoc
     }
+    if ($isLinux) {
+      sudo brew install pandoc
+    }
 #    if ($isMacOS) {
 #       brew install pandoc
 #    }
-    if ($isLinux) {
-       brew install pandoc
-    }
 build_script:
 - pwsh: |
     if ($isWindows) {
