@@ -1,4 +1,4 @@
 ﻿{
   target: null,
-  command: pandoc.exe --output=- --from=html --to=commonmark
+  command: pandoc --output=- --from=html --to=commonmark
 }

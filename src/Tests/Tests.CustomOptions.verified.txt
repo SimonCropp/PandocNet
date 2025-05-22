@@ -1,4 +1,4 @@
 ﻿{
   target: null,
-  command: pandoc.exe --output=- --from=commonmark --shift-heading-level-by=2 --to=html --number-offset=3
+  command: pandoc --output=- --from=commonmark --shift-heading-level-by=2 --to=html --number-offset=3
 }

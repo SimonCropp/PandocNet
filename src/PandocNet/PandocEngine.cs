@@ -2,7 +2,7 @@
 
 public class PandocEngine(string? pandocPath = null)
 {
-    internal string pandocPath = pandocPath ?? "pandoc.exe";
+    internal string pandocPath = pandocPath ?? "pandoc";
 
     public virtual async Task<StringResult> ConvertToText<TIn, TOut>(
         Input input,
