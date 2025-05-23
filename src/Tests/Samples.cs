@@ -53,9 +53,8 @@ public class Samples
         await Verify(html.Value, "html");
     }
 
-#if DEBUG
-
     [Test]
+    [Explicit]
     public async Task CustomOptions()
     {
         #region custom-options
@@ -85,7 +84,4 @@ public class Samples
 
         await Verify(html.Value, "html");
     }
-
-#endif
-
 }

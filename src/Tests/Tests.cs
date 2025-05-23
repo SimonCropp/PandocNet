@@ -36,8 +36,8 @@ public class Tests
         File.WriteAllText(includePath, builder.ToString());
     }
 
-#if DEBUG
     [Test]
+    [Explicit]
     public async Task BinaryToText()
     {
         var result = await PandocInstance.Convert<DocxIn, HtmlOut>("sample.docx", "output.html");
@@ -45,7 +45,7 @@ public class Tests
         await VerifyFile("output.html")
             .AppendValue("command", result.Command);
     }
-#endif
+
     [Test]
     public async Task DataDirectory()
     {
@@ -101,8 +101,9 @@ public class Tests
         await Verify(value, "html")
             .AppendValue("command", command);
     }
-#if DEBUG
+
     [Test]
+    [Explicit]
     public async Task CustomOptions()
     {
         var (command, value) = await PandocInstance.ConvertToText(
@@ -119,7 +120,7 @@ public class Tests
         await Verify(value, "html")
             .AppendValue("command", command);
     }
-#endif
+
     [Test]
     public async Task Encoding()
     {
