@@ -94,7 +94,7 @@ var html = await PandocInstance.ConvertToText(
         NumberOffsets = [3]
     });
 ```
-<sup><a href='/src/Tests/Samples.cs#L61-L84' title='Snippet source file'>snippet source</a> | <a href='#snippet-custom-options' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.cs#L60-L83' title='Snippet source file'>snippet source</a> | <a href='#snippet-custom-options' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 
