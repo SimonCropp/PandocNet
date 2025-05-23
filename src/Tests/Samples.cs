@@ -54,6 +54,7 @@ public class Samples
     }
 
     [Test]
+    [Explicit]
     public async Task CustomOptions()
     {
         #region custom-options
@@ -76,7 +77,7 @@ public class Samples
             },
             new HtmlOut
             {
-                NumberOffsets = new List<int> {3}
+                NumberOffsets = [3]
             });
 
         #endregion

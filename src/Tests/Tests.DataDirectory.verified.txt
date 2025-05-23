@@ -1,4 +1,0 @@
-﻿{
-  target: null,
-  command: pandoc.exe --data-dir={CurrentDirectory} --output=- --from=commonmark --to=html
-}

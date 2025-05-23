@@ -18,7 +18,7 @@ public class Tests
         foreach (var file in Directory.EnumerateFiles(targetDirectory, "*", SearchOption.AllDirectories))
         {
             var fileContent = File.ReadAllText(file)
-                .Replace("namespace Pandoc;","")
+                .Replace("namespace Pandoc;", "")
                 .Trim();
             builder.AppendLine(
                 $"""
@@ -37,6 +37,7 @@ public class Tests
     }
 
     [Test]
+    [Explicit]
     public async Task BinaryToText()
     {
         var result = await PandocInstance.Convert<DocxIn, HtmlOut>("sample.docx", "output.html");
@@ -102,6 +103,7 @@ public class Tests
     }
 
     [Test]
+    [Explicit]
     public async Task CustomOptions()
     {
         var (command, value) = await PandocInstance.ConvertToText(

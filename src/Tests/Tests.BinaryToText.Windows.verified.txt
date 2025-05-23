@@ -1,0 +1,4 @@
+﻿{
+  target: null,
+  command: pandoc --output=- --from=docx --to=html
+}

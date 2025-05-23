@@ -1,0 +1,4 @@
+﻿{
+  target: null,
+  command: pandoc --output=- --from=commonmark --shift-heading-level-by=2 --to=html --number-offset=3
+}
