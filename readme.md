@@ -91,10 +91,10 @@ var html = await PandocInstance.ConvertToText(
     },
     new HtmlOut
     {
-        NumberOffsets = new List<int> {3}
+        NumberOffsets = [3]
     });
 ```
-<sup><a href='/src/Tests/Samples.cs#L59-L82' title='Snippet source file'>snippet source</a> | <a href='#snippet-custom-options' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.cs#L60-L83' title='Snippet source file'>snippet source</a> | <a href='#snippet-custom-options' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 

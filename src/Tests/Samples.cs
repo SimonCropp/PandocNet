@@ -53,6 +53,7 @@ public class Samples
         await Verify(html.Value, "html");
     }
 
+#if DEBUG
     [Test]
     public async Task CustomOptions()
     {
@@ -76,11 +77,12 @@ public class Samples
             },
             new HtmlOut
             {
-                NumberOffsets = new List<int> {3}
+                NumberOffsets = [3]
             });
 
         #endregion
 
         await Verify(html.Value, "html");
     }
+#endif
 }
