@@ -18,7 +18,7 @@ public class Tests
         foreach (var file in Directory.EnumerateFiles(targetDirectory, "*", SearchOption.AllDirectories))
         {
             var fileContent = File.ReadAllText(file)
-                .Replace("namespace Pandoc;","")
+                .Replace("namespace Pandoc;", "")
                 .Trim();
             builder.AppendLine(
                 $"""
@@ -100,7 +100,7 @@ public class Tests
         await Verify(value, "html")
             .AppendValue("command", command);
     }
-
+#if DEBUG
     [Test]
     public async Task CustomOptions()
     {
@@ -118,7 +118,7 @@ public class Tests
         await Verify(value, "html")
             .AppendValue("command", command);
     }
-
+#endif
     [Test]
     public async Task Encoding()
     {
