@@ -36,6 +36,7 @@ public class Tests
         File.WriteAllText(includePath, builder.ToString());
     }
 
+#if DEBUG
     [Test]
     public async Task BinaryToText()
     {
@@ -44,7 +45,7 @@ public class Tests
         await VerifyFile("output.html")
             .AppendValue("command", result.Command);
     }
-
+#endif
     [Test]
     public async Task DataDirectory()
     {
