@@ -8,6 +8,7 @@
 *.ppt binary
 
 *.verified.html text eol=lf working-tree-encoding=UTF-8
+*.verified.htm text eol=lf working-tree-encoding=UTF-8
 *.verified.md text eol=lf working-tree-encoding=UTF-8
 *.verified.txt text eol=lf working-tree-encoding=UTF-8
 
