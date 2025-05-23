@@ -1,4 +1,0 @@
-﻿{
-  target: null,
-  command: pandoc.exe --output=output.html sample.md
-}
