@@ -54,6 +54,7 @@ public class Samples
     }
 
 #if DEBUG
+
     [Test]
     public async Task CustomOptions()
     {
@@ -84,5 +85,7 @@ public class Samples
 
         await Verify(html.Value, "html");
     }
+
 #endif
+
 }
