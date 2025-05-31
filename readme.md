@@ -68,7 +68,9 @@ await PandocInstance.Convert<CommonMarkIn, HtmlOut>("sample.md", "output.html");
 <!-- endSnippet -->
 
 
-### Custom Options
+### Using typed option properties
+
+Option properties can be used by constructing instances of the input and output options:
 
 <!-- snippet: custom-options -->
 <a id='snippet-custom-options'></a>
