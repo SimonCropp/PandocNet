@@ -103,6 +103,18 @@ public class Tests
     }
 
     [Test]
+    public async Task TextFromStream()
+    {
+        using var stream = new MemoryStream("*text*"u8.ToArray());
+        stream.Position = 0;
+
+        var (command, value) = await PandocInstance.ConvertToText<CommonMarkIn, HtmlOut>(stream);
+
+        await Verify(value, "html")
+            .AppendValue("command", command);
+    }
+
+    [Test]
     [Explicit]
     public async Task CustomOptions()
     {
@@ -122,7 +134,7 @@ public class Tests
     }
 
     [Test]
-    public async Task Encoding()
+    public async Task EncodingTest()
     {
         var (command, value) = await PandocInstance.ConvertToText(
             "白日依山尽，黄河入海流。欲穷千里目，更上一层楼。",
