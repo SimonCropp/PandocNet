@@ -1,3 +1,5 @@
+namespace Pandoc;
+
 public class Options
 {
     /// <summary>
