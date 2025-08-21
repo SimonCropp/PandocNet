@@ -1,4 +1,3 @@
 ﻿{
-  target: null,
   command: pandoc --output=- --from=commonmark --to=html
 }
