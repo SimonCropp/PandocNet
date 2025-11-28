@@ -10,7 +10,7 @@ public class Tests
 
     static void WriteInclude(string target)
     {
-        var solutionDirectory = AttributeReader.GetSolutionDirectory();
+        var solutionDirectory = ProjectFiles.SolutionDirectory;
         var includePath = Path.Combine(solutionDirectory, $"{target.ToLower()}.include.md");
         var builder = new StringBuilder();
         var projectDirectory = Path.Combine(solutionDirectory, "PandocNet");
