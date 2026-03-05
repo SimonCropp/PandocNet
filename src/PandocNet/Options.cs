@@ -1,4 +1,4 @@
-﻿namespace Pandoc;
+namespace Pandoc;
 
 public class Options
 {
@@ -20,6 +20,11 @@ public class Options
     /// </summary>
     public string? LogFile { get; set; }
 
+    /// <summary>
+    /// Custom arguments to be passed to Pandoc.
+    /// </summary>
+    public string[]? CustomArguments { get; set; }
+
     public static IEnumerable<string> GetArguments(Options? options)
     {
         if (options == null)
@@ -40,6 +45,14 @@ public class Options
         if (options.LogFile != null)
         {
             yield return $"--log={options.LogFile}";
+        }
+
+        if (options.CustomArguments != null)
+        {
+            foreach (var arg in options.CustomArguments)
+            {
+                yield return arg;
+            }
         }
     }
 }
