@@ -25,6 +25,27 @@ public abstract class OutOptions
     public int? Columns { get; set; }
     public string? Template { get; set; }
 
+    /// <summary>
+    /// Process citations using pandoc's built-in citeproc.
+    /// https://pandoc.org/MANUAL.html#option--citeproc
+    /// </summary>
+    public bool Citeproc { get; set; }
+    /// <summary>
+    /// Set the bibliography field in the document's metadata to the specified file.
+    /// https://pandoc.org/MANUAL.html#option--bibliography
+    /// </summary>
+    public string? Bibliography { get; set; }
+    /// <summary>
+    /// Set the csl field in the document's metadata to the specified file.
+    /// https://pandoc.org/MANUAL.html#option--csl
+    /// </summary>
+    public string? Csl { get; set; }
+    /// <summary>
+    /// Set the citation-abbreviations field in the document's metadata to the specified file.
+    /// https://pandoc.org/MANUAL.html#option--citation-abbreviations
+    /// </summary>
+    public string? CitationAbbreviations { get; set; }
+
     //TODO: variables
     public virtual IEnumerable<string> GetArguments()
     {
@@ -102,6 +123,22 @@ public abstract class OutOptions
         if (IncludeAfterBody != null)
         {
             yield return $"--include-after-body={IncludeAfterBody}";
+        }
+        if (Citeproc)
+        {
+            yield return "--citeproc";
+        }
+        if (Bibliography != null)
+        {
+            yield return $"--bibliography={Bibliography}";
+        }
+        if (Csl != null)
+        {
+            yield return $"--csl={Csl}";
+        }
+        if (CitationAbbreviations != null)
+        {
+            yield return $"--citation-abbreviations={CitationAbbreviations}";
         }
         //TODO: request-header
 
