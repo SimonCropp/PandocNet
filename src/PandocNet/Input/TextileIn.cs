@@ -1,7 +1,7 @@
 ﻿namespace Pandoc;
 
 /// <summary>
-/// https://www.promptworks.com/textile
+/// https://en.wikipedia.org/wiki/Textile_(markup_language)
 /// </summary>
 public class TextileIn :
     InOptions

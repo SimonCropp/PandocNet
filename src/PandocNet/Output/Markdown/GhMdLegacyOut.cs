@@ -1,7 +1,7 @@
 namespace Pandoc;
 
 /// <summary>
-/// https://help.github.com/articles/github-flavored-markdown/
+/// https://github.github.com/gfm/
 /// </summary>
 public class GhMdLegacyOut :
     OutOptions

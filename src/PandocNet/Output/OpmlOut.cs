@@ -1,7 +1,7 @@
 ﻿namespace Pandoc;
 
 /// <summary>
-/// http://dev.opml.org/spec2.html
+/// http://opml.org/spec2.opml
 /// </summary>
 public class OpmlOut :
     OutOptions

@@ -1,7 +1,7 @@
 ﻿namespace Pandoc;
 
 /// <summary>
-/// https://jira.atlassian.com/secure/WikiRendererHelpAction.jspa?section=all
+/// https://en.wikipedia.org/wiki/Jira_(software)
 /// </summary>
 public class JiraOut :
     OutOptions

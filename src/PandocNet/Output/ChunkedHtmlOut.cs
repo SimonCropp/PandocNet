@@ -1,7 +1,7 @@
 namespace Pandoc;
 
 /// <summary>
-/// https://pandoc.org/chunkedhtml-demo/demo.html
+/// https://pandoc.org/MANUAL.html#option--to
 /// </summary>
 public class ChunkedHtmlOut :
     OutOptions

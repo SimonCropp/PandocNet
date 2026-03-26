@@ -1,7 +1,7 @@
 ﻿namespace Pandoc;
 
 /// <summary>
-/// http://opendocument.xml.org/
+/// https://en.wikipedia.org/wiki/OpenDocument
 /// </summary>
 public class OpenDocumentOut :
     OutOptions

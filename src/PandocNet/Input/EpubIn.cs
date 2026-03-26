@@ -1,7 +1,7 @@
 ﻿namespace Pandoc;
 
 /// <summary>
-/// http://idpf.org/epub
+/// https://en.wikipedia.org/wiki/EPUB
 /// </summary>
 public class EpubIn :
     InOptions

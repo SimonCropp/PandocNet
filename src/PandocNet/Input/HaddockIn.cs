@@ -1,7 +1,7 @@
 ﻿namespace Pandoc;
 
 /// <summary>
-/// https://www.haskell.org/haddock/doc/html/ch03s08.html
+/// https://haskell-haddock.readthedocs.io/
 /// </summary>
 public class HaddockIn :
     InOptions

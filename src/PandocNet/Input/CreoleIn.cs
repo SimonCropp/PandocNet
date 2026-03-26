@@ -1,7 +1,7 @@
 ﻿namespace Pandoc;
 
 /// <summary>
-/// http://www.wikicreole.org/wiki/Creole1.0
+/// https://en.wikipedia.org/wiki/Creole_(markup)
 /// </summary>
 public class CreoleIn :
     InOptions

@@ -1,7 +1,7 @@
 namespace Pandoc;
 
 /// <summary>
-/// https://fluxbb.org/
+/// https://en.wikipedia.org/wiki/FluxBB
 /// </summary>
 public class BbCodeFluxBbOut :
     OutOptions

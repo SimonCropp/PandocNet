@@ -1,7 +1,7 @@
 ﻿namespace Pandoc;
 
 /// <summary>
-/// https://wwwimages.adobe.com/www.adobe.com/content/dam/acom/en/devnet/indesign/sdk/cs6/idml/idml-cookbook.pdf
+/// https://en.wikipedia.org/wiki/Adobe_InCopy
 /// </summary>
 public class IcmlOut :
     OutOptions
