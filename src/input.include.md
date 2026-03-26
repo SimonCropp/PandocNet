@@ -1,3 +1,17 @@
+#### AsciiDocIn
+
+```cs
+/// <summary>
+/// https://en.wikipedia.org/wiki/AsciiDoc
+/// </summary>
+public class AsciiDocIn :
+    InOptions
+{
+    protected override string Format => "asciidoc";
+}
+```
+
+
 #### BibLaTeXIn
 
 ```cs
@@ -26,6 +40,20 @@ public class BibTexIn :
 ```
 
 
+#### BitsIn
+
+```cs
+/// <summary>
+/// https://jats.nlm.nih.gov/extensions/bits/
+/// </summary>
+public class BitsIn :
+    InOptions
+{
+    protected override string Format => "bits";
+}
+```
+
+
 #### CreoleIn
 
 ```cs
@@ -40,6 +68,20 @@ public class CreoleIn :
 ```
 
 
+#### CslJsonIn
+
+```cs
+/// <summary>
+/// https://citeproc-js.readthedocs.io/en/latest/csl-json/markup.html
+/// </summary>
+public class CslJsonIn :
+    InOptions
+{
+    protected override string Format => "csljson";
+}
+```
+
+
 #### CsvIn
 
 ```cs
@@ -50,6 +92,20 @@ public class CsvIn :
     InOptions
 {
     protected override string Format => "csv";
+}
+```
+
+
+#### DjotIn
+
+```cs
+/// <summary>
+/// https://djot.net/
+/// </summary>
+public class DjotIn :
+    InOptions
+{
+    protected override string Format => "djot";
 }
 ```
 
@@ -125,6 +181,20 @@ public class EmacsOrgIn :
     InOptions
 {
     protected override string Format => "org";
+}
+```
+
+
+#### EndNoteXmlIn
+
+```cs
+/// <summary>
+/// https://en.wikipedia.org/wiki/EndNote
+/// </summary>
+public class EndNoteXmlIn :
+    InOptions
+{
+    protected override string Format => "endnotexml";
 }
 ```
 
@@ -410,6 +480,20 @@ public class LaTexIn :
 ```
 
 
+#### MdocIn
+
+```cs
+/// <summary>
+/// https://man.openbsd.org/mdoc.7
+/// </summary>
+public class MdocIn :
+    InOptions
+{
+    protected override string Format => "mdoc";
+}
+```
+
+
 #### MediaWikiIn
 
 ```cs
@@ -462,6 +546,48 @@ public class OpmlIn :
     InOptions
 {
     protected override string Format => "opml";
+}
+```
+
+
+#### PodIn
+
+```cs
+/// <summary>
+/// https://perldoc.perl.org/perlpod
+/// </summary>
+public class PodIn :
+    InOptions
+{
+    protected override string Format => "pod";
+}
+```
+
+
+#### PptxIn
+
+```cs
+/// <summary>
+/// https://en.wikipedia.org/wiki/Microsoft_PowerPoint
+/// </summary>
+public class PptxIn :
+    InOptions
+{
+    protected override string Format => "pptx";
+}
+```
+
+
+#### RisIn
+
+```cs
+/// <summary>
+/// https://en.wikipedia.org/wiki/RIS_(file_format)
+/// </summary>
+public class RisIn :
+    InOptions
+{
+    protected override string Format => "ris";
 }
 ```
 
@@ -562,6 +688,20 @@ public enum TrackChanges
 ```
 
 
+#### TsvIn
+
+```cs
+/// <summary>
+/// https://en.wikipedia.org/wiki/Tab-separated_values
+/// </summary>
+public class TsvIn :
+    InOptions
+{
+    protected override string Format => "tsv";
+}
+```
+
+
 #### TWikiIn
 
 ```cs
@@ -576,6 +716,20 @@ public class TWikiIn :
 ```
 
 
+#### TypstIn
+
+```cs
+/// <summary>
+/// https://typst.app/
+/// </summary>
+public class TypstIn :
+    InOptions
+{
+    protected override string Format => "typst";
+}
+```
+
+
 #### VimWikiIn
 
 ```cs
@@ -586,6 +740,34 @@ public class VimWikiIn :
     InOptions
 {
     protected override string Format => "vimwiki";
+}
+```
+
+
+#### XlsxIn
+
+```cs
+/// <summary>
+/// https://en.wikipedia.org/wiki/Office_Open_XML
+/// </summary>
+public class XlsxIn :
+    InOptions
+{
+    protected override string Format => "xlsx";
+}
+```
+
+
+#### XmlIn
+
+```cs
+/// <summary>
+/// https://en.wikipedia.org/wiki/XML
+/// </summary>
+public class XmlIn :
+    InOptions
+{
+    protected override string Format => "xml";
 }
 ```
 
@@ -652,6 +834,20 @@ public class CommonMarkXIn :
             yield return $"--default-image-extension={DefaultImageExtension}";
         }
     }
+}
+```
+
+
+#### GhMdLegacyIn
+
+```cs
+/// <summary>
+/// https://help.github.com/articles/github-flavored-markdown/
+/// </summary>
+public class GhMdLegacyIn :
+    InOptions
+{
+    protected override string Format => "markdown_github";
 }
 ```
 

@@ -102,7 +102,21 @@ var html = await PandocInstance.ConvertToText(
 
 ### Inputs
 
-#### BibLaTeXIn<!-- include: input. path: /src/input.include.md -->
+#### AsciiDocIn<!-- include: input. path: /src/input.include.md -->
+
+```cs
+/// <summary>
+/// https://en.wikipedia.org/wiki/AsciiDoc
+/// </summary>
+public class AsciiDocIn :
+    InOptions
+{
+    protected override string Format => "asciidoc";
+}
+```
+
+
+#### BibLaTeXIn
 
 ```cs
 /// <summary>
@@ -130,6 +144,20 @@ public class BibTexIn :
 ```
 
 
+#### BitsIn
+
+```cs
+/// <summary>
+/// https://jats.nlm.nih.gov/extensions/bits/
+/// </summary>
+public class BitsIn :
+    InOptions
+{
+    protected override string Format => "bits";
+}
+```
+
+
 #### CreoleIn
 
 ```cs
@@ -144,6 +172,20 @@ public class CreoleIn :
 ```
 
 
+#### CslJsonIn
+
+```cs
+/// <summary>
+/// https://citeproc-js.readthedocs.io/en/latest/csl-json/markup.html
+/// </summary>
+public class CslJsonIn :
+    InOptions
+{
+    protected override string Format => "csljson";
+}
+```
+
+
 #### CsvIn
 
 ```cs
@@ -154,6 +196,20 @@ public class CsvIn :
     InOptions
 {
     protected override string Format => "csv";
+}
+```
+
+
+#### DjotIn
+
+```cs
+/// <summary>
+/// https://djot.net/
+/// </summary>
+public class DjotIn :
+    InOptions
+{
+    protected override string Format => "djot";
 }
 ```
 
@@ -229,6 +285,20 @@ public class EmacsOrgIn :
     InOptions
 {
     protected override string Format => "org";
+}
+```
+
+
+#### EndNoteXmlIn
+
+```cs
+/// <summary>
+/// https://en.wikipedia.org/wiki/EndNote
+/// </summary>
+public class EndNoteXmlIn :
+    InOptions
+{
+    protected override string Format => "endnotexml";
 }
 ```
 
@@ -514,6 +584,20 @@ public class LaTexIn :
 ```
 
 
+#### MdocIn
+
+```cs
+/// <summary>
+/// https://man.openbsd.org/mdoc.7
+/// </summary>
+public class MdocIn :
+    InOptions
+{
+    protected override string Format => "mdoc";
+}
+```
+
+
 #### MediaWikiIn
 
 ```cs
@@ -566,6 +650,48 @@ public class OpmlIn :
     InOptions
 {
     protected override string Format => "opml";
+}
+```
+
+
+#### PodIn
+
+```cs
+/// <summary>
+/// https://perldoc.perl.org/perlpod
+/// </summary>
+public class PodIn :
+    InOptions
+{
+    protected override string Format => "pod";
+}
+```
+
+
+#### PptxIn
+
+```cs
+/// <summary>
+/// https://en.wikipedia.org/wiki/Microsoft_PowerPoint
+/// </summary>
+public class PptxIn :
+    InOptions
+{
+    protected override string Format => "pptx";
+}
+```
+
+
+#### RisIn
+
+```cs
+/// <summary>
+/// https://en.wikipedia.org/wiki/RIS_(file_format)
+/// </summary>
+public class RisIn :
+    InOptions
+{
+    protected override string Format => "ris";
 }
 ```
 
@@ -666,6 +792,20 @@ public enum TrackChanges
 ```
 
 
+#### TsvIn
+
+```cs
+/// <summary>
+/// https://en.wikipedia.org/wiki/Tab-separated_values
+/// </summary>
+public class TsvIn :
+    InOptions
+{
+    protected override string Format => "tsv";
+}
+```
+
+
 #### TWikiIn
 
 ```cs
@@ -680,6 +820,20 @@ public class TWikiIn :
 ```
 
 
+#### TypstIn
+
+```cs
+/// <summary>
+/// https://typst.app/
+/// </summary>
+public class TypstIn :
+    InOptions
+{
+    protected override string Format => "typst";
+}
+```
+
+
 #### VimWikiIn
 
 ```cs
@@ -690,6 +844,34 @@ public class VimWikiIn :
     InOptions
 {
     protected override string Format => "vimwiki";
+}
+```
+
+
+#### XlsxIn
+
+```cs
+/// <summary>
+/// https://en.wikipedia.org/wiki/Office_Open_XML
+/// </summary>
+public class XlsxIn :
+    InOptions
+{
+    protected override string Format => "xlsx";
+}
+```
+
+
+#### XmlIn
+
+```cs
+/// <summary>
+/// https://en.wikipedia.org/wiki/XML
+/// </summary>
+public class XmlIn :
+    InOptions
+{
+    protected override string Format => "xml";
 }
 ```
 
@@ -756,6 +938,20 @@ public class CommonMarkXIn :
             yield return $"--default-image-extension={DefaultImageExtension}";
         }
     }
+}
+```
+
+
+#### GhMdLegacyIn
+
+```cs
+/// <summary>
+/// https://help.github.com/articles/github-flavored-markdown/
+/// </summary>
+public class GhMdLegacyIn :
+    InOptions
+{
+    protected override string Format => "markdown_github";
 }
 ```
 
@@ -896,7 +1092,35 @@ public class PhpMdExtraIn :
 
 ### Outputs
 
-#### AsciiDocOut<!-- include: output. path: /src/output.include.md -->
+#### AnsiOut<!-- include: output. path: /src/output.include.md -->
+
+```cs
+/// <summary>
+/// ANSI terminal output.
+/// </summary>
+public class AnsiOut :
+    OutOptions
+{
+    public override string Format => "ansi";
+}
+```
+
+
+#### AsciiDocLegacyOut
+
+```cs
+/// <summary>
+/// https://en.wikipedia.org/wiki/AsciiDoc
+/// </summary>
+public class AsciiDocLegacyOut :
+    OutOptions
+{
+    public override string Format => "asciidoc_legacy";
+}
+```
+
+
+#### AsciiDocOut
 
 ```cs
 /// <summary>
@@ -920,6 +1144,90 @@ public class AsciiDoctorOut :
     OutOptions
 {
     public override string Format => "asciidoctor";
+}
+```
+
+
+#### BbCodeFluxBbOut
+
+```cs
+/// <summary>
+/// https://fluxbb.org/
+/// </summary>
+public class BbCodeFluxBbOut :
+    OutOptions
+{
+    public override string Format => "bbcode_fluxbb";
+}
+```
+
+
+#### BbCodeHubzillaOut
+
+```cs
+/// <summary>
+/// https://hubzilla.org/
+/// </summary>
+public class BbCodeHubzillaOut :
+    OutOptions
+{
+    public override string Format => "bbcode_hubzilla";
+}
+```
+
+
+#### BbCodeOut
+
+```cs
+/// <summary>
+/// https://en.wikipedia.org/wiki/BBCode
+/// </summary>
+public class BbCodeOut :
+    OutOptions
+{
+    public override string Format => "bbcode";
+}
+```
+
+
+#### BbCodePhpBbOut
+
+```cs
+/// <summary>
+/// https://www.phpbb.com/
+/// </summary>
+public class BbCodePhpBbOut :
+    OutOptions
+{
+    public override string Format => "bbcode_phpbb";
+}
+```
+
+
+#### BbCodeSteamOut
+
+```cs
+/// <summary>
+/// https://store.steampowered.com/
+/// </summary>
+public class BbCodeSteamOut :
+    OutOptions
+{
+    public override string Format => "bbcode_steam";
+}
+```
+
+
+#### BbCodeXenForoOut
+
+```cs
+/// <summary>
+/// https://xenforo.com/
+/// </summary>
+public class BbCodeXenForoOut :
+    OutOptions
+{
+    public override string Format => "bbcode_xenforo";
 }
 ```
 
@@ -948,6 +1256,20 @@ public class BibTeXOut :
     OutOptions
 {
     public override string Format => "bibtex";
+}
+```
+
+
+#### ChunkedHtmlOut
+
+```cs
+/// <summary>
+/// https://pandoc.org/chunkedhtml-demo/demo.html
+/// </summary>
+public class ChunkedHtmlOut :
+    OutOptions
+{
+    public override string Format => "chunkedhtml";
 }
 ```
 
@@ -1005,6 +1327,20 @@ public class CslJsonOut :
     OutOptions
 {
     public override string Format => "csljson";
+}
+```
+
+
+#### DjotOut
+
+```cs
+/// <summary>
+/// https://djot.net/
+/// </summary>
+public class DjotOut :
+    OutOptions
+{
+    public override string Format => "djot";
 }
 ```
 
@@ -1424,6 +1760,34 @@ public class HaskellOut :
 ```
 
 
+#### Html4Out
+
+```cs
+/// <summary>
+/// https://www.w3.org/TR/html401/
+/// </summary>
+public class Html4Out :
+    OutOptions
+{
+    public override string Format => "html4";
+}
+```
+
+
+#### Html5Out
+
+```cs
+/// <summary>
+/// https://html.spec.whatwg.org/
+/// </summary>
+public class Html5Out :
+    OutOptions
+{
+    public override string Format => "html5";
+}
+```
+
+
 #### HtmlOut
 
 ```cs
@@ -1798,6 +2162,20 @@ public class LaTeXOut :
             yield return "--listings";
         }
     }
+}
+```
+
+
+#### MarkuaOut
+
+```cs
+/// <summary>
+/// https://leanpub.com/markua/read
+/// </summary>
+public class MarkuaOut :
+    OutOptions
+{
+    public override string Format => "markua";
 }
 ```
 
@@ -2244,6 +2622,34 @@ public class TxtOut :
 ```
 
 
+#### TypstOut
+
+```cs
+/// <summary>
+/// https://typst.app/
+/// </summary>
+public class TypstOut :
+    OutOptions
+{
+    public override string Format => "typst";
+}
+```
+
+
+#### VimDocOut
+
+```cs
+/// <summary>
+/// https://vimhelp.org/helphelp.txt.html
+/// </summary>
+public class VimDocOut :
+    OutOptions
+{
+    public override string Format => "vimdoc";
+}
+```
+
+
 #### Wrap
 
 ```cs
@@ -2256,6 +2662,20 @@ public enum Wrap
     Auto,
     None,
     Preserve
+}
+```
+
+
+#### XmlOut
+
+```cs
+/// <summary>
+/// https://en.wikipedia.org/wiki/XML
+/// </summary>
+public class XmlOut :
+    OutOptions
+{
+    public override string Format => "xml";
 }
 ```
 
@@ -2404,6 +2824,20 @@ public class CommonMarkXOut :
             yield return $"--markdown-headings={MarkdownHeadings}";
         }
     }
+}
+```
+
+
+#### GhMdLegacyOut
+
+```cs
+/// <summary>
+/// https://help.github.com/articles/github-flavored-markdown/
+/// </summary>
+public class GhMdLegacyOut :
+    OutOptions
+{
+    public override string Format => "markdown_github";
 }
 ```
 

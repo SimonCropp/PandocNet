@@ -1,3 +1,31 @@
+#### AnsiOut
+
+```cs
+/// <summary>
+/// ANSI terminal output.
+/// </summary>
+public class AnsiOut :
+    OutOptions
+{
+    public override string Format => "ansi";
+}
+```
+
+
+#### AsciiDocLegacyOut
+
+```cs
+/// <summary>
+/// https://en.wikipedia.org/wiki/AsciiDoc
+/// </summary>
+public class AsciiDocLegacyOut :
+    OutOptions
+{
+    public override string Format => "asciidoc_legacy";
+}
+```
+
+
 #### AsciiDocOut
 
 ```cs
@@ -26,6 +54,90 @@ public class AsciiDoctorOut :
 ```
 
 
+#### BbCodeFluxBbOut
+
+```cs
+/// <summary>
+/// https://fluxbb.org/
+/// </summary>
+public class BbCodeFluxBbOut :
+    OutOptions
+{
+    public override string Format => "bbcode_fluxbb";
+}
+```
+
+
+#### BbCodeHubzillaOut
+
+```cs
+/// <summary>
+/// https://hubzilla.org/
+/// </summary>
+public class BbCodeHubzillaOut :
+    OutOptions
+{
+    public override string Format => "bbcode_hubzilla";
+}
+```
+
+
+#### BbCodeOut
+
+```cs
+/// <summary>
+/// https://en.wikipedia.org/wiki/BBCode
+/// </summary>
+public class BbCodeOut :
+    OutOptions
+{
+    public override string Format => "bbcode";
+}
+```
+
+
+#### BbCodePhpBbOut
+
+```cs
+/// <summary>
+/// https://www.phpbb.com/
+/// </summary>
+public class BbCodePhpBbOut :
+    OutOptions
+{
+    public override string Format => "bbcode_phpbb";
+}
+```
+
+
+#### BbCodeSteamOut
+
+```cs
+/// <summary>
+/// https://store.steampowered.com/
+/// </summary>
+public class BbCodeSteamOut :
+    OutOptions
+{
+    public override string Format => "bbcode_steam";
+}
+```
+
+
+#### BbCodeXenForoOut
+
+```cs
+/// <summary>
+/// https://xenforo.com/
+/// </summary>
+public class BbCodeXenForoOut :
+    OutOptions
+{
+    public override string Format => "bbcode_xenforo";
+}
+```
+
+
 #### BibLaTeXOut
 
 ```cs
@@ -50,6 +162,20 @@ public class BibTeXOut :
     OutOptions
 {
     public override string Format => "bibtex";
+}
+```
+
+
+#### ChunkedHtmlOut
+
+```cs
+/// <summary>
+/// https://pandoc.org/chunkedhtml-demo/demo.html
+/// </summary>
+public class ChunkedHtmlOut :
+    OutOptions
+{
+    public override string Format => "chunkedhtml";
 }
 ```
 
@@ -107,6 +233,20 @@ public class CslJsonOut :
     OutOptions
 {
     public override string Format => "csljson";
+}
+```
+
+
+#### DjotOut
+
+```cs
+/// <summary>
+/// https://djot.net/
+/// </summary>
+public class DjotOut :
+    OutOptions
+{
+    public override string Format => "djot";
 }
 ```
 
@@ -526,6 +666,34 @@ public class HaskellOut :
 ```
 
 
+#### Html4Out
+
+```cs
+/// <summary>
+/// https://www.w3.org/TR/html401/
+/// </summary>
+public class Html4Out :
+    OutOptions
+{
+    public override string Format => "html4";
+}
+```
+
+
+#### Html5Out
+
+```cs
+/// <summary>
+/// https://html.spec.whatwg.org/
+/// </summary>
+public class Html5Out :
+    OutOptions
+{
+    public override string Format => "html5";
+}
+```
+
+
 #### HtmlOut
 
 ```cs
@@ -900,6 +1068,20 @@ public class LaTeXOut :
             yield return "--listings";
         }
     }
+}
+```
+
+
+#### MarkuaOut
+
+```cs
+/// <summary>
+/// https://leanpub.com/markua/read
+/// </summary>
+public class MarkuaOut :
+    OutOptions
+{
+    public override string Format => "markua";
 }
 ```
 
@@ -1346,6 +1528,34 @@ public class TxtOut :
 ```
 
 
+#### TypstOut
+
+```cs
+/// <summary>
+/// https://typst.app/
+/// </summary>
+public class TypstOut :
+    OutOptions
+{
+    public override string Format => "typst";
+}
+```
+
+
+#### VimDocOut
+
+```cs
+/// <summary>
+/// https://vimhelp.org/helphelp.txt.html
+/// </summary>
+public class VimDocOut :
+    OutOptions
+{
+    public override string Format => "vimdoc";
+}
+```
+
+
 #### Wrap
 
 ```cs
@@ -1358,6 +1568,20 @@ public enum Wrap
     Auto,
     None,
     Preserve
+}
+```
+
+
+#### XmlOut
+
+```cs
+/// <summary>
+/// https://en.wikipedia.org/wiki/XML
+/// </summary>
+public class XmlOut :
+    OutOptions
+{
+    public override string Format => "xml";
 }
 ```
 
@@ -1506,6 +1730,20 @@ public class CommonMarkXOut :
             yield return $"--markdown-headings={MarkdownHeadings}";
         }
     }
+}
+```
+
+
+#### GhMdLegacyOut
+
+```cs
+/// <summary>
+/// https://help.github.com/articles/github-flavored-markdown/
+/// </summary>
+public class GhMdLegacyOut :
+    OutOptions
+{
+    public override string Format => "markdown_github";
 }
 ```
 
