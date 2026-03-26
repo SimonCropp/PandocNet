@@ -10,22 +10,22 @@ public class SlideousOut :
 
     /// <summary>
     /// Produce a standalone HTML file with no external dependencies, using data: URIs to incorporate the contents of linked scripts, stylesheets, images, and videos
-    /// https://pandoc.org/MANUAL.html#option--self-contained
+    /// https://pandoc.org/MANUAL.html#option--self-contained%5B
     /// </summary>
     public bool SelfContained { get; set; }
     /// <summary>
     /// Use &lt;q&gt; tags for quotes in HTML. (This option only has an effect if the smart extension is enabled for the input format used.)
-    /// https://pandoc.org/MANUAL.html#option--html-q-tags
+    /// https://pandoc.org/MANUAL.html#option--html-q-tags%5B
     /// </summary>
     public bool HtmlQTags { get; set; }
     /// <summary>
     /// Use only ASCII characters in output
-    /// https://pandoc.org/MANUAL.html#option--ascii
+    /// https://pandoc.org/MANUAL.html#option--ascii%5B
     /// </summary>
     public bool Ascii { get; set; }
     /// <summary>
     /// Wrap sections in &lt;section&gt; tags (or &lt;div&gt; tags for html4), and attach identifiers to the enclosing &lt;section> (or &lt;div&gt;) rather than the heading itself
-    /// https://pandoc.org/MANUAL.html#option--section-divs
+    /// https://pandoc.org/MANUAL.html#option--section-divs%5B
     /// </summary>
     public bool SectionDivs { get; set; }
     /// <summary>

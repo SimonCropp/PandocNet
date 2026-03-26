@@ -299,12 +299,12 @@ public abstract class InOptions
     public IList<string>? IndentedCodeClasses { get; set; }
     /// <summary>
     /// Parse each file individually before combining for multifile documents
-    /// https://pandoc.org/MANUAL.html#option--file-scope
+    /// https://pandoc.org/MANUAL.html#option--file-scope%5B
     /// </summary>
     public bool FileScope { get; set; }
     /// <summary>
     /// Preserve tabs instead of converting them to spaces. (By default, pandoc converts tabs to spaces before parsing its input.)
-    /// https://pandoc.org/MANUAL.html#option--preserve-tabs
+    /// https://pandoc.org/MANUAL.html#option--preserve-tabs%5B
     /// </summary>
     public bool PreserveTabs { get; set; }
     /// <summary>

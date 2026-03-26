@@ -704,25 +704,25 @@ public class HtmlOut :
 
     /// <summary>
     /// Produce a standalone HTML file with no external dependencies, using data: URIs to incorporate the contents of linked scripts, stylesheets, images, and videos
-    /// https://pandoc.org/MANUAL.html#option--self-contained
+    /// https://pandoc.org/MANUAL.html#option--self-contained%5B
     /// </summary>
     public bool SelfContained { get; set; }
 
     /// <summary>
     /// Use &lt;q&gt; tags for quotes in HTML. (This option only has an effect if the smart extension is enabled for the input format used.)
-    /// https://pandoc.org/MANUAL.html#option--html-q-tags
+    /// https://pandoc.org/MANUAL.html#option--html-q-tags%5B
     /// </summary>
     public bool HtmlQTags { get; set; }
 
     /// <summary>
     /// Wrap sections in &lt;section&gt; tags (or &lt;div&gt; tags for html4), and attach identifiers to the enclosing &lt;section> (or &lt;div&gt;) rather than the heading itself
-    /// https://pandoc.org/MANUAL.html#option--section-divs
+    /// https://pandoc.org/MANUAL.html#option--section-divs%5B
     /// </summary>
     public bool SectionDivs { get; set; }
 
     /// <summary>
     /// Use only ASCII characters in output
-    /// https://pandoc.org/MANUAL.html#option--ascii
+    /// https://pandoc.org/MANUAL.html#option--ascii%5B
     /// </summary>
     public bool Ascii { get; set; }
 
@@ -850,7 +850,7 @@ public class JatsArchivingOut :
 
     /// <summary>
     /// Use only ASCII characters in output
-    /// https://pandoc.org/MANUAL.html#option--ascii
+    /// https://pandoc.org/MANUAL.html#option--ascii%5B
     /// </summary>
     public bool Ascii { get; set; }
 
@@ -883,7 +883,7 @@ public class JatsArticleAuthoringOut :
 
     /// <summary>
     /// Use only ASCII characters in output
-    /// https://pandoc.org/MANUAL.html#option--ascii
+    /// https://pandoc.org/MANUAL.html#option--ascii%5B
     /// </summary>
     public bool Ascii { get; set; }
 
@@ -916,7 +916,7 @@ public class JatsPublishingOut :
 
     /// <summary>
     /// Use only ASCII characters in output
-    /// https://pandoc.org/MANUAL.html#option--ascii
+    /// https://pandoc.org/MANUAL.html#option--ascii%5B
     /// </summary>
     public bool Ascii { get; set; }
 
@@ -1019,7 +1019,7 @@ public class LaTeXOut :
 
     /// <summary>
     /// Use only ASCII characters in output
-    /// https://pandoc.org/MANUAL.html#option--ascii
+    /// https://pandoc.org/MANUAL.html#option--ascii%5B
     /// </summary>
     public bool Ascii { get; set; }
 
@@ -1037,7 +1037,7 @@ public class LaTeXOut :
 
     /// <summary>
     /// Use the listings package for LaTeX code blocks.
-    /// https://pandoc.org/MANUAL.html#option--listings
+    /// https://pandoc.org/MANUAL.html#option--listings%5B
     /// </summary>
     public bool Listings { get; set; }
 
@@ -1301,13 +1301,13 @@ public abstract class OutOptions
 
     /// <summary>
     /// Produce a standalone HTML file with no external dependencies, using data: URIs to incorporate the contents of linked scripts, stylesheets, images, and videos. The resulting file should be self-contained.
-    /// https://pandoc.org/MANUAL.html#option--embed-resources
+    /// https://pandoc.org/MANUAL.html#option--embed-resources%5B
     /// </summary>
     public bool EmbedResources { get; set; }
 
     /// <summary>
     /// Use external links to images rather than embedding them.
-    /// https://pandoc.org/MANUAL.html#option--link-images
+    /// https://pandoc.org/MANUAL.html#option--link-images%5B
     /// </summary>
     public bool LinkImages { get; set; }
 
@@ -1505,7 +1505,7 @@ public class RoffMsOut :
 
     /// <summary>
     /// Use only ASCII characters in output
-    /// https://pandoc.org/MANUAL.html#option--ascii
+    /// https://pandoc.org/MANUAL.html#option--ascii%5B
     /// </summary>
     public bool Ascii { get; set; }
 
@@ -1548,7 +1548,7 @@ public class RstOut :
     public override string Format => "rst";
     /// <summary>
     /// Use reference-style links, rather than inline links
-    /// https://pandoc.org/MANUAL.html#option--reference-links
+    /// https://pandoc.org/MANUAL.html#option--reference-links%5B
     /// </summary>
     public bool ReferenceLinks { get; set; }
 
@@ -1779,12 +1779,12 @@ public class CommonMarkOut :
 
     /// <summary>
     /// Use only ASCII characters in output
-    /// https://pandoc.org/MANUAL.html#option--ascii
+    /// https://pandoc.org/MANUAL.html#option--ascii%5B
     /// </summary>
     public bool Ascii { get; set; }
     /// <summary>
     /// Use reference-style links, rather than inline links
-    /// https://pandoc.org/MANUAL.html#option--reference-links
+    /// https://pandoc.org/MANUAL.html#option--reference-links%5B
     /// </summary>
     public bool ReferenceLinks { get; set; }
     /// <summary>
@@ -1839,12 +1839,12 @@ public class CommonMarkXOut :
 
     /// <summary>
     /// Use only ASCII characters in output
-    /// https://pandoc.org/MANUAL.html#option--ascii
+    /// https://pandoc.org/MANUAL.html#option--ascii%5B
     /// </summary>
     public bool Ascii { get; set; }
     /// <summary>
     /// Use reference-style links, rather than inline links
-    /// https://pandoc.org/MANUAL.html#option--reference-links
+    /// https://pandoc.org/MANUAL.html#option--reference-links%5B
     /// </summary>
     public bool ReferenceLinks { get; set; }
     /// <summary>
@@ -1913,12 +1913,12 @@ public class GhMdOut :
 
     /// <summary>
     /// Use only ASCII characters in output
-    /// https://pandoc.org/MANUAL.html#option--ascii
+    /// https://pandoc.org/MANUAL.html#option--ascii%5B
     /// </summary>
     public bool Ascii { get; set; }
     /// <summary>
     /// Use reference-style links, rather than inline links
-    /// https://pandoc.org/MANUAL.html#option--reference-links
+    /// https://pandoc.org/MANUAL.html#option--reference-links%5B
     /// </summary>
     public bool ReferenceLinks { get; set; }
     /// <summary>
@@ -1984,12 +1984,12 @@ public class MdStrictOut :
 
     /// <summary>
     /// Use only ASCII characters in output
-    /// https://pandoc.org/MANUAL.html#option--ascii
+    /// https://pandoc.org/MANUAL.html#option--ascii%5B
     /// </summary>
     public bool Ascii { get; set; }
     /// <summary>
     /// Use reference-style links, rather than inline links
-    /// https://pandoc.org/MANUAL.html#option--reference-links
+    /// https://pandoc.org/MANUAL.html#option--reference-links%5B
     /// </summary>
     public bool ReferenceLinks { get; set; }
     /// <summary>
@@ -2044,12 +2044,12 @@ public class MultiMdOut :
 
     /// <summary>
     /// Use only ASCII characters in output
-    /// https://pandoc.org/MANUAL.html#option--ascii
+    /// https://pandoc.org/MANUAL.html#option--ascii%5B
     /// </summary>
     public bool Ascii { get; set; }
     /// <summary>
     /// Use reference-style links, rather than inline links
-    /// https://pandoc.org/MANUAL.html#option--reference-links
+    /// https://pandoc.org/MANUAL.html#option--reference-links%5B
     /// </summary>
     public bool ReferenceLinks { get; set; }
     /// <summary>
@@ -2104,12 +2104,12 @@ public class PandocMdOut :
 
     /// <summary>
     /// Use only ASCII characters in output
-    /// https://pandoc.org/MANUAL.html#option--ascii
+    /// https://pandoc.org/MANUAL.html#option--ascii%5B
     /// </summary>
     public bool Ascii { get; set; }
     /// <summary>
     /// Use reference-style links, rather than inline links
-    /// https://pandoc.org/MANUAL.html#option--reference-links
+    /// https://pandoc.org/MANUAL.html#option--reference-links%5B
     /// </summary>
     public bool ReferenceLinks { get; set; }
     /// <summary>
@@ -2165,12 +2165,12 @@ public class PhpMdExtraOut :
 
     /// <summary>
     /// Use only ASCII characters in output
-    /// https://pandoc.org/MANUAL.html#option--ascii
+    /// https://pandoc.org/MANUAL.html#option--ascii%5B
     /// </summary>
     public bool Ascii { get; set; }
     /// <summary>
     /// Use reference-style links, rather than inline links
-    /// https://pandoc.org/MANUAL.html#option--reference-links
+    /// https://pandoc.org/MANUAL.html#option--reference-links%5B
     /// </summary>
     public bool ReferenceLinks { get; set; }
     /// <summary>
@@ -2292,17 +2292,17 @@ public class BeamerOut :
 
     /// <summary>
     /// Produce a standalone HTML file with no external dependencies, using data: URIs to incorporate the contents of linked scripts, stylesheets, images, and videos
-    /// https://pandoc.org/MANUAL.html#option--self-contained
+    /// https://pandoc.org/MANUAL.html#option--self-contained%5B
     /// </summary>
     public bool SelfContained { get; set; }
     /// <summary>
     /// Use &lt;q&gt; tags for quotes in HTML. (This option only has an effect if the smart extension is enabled for the input format used.)
-    /// https://pandoc.org/MANUAL.html#option--html-q-tags
+    /// https://pandoc.org/MANUAL.html#option--html-q-tags%5B
     /// </summary>
     public bool HtmlQTags { get; set; }
     /// <summary>
     /// Make list items in slide shows display incrementally (one by one). The default is for lists to be displayed all at once.
-    ///  https://pandoc.org/MANUAL.html#option--incremental
+    ///  https://pandoc.org/MANUAL.html#option--incremental%5B
     /// </summary>
     public bool Incremental { get; set; }
     /// <summary>
@@ -2312,12 +2312,12 @@ public class BeamerOut :
     public int? SlideLevel { get; set; }
     /// <summary>
     /// Wrap sections in &lt;section&gt; tags (or &lt;div&gt; tags for html4), and attach identifiers to the enclosing &lt;section> (or &lt;div&gt;) rather than the heading itself
-    /// https://pandoc.org/MANUAL.html#option--section-divs
+    /// https://pandoc.org/MANUAL.html#option--section-divs%5B
     /// </summary>
     public bool SectionDivs { get; set; }
     /// <summary>
     /// Use only ASCII characters in output
-    /// https://pandoc.org/MANUAL.html#option--ascii
+    /// https://pandoc.org/MANUAL.html#option--ascii%5B
     /// </summary>
     public bool Ascii { get; set; }
     /// <summary>
@@ -2430,17 +2430,17 @@ public class DzSlidesOut :
 
     /// <summary>
     /// Produce a standalone HTML file with no external dependencies, using data: URIs to incorporate the contents of linked scripts, stylesheets, images, and videos
-    /// https://pandoc.org/MANUAL.html#option--self-contained
+    /// https://pandoc.org/MANUAL.html#option--self-contained%5B
     /// </summary>
     public bool SelfContained { get; set; }
     /// <summary>
     /// Use &lt;q&gt; tags for quotes in HTML. (This option only has an effect if the smart extension is enabled for the input format used.)
-    /// https://pandoc.org/MANUAL.html#option--html-q-tags
+    /// https://pandoc.org/MANUAL.html#option--html-q-tags%5B
     /// </summary>
     public bool HtmlQTags { get; set; }
     /// <summary>
     /// Make list items in slide shows display incrementally (one by one). The default is for lists to be displayed all at once.
-    ///  https://pandoc.org/MANUAL.html#option--incremental
+    ///  https://pandoc.org/MANUAL.html#option--incremental%5B
     /// </summary>
     public bool Incremental { get; set; }
     /// <summary>
@@ -2450,12 +2450,12 @@ public class DzSlidesOut :
     public int? SlideLevel { get; set; }
     /// <summary>
     /// Use only ASCII characters in output
-    /// https://pandoc.org/MANUAL.html#option--ascii
+    /// https://pandoc.org/MANUAL.html#option--ascii%5B
     /// </summary>
     public bool Ascii { get; set; }
     /// <summary>
     /// Wrap sections in &lt;section&gt; tags (or &lt;div&gt; tags for html4), and attach identifiers to the enclosing &lt;section> (or &lt;div&gt;) rather than the heading itself
-    /// https://pandoc.org/MANUAL.html#option--section-divs
+    /// https://pandoc.org/MANUAL.html#option--section-divs%5B
     /// </summary>
     public bool SectionDivs { get; set; }
     /// <summary>
@@ -2579,22 +2579,22 @@ public class RevealJsOut :
 
     /// <summary>
     /// Produce a standalone HTML file with no external dependencies, using data: URIs to incorporate the contents of linked scripts, stylesheets, images, and videos
-    /// https://pandoc.org/MANUAL.html#option--self-contained
+    /// https://pandoc.org/MANUAL.html#option--self-contained%5B
     /// </summary>
     public bool SelfContained { get; set; }
     /// <summary>
     /// Use &lt;q&gt; tags for quotes in HTML. (This option only has an effect if the smart extension is enabled for the input format used.)
-    /// https://pandoc.org/MANUAL.html#option--html-q-tags
+    /// https://pandoc.org/MANUAL.html#option--html-q-tags%5B
     /// </summary>
     public bool HtmlQTags { get; set; }
     /// <summary>
     /// Wrap sections in &lt;section&gt; tags (or &lt;div&gt; tags for html4), and attach identifiers to the enclosing &lt;section> (or &lt;div&gt;) rather than the heading itself
-    /// https://pandoc.org/MANUAL.html#option--section-divs
+    /// https://pandoc.org/MANUAL.html#option--section-divs%5B
     /// </summary>
     public bool SectionDivs { get; set; }
     /// <summary>
     /// Use only ASCII characters in output
-    /// https://pandoc.org/MANUAL.html#option--ascii
+    /// https://pandoc.org/MANUAL.html#option--ascii%5B
     /// </summary>
     public bool Ascii { get; set; }
     /// <summary>
@@ -2677,17 +2677,17 @@ public class S5Out :
 
     /// <summary>
     /// Produce a standalone HTML file with no external dependencies, using data: URIs to incorporate the contents of linked scripts, stylesheets, images, and videos
-    /// https://pandoc.org/MANUAL.html#option--self-contained
+    /// https://pandoc.org/MANUAL.html#option--self-contained%5B
     /// </summary>
     public bool SelfContained { get; set; }
     /// <summary>
     /// Use &lt;q&gt; tags for quotes in HTML. (This option only has an effect if the smart extension is enabled for the input format used.)
-    /// https://pandoc.org/MANUAL.html#option--html-q-tags
+    /// https://pandoc.org/MANUAL.html#option--html-q-tags%5B
     /// </summary>
     public bool HtmlQTags { get; set; }
     /// <summary>
     /// Use only ASCII characters in output
-    /// https://pandoc.org/MANUAL.html#option--ascii
+    /// https://pandoc.org/MANUAL.html#option--ascii%5B
     /// </summary>
     public bool Ascii { get; set; }
     /// <summary>
@@ -2697,7 +2697,7 @@ public class S5Out :
     public int? SlideLevel { get; set; }
     /// <summary>
     /// Wrap sections in &lt;section&gt; tags (or &lt;div&gt; tags for html4), and attach identifiers to the enclosing &lt;section> (or &lt;div&gt;) rather than the heading itself
-    /// https://pandoc.org/MANUAL.html#option--section-divs
+    /// https://pandoc.org/MANUAL.html#option--section-divs%5B
     /// </summary>
     public bool SectionDivs { get; set; }
     /// <summary>
@@ -2784,22 +2784,22 @@ public class SlideousOut :
 
     /// <summary>
     /// Produce a standalone HTML file with no external dependencies, using data: URIs to incorporate the contents of linked scripts, stylesheets, images, and videos
-    /// https://pandoc.org/MANUAL.html#option--self-contained
+    /// https://pandoc.org/MANUAL.html#option--self-contained%5B
     /// </summary>
     public bool SelfContained { get; set; }
     /// <summary>
     /// Use &lt;q&gt; tags for quotes in HTML. (This option only has an effect if the smart extension is enabled for the input format used.)
-    /// https://pandoc.org/MANUAL.html#option--html-q-tags
+    /// https://pandoc.org/MANUAL.html#option--html-q-tags%5B
     /// </summary>
     public bool HtmlQTags { get; set; }
     /// <summary>
     /// Use only ASCII characters in output
-    /// https://pandoc.org/MANUAL.html#option--ascii
+    /// https://pandoc.org/MANUAL.html#option--ascii%5B
     /// </summary>
     public bool Ascii { get; set; }
     /// <summary>
     /// Wrap sections in &lt;section&gt; tags (or &lt;div&gt; tags for html4), and attach identifiers to the enclosing &lt;section> (or &lt;div&gt;) rather than the heading itself
-    /// https://pandoc.org/MANUAL.html#option--section-divs
+    /// https://pandoc.org/MANUAL.html#option--section-divs%5B
     /// </summary>
     public bool SectionDivs { get; set; }
     /// <summary>
@@ -2891,22 +2891,22 @@ public class SlidyOut :
 
     /// <summary>
     /// Produce a standalone HTML file with no external dependencies, using data: URIs to incorporate the contents of linked scripts, stylesheets, images, and videos
-    /// https://pandoc.org/MANUAL.html#option--self-contained
+    /// https://pandoc.org/MANUAL.html#option--self-contained%5B
     /// </summary>
     public bool SelfContained { get; set; }
     /// <summary>
     /// Use &lt;q&gt; tags for quotes in HTML. (This option only has an effect if the smart extension is enabled for the input format used.)
-    /// https://pandoc.org/MANUAL.html#option--html-q-tags
+    /// https://pandoc.org/MANUAL.html#option--html-q-tags%5B
     /// </summary>
     public bool HtmlQTags { get; set; }
     /// <summary>
     /// Use only ASCII characters in output
-    /// https://pandoc.org/MANUAL.html#option--ascii
+    /// https://pandoc.org/MANUAL.html#option--ascii%5B
     /// </summary>
     public bool Ascii { get; set; }
     /// <summary>
     /// Wrap sections in &lt;section&gt; tags (or &lt;div&gt; tags for html4), and attach identifiers to the enclosing &lt;section> (or &lt;div&gt;) rather than the heading itself
-    /// https://pandoc.org/MANUAL.html#option--section-divs
+    /// https://pandoc.org/MANUAL.html#option--section-divs%5B
     /// </summary>
     public bool SectionDivs { get; set; }
     /// <summary>

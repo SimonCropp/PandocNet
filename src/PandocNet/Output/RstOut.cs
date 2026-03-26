@@ -9,7 +9,7 @@ public class RstOut :
     public override string Format => "rst";
     /// <summary>
     /// Use reference-style links, rather than inline links
-    /// https://pandoc.org/MANUAL.html#option--reference-links
+    /// https://pandoc.org/MANUAL.html#option--reference-links%5B
     /// </summary>
     public bool ReferenceLinks { get; set; }
 

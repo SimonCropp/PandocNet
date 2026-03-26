@@ -10,7 +10,7 @@ public class LaTeXOut :
 
     /// <summary>
     /// Use only ASCII characters in output
-    /// https://pandoc.org/MANUAL.html#option--ascii
+    /// https://pandoc.org/MANUAL.html#option--ascii%5B
     /// </summary>
     public bool Ascii { get; set; }
 
@@ -28,7 +28,7 @@ public class LaTeXOut :
 
     /// <summary>
     /// Use the listings package for LaTeX code blocks.
-    /// https://pandoc.org/MANUAL.html#option--listings
+    /// https://pandoc.org/MANUAL.html#option--listings%5B
     /// </summary>
     public bool Listings { get; set; }
 

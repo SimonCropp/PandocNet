@@ -10,12 +10,12 @@ public class CommonMarkXOut :
 
     /// <summary>
     /// Use only ASCII characters in output
-    /// https://pandoc.org/MANUAL.html#option--ascii
+    /// https://pandoc.org/MANUAL.html#option--ascii%5B
     /// </summary>
     public bool Ascii { get; set; }
     /// <summary>
     /// Use reference-style links, rather than inline links
-    /// https://pandoc.org/MANUAL.html#option--reference-links
+    /// https://pandoc.org/MANUAL.html#option--reference-links%5B
     /// </summary>
     public bool ReferenceLinks { get; set; }
     /// <summary>

@@ -80,13 +80,13 @@ public abstract class OutOptions
 
     /// <summary>
     /// Produce a standalone HTML file with no external dependencies, using data: URIs to incorporate the contents of linked scripts, stylesheets, images, and videos. The resulting file should be self-contained.
-    /// https://pandoc.org/MANUAL.html#option--embed-resources
+    /// https://pandoc.org/MANUAL.html#option--embed-resources%5B
     /// </summary>
     public bool EmbedResources { get; set; }
 
     /// <summary>
     /// Use external links to images rather than embedding them.
-    /// https://pandoc.org/MANUAL.html#option--link-images
+    /// https://pandoc.org/MANUAL.html#option--link-images%5B
     /// </summary>
     public bool LinkImages { get; set; }
 
