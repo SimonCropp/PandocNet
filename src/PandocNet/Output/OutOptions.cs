@@ -46,6 +46,32 @@ public abstract class OutOptions
     /// </summary>
     public string? CitationAbbreviations { get; set; }
 
+    /// <summary>
+    /// Render math using MathML.
+    /// https://pandoc.org/MANUAL.html#option--mathml
+    /// </summary>
+    public bool MathMl { get; set; }
+    /// <summary>
+    /// Render math using a linked script from the specified URL. If no URL is provided, the default MathJax URL will be used.
+    /// https://pandoc.org/MANUAL.html#option--mathjax
+    /// </summary>
+    public string? MathJax { get; set; }
+    /// <summary>
+    /// Render math using a linked script from the specified URL. If no URL is provided, the default KaTeX URL will be used.
+    /// https://pandoc.org/MANUAL.html#option--katex
+    /// </summary>
+    public string? KaTeX { get; set; }
+    /// <summary>
+    /// Render formulas as images using the specified URL. If no URL is provided, the default WebTeX URL will be used.
+    /// https://pandoc.org/MANUAL.html#option--webtex
+    /// </summary>
+    public string? WebTeX { get; set; }
+    /// <summary>
+    /// Enclose TeX math in &lt;eq&gt; tags in HTML output for processing by GladTeX.
+    /// https://pandoc.org/MANUAL.html#option--gladtex
+    /// </summary>
+    public bool GladTeX { get; set; }
+
     //TODO: variables
     public virtual IEnumerable<string> GetArguments()
     {
@@ -139,6 +165,26 @@ public abstract class OutOptions
         if (CitationAbbreviations != null)
         {
             yield return $"--citation-abbreviations={CitationAbbreviations}";
+        }
+        if (MathMl)
+        {
+            yield return "--mathml";
+        }
+        if (MathJax != null)
+        {
+            yield return $"--mathjax={MathJax}";
+        }
+        if (KaTeX != null)
+        {
+            yield return $"--katex={KaTeX}";
+        }
+        if (WebTeX != null)
+        {
+            yield return $"--webtex={WebTeX}";
+        }
+        if (GladTeX)
+        {
+            yield return "--gladtex";
         }
         //TODO: request-header
 
