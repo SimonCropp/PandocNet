@@ -162,7 +162,7 @@ public class BitsIn :
 
 ```cs
 /// <summary>
-/// http://www.wikicreole.org/wiki/Creole1.0
+/// https://en.wikipedia.org/wiki/Creole_(markup)
 /// </summary>
 public class CreoleIn :
     InOptions
@@ -307,7 +307,7 @@ public class EndNoteXmlIn :
 
 ```cs
 /// <summary>
-/// http://idpf.org/epub
+/// https://en.wikipedia.org/wiki/EPUB
 /// </summary>
 public class EpubIn :
     InOptions
@@ -335,7 +335,7 @@ public class Fib2In :
 
 ```cs
 /// <summary>
-/// https://help.github.com/articles/github-flavored-markdown/
+/// https://github.github.com/gfm/
 /// </summary>
 public class GhMdIn :
     InOptions
@@ -349,7 +349,7 @@ public class GhMdIn :
 
 ```cs
 /// <summary>
-/// https://www.haskell.org/haddock/doc/html/ch03s08.html
+/// https://haskell-haddock.readthedocs.io/
 /// </summary>
 public class HaddockIn :
     InOptions
@@ -516,7 +516,7 @@ public class JatsIn :
 
 ```cs
 /// <summary>
-/// https://jira.atlassian.com/secure/WikiRendererHelpAction.jspa?section=all
+/// https://en.wikipedia.org/wiki/Jira_(software)
 /// </summary>
 public class JiraIn :
     InOptions
@@ -756,7 +756,7 @@ public class T2tIn :
 
 ```cs
 /// <summary>
-/// https://www.promptworks.com/textile
+/// https://en.wikipedia.org/wiki/Textile_(markup_language)
 /// </summary>
 public class TextileIn :
     InOptions
@@ -946,7 +946,7 @@ public class CommonMarkXIn :
 
 ```cs
 /// <summary>
-/// https://help.github.com/articles/github-flavored-markdown/
+/// https://github.github.com/gfm/
 /// </summary>
 public class GhMdLegacyIn :
     InOptions
@@ -1152,7 +1152,7 @@ public class AsciiDoctorOut :
 
 ```cs
 /// <summary>
-/// https://fluxbb.org/
+/// https://en.wikipedia.org/wiki/FluxBB
 /// </summary>
 public class BbCodeFluxBbOut :
     OutOptions
@@ -1264,7 +1264,7 @@ public class BibTeXOut :
 
 ```cs
 /// <summary>
-/// https://pandoc.org/chunkedhtml-demo/demo.html
+/// https://pandoc.org/MANUAL.html#option--to
 /// </summary>
 public class ChunkedHtmlOut :
     OutOptions
@@ -1739,7 +1739,7 @@ public class Fb2Out :
 
 ```cs
 /// <summary>
-/// https://www.haskell.org/haddock/doc/html/ch03s08.html
+/// https://haskell-haddock.readthedocs.io/
 /// </summary>
 public class HaddockOut :
     OutOptions
@@ -1921,7 +1921,7 @@ public class HtmlOut :
 
 ```cs
 /// <summary>
-/// https://wwwimages.adobe.com/www.adobe.com/content/dam/acom/en/devnet/indesign/sdk/cs6/idml/idml-cookbook.pdf
+/// https://en.wikipedia.org/wiki/Adobe_InCopy
 /// </summary>
 public class IcmlOut :
     OutOptions
@@ -2034,7 +2034,7 @@ public class JatsPublishingOut :
 
 ```cs
 /// <summary>
-/// https://jira.atlassian.com/secure/WikiRendererHelpAction.jspa?section=all
+/// https://en.wikipedia.org/wiki/Jira_(software)
 /// </summary>
 public class JiraOut :
     OutOptions
@@ -2286,7 +2286,7 @@ public class OdtOut :
 
 ```cs
 /// <summary>
-/// http://opendocument.xml.org/
+/// https://en.wikipedia.org/wiki/OpenDocument
 /// </summary>
 public class OpenDocumentOut :
     OutOptions
@@ -2300,7 +2300,7 @@ public class OpenDocumentOut :
 
 ```cs
 /// <summary>
-/// http://dev.opml.org/spec2.html
+/// http://opml.org/spec2.opml
 /// </summary>
 public class OpmlOut :
     OutOptions
@@ -2736,7 +2736,7 @@ public class TexInfoOut :
 
 ```cs
 /// <summary>
-/// https://www.promptworks.com/textile
+/// https://en.wikipedia.org/wiki/Textile_(markup_language)
 /// </summary>
 public class TextileOut :
     OutOptions
@@ -2984,7 +2984,7 @@ public class CommonMarkXOut :
 
 ```cs
 /// <summary>
-/// https://help.github.com/articles/github-flavored-markdown/
+/// https://github.github.com/gfm/
 /// </summary>
 public class GhMdLegacyOut :
     OutOptions
@@ -2998,7 +2998,7 @@ public class GhMdLegacyOut :
 
 ```cs
 /// <summary>
-/// https://help.github.com/articles/github-flavored-markdown/
+/// https://github.github.com/gfm/
 /// </summary>
 public class GhMdOut :
     OutOptions
