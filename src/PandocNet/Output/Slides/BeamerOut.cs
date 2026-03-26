@@ -59,6 +59,18 @@ public class BeamerOut :
     /// </summary>
     public string? TitlePrefix { get; set; }
 
+    /// <summary>
+    /// Use natbib for citations in LaTeX output.
+    /// https://pandoc.org/MANUAL.html#option--natbib
+    /// </summary>
+    public bool Natbib { get; set; }
+
+    /// <summary>
+    /// Use biblatex for citations in LaTeX output.
+    /// https://pandoc.org/MANUAL.html#option--biblatex
+    /// </summary>
+    public bool Biblatex { get; set; }
+
     public override IEnumerable<string> GetArguments()
     {
         foreach (var argument in base.GetArguments())
@@ -107,6 +119,16 @@ public class BeamerOut :
         if (TitlePrefix != null)
         {
             yield return $"--title-prefix={TitlePrefix}";
+        }
+
+        if (Natbib)
+        {
+            yield return "--natbib";
+        }
+
+        if (Biblatex)
+        {
+            yield return "--biblatex";
         }
     }
 }

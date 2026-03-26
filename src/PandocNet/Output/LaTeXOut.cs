@@ -27,10 +27,22 @@ public class LaTeXOut :
     public bool NumberSections { get; set; }
 
     /// <summary>
-    /// Number section headings
-    /// https://pandoc.org/MANUAL.html#option--number-sections
+    /// Use the listings package for LaTeX code blocks.
+    /// https://pandoc.org/MANUAL.html#option--listings
     /// </summary>
     public bool Listings { get; set; }
+
+    /// <summary>
+    /// Use natbib for citations in LaTeX output.
+    /// https://pandoc.org/MANUAL.html#option--natbib
+    /// </summary>
+    public bool Natbib { get; set; }
+
+    /// <summary>
+    /// Use biblatex for citations in LaTeX output.
+    /// https://pandoc.org/MANUAL.html#option--biblatex
+    /// </summary>
+    public bool Biblatex { get; set; }
 
     public override IEnumerable<string> GetArguments()
     {
@@ -57,6 +69,16 @@ public class LaTeXOut :
         if (Listings)
         {
             yield return "--listings";
+        }
+
+        if (Natbib)
+        {
+            yield return "--natbib";
+        }
+
+        if (Biblatex)
+        {
+            yield return "--biblatex";
         }
     }
 }

@@ -2130,10 +2130,22 @@ public class LaTeXOut :
     public bool NumberSections { get; set; }
 
     /// <summary>
-    /// Number section headings
-    /// https://pandoc.org/MANUAL.html#option--number-sections
+    /// Use the listings package for LaTeX code blocks.
+    /// https://pandoc.org/MANUAL.html#option--listings
     /// </summary>
     public bool Listings { get; set; }
+
+    /// <summary>
+    /// Use natbib for citations in LaTeX output.
+    /// https://pandoc.org/MANUAL.html#option--natbib
+    /// </summary>
+    public bool Natbib { get; set; }
+
+    /// <summary>
+    /// Use biblatex for citations in LaTeX output.
+    /// https://pandoc.org/MANUAL.html#option--biblatex
+    /// </summary>
+    public bool Biblatex { get; set; }
 
     public override IEnumerable<string> GetArguments()
     {
@@ -2160,6 +2172,16 @@ public class LaTeXOut :
         if (Listings)
         {
             yield return "--listings";
+        }
+
+        if (Natbib)
+        {
+            yield return "--natbib";
+        }
+
+        if (Biblatex)
+        {
+            yield return "--biblatex";
         }
     }
 }
@@ -2318,6 +2340,27 @@ public abstract class OutOptions
     public int? Columns { get; set; }
     public string? Template { get; set; }
 
+    /// <summary>
+    /// Process citations using pandoc's built-in citeproc.
+    /// https://pandoc.org/MANUAL.html#option--citeproc
+    /// </summary>
+    public bool Citeproc { get; set; }
+    /// <summary>
+    /// Set the bibliography field in the document's metadata to the specified file.
+    /// https://pandoc.org/MANUAL.html#option--bibliography
+    /// </summary>
+    public string? Bibliography { get; set; }
+    /// <summary>
+    /// Set the csl field in the document's metadata to the specified file.
+    /// https://pandoc.org/MANUAL.html#option--csl
+    /// </summary>
+    public string? Csl { get; set; }
+    /// <summary>
+    /// Set the citation-abbreviations field in the document's metadata to the specified file.
+    /// https://pandoc.org/MANUAL.html#option--citation-abbreviations
+    /// </summary>
+    public string? CitationAbbreviations { get; set; }
+
     //TODO: variables
     public virtual IEnumerable<string> GetArguments()
     {
@@ -2395,6 +2438,22 @@ public abstract class OutOptions
         if (IncludeAfterBody != null)
         {
             yield return $"--include-after-body={IncludeAfterBody}";
+        }
+        if (Citeproc)
+        {
+            yield return "--citeproc";
+        }
+        if (Bibliography != null)
+        {
+            yield return $"--bibliography={Bibliography}";
+        }
+        if (Csl != null)
+        {
+            yield return $"--csl={Csl}";
+        }
+        if (CitationAbbreviations != null)
+        {
+            yield return $"--citation-abbreviations={CitationAbbreviations}";
         }
         //TODO: request-header
 
@@ -3283,6 +3342,18 @@ public class BeamerOut :
     /// </summary>
     public string? TitlePrefix { get; set; }
 
+    /// <summary>
+    /// Use natbib for citations in LaTeX output.
+    /// https://pandoc.org/MANUAL.html#option--natbib
+    /// </summary>
+    public bool Natbib { get; set; }
+
+    /// <summary>
+    /// Use biblatex for citations in LaTeX output.
+    /// https://pandoc.org/MANUAL.html#option--biblatex
+    /// </summary>
+    public bool Biblatex { get; set; }
+
     public override IEnumerable<string> GetArguments()
     {
         foreach (var argument in base.GetArguments())
@@ -3331,6 +3402,16 @@ public class BeamerOut :
         if (TitlePrefix != null)
         {
             yield return $"--title-prefix={TitlePrefix}";
+        }
+
+        if (Natbib)
+        {
+            yield return "--natbib";
+        }
+
+        if (Biblatex)
+        {
+            yield return "--biblatex";
         }
     }
 }
