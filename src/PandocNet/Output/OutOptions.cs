@@ -72,7 +72,30 @@ public abstract class OutOptions
     /// </summary>
     public bool GladTeX { get; set; }
 
-    //TODO: variables
+    /// <summary>
+    /// Set template variable KEY to the value VAL when rendering the document in standalone mode.
+    /// https://pandoc.org/MANUAL.html#option--variable
+    /// </summary>
+    public IDictionary<string, string>? Variables { get; set; }
+
+    /// <summary>
+    /// Produce a standalone HTML file with no external dependencies, using data: URIs to incorporate the contents of linked scripts, stylesheets, images, and videos. The resulting file should be self-contained.
+    /// https://pandoc.org/MANUAL.html#option--embed-resources
+    /// </summary>
+    public bool EmbedResources { get; set; }
+
+    /// <summary>
+    /// Use external links to images rather than embedding them.
+    /// https://pandoc.org/MANUAL.html#option--link-images
+    /// </summary>
+    public bool LinkImages { get; set; }
+
+    /// <summary>
+    /// Set the request header NAME to the value VALUE when making HTTP requests.
+    /// https://pandoc.org/MANUAL.html#option--request-header
+    /// </summary>
+    public IDictionary<string, string>? RequestHeaders { get; set; }
+
     public virtual IEnumerable<string> GetArguments()
     {
         yield return $"--to={Format}";
@@ -85,6 +108,24 @@ public abstract class OutOptions
         if (Template != null)
         {
             yield return $"--template={Template}";
+        }
+
+        if (Variables != null)
+        {
+            foreach (var (key, value) in Variables)
+            {
+                yield return $"--variable={key}:{value}";
+            }
+        }
+
+        if (EmbedResources)
+        {
+            yield return "--embed-resources";
+        }
+
+        if (LinkImages)
+        {
+            yield return "--link-images";
         }
 
         if (Sandbox)
@@ -186,7 +227,13 @@ public abstract class OutOptions
         {
             yield return "--gladtex";
         }
-        //TODO: request-header
+        if (RequestHeaders != null)
+        {
+            foreach (var (name, value) in RequestHeaders)
+            {
+                yield return $"--request-header={name}:{value}";
+            }
+        }
 
         if (ResourcePaths != null)
         {
