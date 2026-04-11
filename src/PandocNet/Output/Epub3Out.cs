@@ -36,7 +36,7 @@ public class Epub3Out :
     /// Look in the specified XML file for metadata for the EPUB.
     /// https://pandoc.org/MANUAL.html#option--epub-metadata
     /// </summary>
-    public string? Metadata { get; set; }
+    public string? EpubMetadata { get; set; }
 
     /// <summary>
     /// Specify the subdirectory in the OCF container that is to hold the EPUB-specific contents
@@ -83,9 +83,9 @@ public class Epub3Out :
             yield return $"--epub-cover-image={CoverImage}";
         }
 
-        if (Metadata != null)
+        if (EpubMetadata != null)
         {
-            yield return $"--epub-metadata={Metadata}";
+            yield return $"--epub-metadata={EpubMetadata}";
         }
 
         if (EmbedFont != null)
