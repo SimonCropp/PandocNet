@@ -455,7 +455,7 @@ public class Epub2Out :
     /// Look in the specified XML file for metadata for the EPUB.
     /// https://pandoc.org/MANUAL.html#option--epub-metadata
     /// </summary>
-    public string? Metadata { get; set; }
+    public string? EpubMetadata { get; set; }
     /// <summary>
     /// Specify the subdirectory in the OCF container that is to hold the EPUB-specific contents
     /// https://pandoc.org/MANUAL.html#option--epub-subdirectory
@@ -496,9 +496,9 @@ public class Epub2Out :
         {
             yield return $"--epub-cover-image={CoverImage}";
         }
-        if (Metadata != null)
+        if (EpubMetadata != null)
         {
-            yield return $"--epub-metadata={Metadata}";
+            yield return $"--epub-metadata={EpubMetadata}";
         }
         if (EmbedFont != null)
         {
@@ -556,7 +556,7 @@ public class Epub3Out :
     /// Look in the specified XML file for metadata for the EPUB.
     /// https://pandoc.org/MANUAL.html#option--epub-metadata
     /// </summary>
-    public string? Metadata { get; set; }
+    public string? EpubMetadata { get; set; }
 
     /// <summary>
     /// Specify the subdirectory in the OCF container that is to hold the EPUB-specific contents
@@ -603,9 +603,9 @@ public class Epub3Out :
             yield return $"--epub-cover-image={CoverImage}";
         }
 
-        if (Metadata != null)
+        if (EpubMetadata != null)
         {
-            yield return $"--epub-metadata={Metadata}";
+            yield return $"--epub-metadata={EpubMetadata}";
         }
 
         if (EmbedFont != null)
@@ -1300,6 +1300,24 @@ public abstract class OutOptions
     public IDictionary<string, string>? Variables { get; set; }
 
     /// <summary>
+    /// Set template variable KEY to a JSON value. Unlike --variable, this replaces rather than appends.
+    /// https://pandoc.org/MANUAL.html#option--variable-json
+    /// </summary>
+    public IDictionary<string, string>? VariablesJson { get; set; }
+
+    /// <summary>
+    /// Set the metadata field KEY to the value VAL. Values will be parsed as YAML boolean or string values.
+    /// https://pandoc.org/MANUAL.html#option--metadata
+    /// </summary>
+    public IDictionary<string, string>? Metadata { get; set; }
+
+    /// <summary>
+    /// Read metadata from the supplied YAML (or JSON) file.
+    /// https://pandoc.org/MANUAL.html#option--metadata-file
+    /// </summary>
+    public string? MetadataFile { get; set; }
+
+    /// <summary>
     /// Produce a standalone HTML file with no external dependencies, using data: URIs to incorporate the contents of linked scripts, stylesheets, images, and videos. The resulting file should be self-contained.
     /// https://pandoc.org/MANUAL.html#option--embed-resources%5B
     /// </summary>
@@ -1337,6 +1355,27 @@ public abstract class OutOptions
             {
                 yield return $"--variable={key}:{value}";
             }
+        }
+
+        if (VariablesJson != null)
+        {
+            foreach (var (key, value) in VariablesJson)
+            {
+                yield return $"--variable-json={key}:{value}";
+            }
+        }
+
+        if (Metadata != null)
+        {
+            foreach (var (key, value) in Metadata)
+            {
+                yield return $"--metadata={key}:{value}";
+            }
+        }
+
+        if (MetadataFile != null)
+        {
+            yield return $"--metadata-file={MetadataFile}";
         }
 
         if (EmbedResources)

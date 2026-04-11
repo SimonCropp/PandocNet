@@ -37,12 +37,17 @@ public abstract class InOptions
     /// https://pandoc.org/MANUAL.html#option--lua-filter
     /// </summary>
     public string? LuaFilter { get; set; }
-    //TODO:--metadata
     /// <summary>
     /// Set the metadata field KEY to the value VAL. A value specified on the command line overrides a value specified in the document using YAML metadata blocks. Values will be parsed as YAML boolean or string values. If no value is specified, the value will be treated as Boolean true.
     /// https://pandoc.org/MANUAL.html#option--metadata
     /// </summary>
-    public string? Metadata { get; set; }
+    public IDictionary<string, string>? Metadata { get; set; }
+
+    /// <summary>
+    /// Read metadata from the supplied YAML (or JSON) file.
+    /// https://pandoc.org/MANUAL.html#option--metadata-file
+    /// </summary>
+    public string? MetadataFile { get; set; }
     /// <summary>
     /// Extract images and other media contained in or linked from the source document to the path DIR, creating it if necessary, and adjust the images references in the document so they point to the extracted files.
     /// https://pandoc.org/MANUAL.html#option--extract-media
@@ -87,7 +92,15 @@ public abstract class InOptions
 
         if (Metadata != null)
         {
-            yield return $"--metadata-file={Metadata}";
+            foreach (var (key, value) in Metadata)
+            {
+                yield return $"--metadata={key}:{value}";
+            }
+        }
+
+        if (MetadataFile != null)
+        {
+            yield return $"--metadata-file={MetadataFile}";
         }
 
         if (PreserveTabs)
