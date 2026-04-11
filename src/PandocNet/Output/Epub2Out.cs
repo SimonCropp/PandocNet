@@ -49,6 +49,18 @@ public class Epub2Out :
     /// </summary>
     public int? ChapterLevel { get; set; }
 
+    /// <summary>
+    /// Specify the heading level at which to split the EPUB into separate files.
+    /// https://pandoc.org/MANUAL.html#option--split-level
+    /// </summary>
+    public int? SplitLevel { get; set; }
+
+    /// <summary>
+    /// Determines whether a title page is included in the EPUB.
+    /// https://pandoc.org/MANUAL.html#option--epub-title-page
+    /// </summary>
+    public bool? EpubTitlePage { get; set; }
+
     public override IEnumerable<string> GetArguments()
     {
         foreach (var argument in base.GetArguments())
@@ -88,6 +100,14 @@ public class Epub2Out :
         if (SubDirectory != null)
         {
             yield return $"--epub-subdirectory={SubDirectory}";
+        }
+        if (SplitLevel != null)
+        {
+            yield return $"--split-level={SplitLevel}";
+        }
+        if (EpubTitlePage != null)
+        {
+            yield return $"--epub-title-page={EpubTitlePage.Value.ToString().ToLower()}";
         }
     }
 }

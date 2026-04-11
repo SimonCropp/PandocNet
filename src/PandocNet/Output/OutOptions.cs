@@ -19,6 +19,37 @@ public abstract class OutOptions
     public bool Sandbox { get; set; }
     public bool TableOfContents { get; set; }
     public int? TableOfContentsDepth { get; set; }
+
+    /// <summary>
+    /// Include an automatically generated list of figures.
+    /// https://pandoc.org/MANUAL.html#option--list-of-figures
+    /// </summary>
+    public bool ListOfFigures { get; set; }
+
+    /// <summary>
+    /// Include an automatically generated list of tables.
+    /// https://pandoc.org/MANUAL.html#option--list-of-tables
+    /// </summary>
+    public bool ListOfTables { get; set; }
+
+    /// <summary>
+    /// Specify where figure captions are placed relative to figures.
+    /// https://pandoc.org/MANUAL.html#option--figure-caption-position
+    /// </summary>
+    public CaptionPosition? FigureCaptionPosition { get; set; }
+
+    /// <summary>
+    /// Specify where table captions are placed relative to tables.
+    /// https://pandoc.org/MANUAL.html#option--table-caption-position
+    /// </summary>
+    public CaptionPosition? TableCaptionPosition { get; set; }
+
+    /// <summary>
+    /// Specify the method to use for code syntax highlighting.
+    /// https://pandoc.org/MANUAL.html#option--syntax-highlighting
+    /// </summary>
+    public string? SyntaxHighlighting { get; set; }
+
     public Eol? Eol { get; set; }
     public Wrap? Wrap { get; set; }
     public int? Dpi { get; set; }
@@ -197,6 +228,26 @@ public abstract class OutOptions
         if (TableOfContentsDepth != null)
         {
             yield return $"--toc-depth={TableOfContentsDepth}";
+        }
+        if (ListOfFigures)
+        {
+            yield return "--list-of-figures";
+        }
+        if (ListOfTables)
+        {
+            yield return "--list-of-tables";
+        }
+        if (FigureCaptionPosition != null)
+        {
+            yield return $"--figure-caption-position={FigureCaptionPosition.Value.ToString().ToLower()}";
+        }
+        if (TableCaptionPosition != null)
+        {
+            yield return $"--table-caption-position={TableCaptionPosition.Value.ToString().ToLower()}";
+        }
+        if (SyntaxHighlighting != null)
+        {
+            yield return $"--syntax-highlighting={SyntaxHighlighting}";
         }
         if (StripComments)
         {

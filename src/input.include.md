@@ -339,6 +339,12 @@ public abstract class InOptions
     /// </summary>
     public string? Abbreviations{ get; set; }
 
+    /// <summary>
+    /// Print diagnostic output tracing parser progress to stderr.
+    /// https://pandoc.org/MANUAL.html#option--trace
+    /// </summary>
+    public bool Trace { get; set; }
+
     protected abstract string Format { get; }
 
     public virtual IEnumerable<string> GetArguments()
@@ -357,7 +363,7 @@ public abstract class InOptions
 
         if (FileScope)
         {
-            yield return "file-scope";
+            yield return "--file-scope";
         }
 
         if (Filter != null)
@@ -401,6 +407,11 @@ public abstract class InOptions
         if (Abbreviations != null)
         {
             yield return $"--abbreviations={Abbreviations}";
+        }
+
+        if (Trace)
+        {
+            yield return "--trace";
         }
     }
 }
