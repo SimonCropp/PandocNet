@@ -166,6 +166,17 @@ public class BibTeXOut :
 ```
 
 
+#### CaptionPosition
+
+```cs
+public enum CaptionPosition
+{
+    Above,
+    Below
+}
+```
+
+
 #### ChunkedHtmlOut
 
 ```cs
@@ -176,6 +187,36 @@ public class ChunkedHtmlOut :
     OutOptions
 {
     public override string Format => "chunkedhtml";
+
+    /// <summary>
+    /// Specify the heading level at which to split into separate chunk files.
+    /// https://pandoc.org/MANUAL.html#option--split-level
+    /// </summary>
+    public int? SplitLevel { get; set; }
+
+    /// <summary>
+    /// Specify a template for the filenames in chunked HTML output.
+    /// https://pandoc.org/MANUAL.html#option--chunk-template
+    /// </summary>
+    public string? ChunkTemplate { get; set; }
+
+    public override IEnumerable<string> GetArguments()
+    {
+        foreach (var argument in base.GetArguments())
+        {
+            yield return argument;
+        }
+
+        if (SplitLevel != null)
+        {
+            yield return $"--split-level={SplitLevel}";
+        }
+
+        if (ChunkTemplate != null)
+        {
+            yield return $"--chunk-template={ChunkTemplate}";
+        }
+    }
 }
 ```
 
@@ -408,6 +449,18 @@ public class EmacsOrgOut :
 ```
 
 
+#### EmailObfuscation
+
+```cs
+public enum EmailObfuscation
+{
+    None,
+    Javascript,
+    References
+}
+```
+
+
 #### Eol
 
 ```cs
@@ -472,6 +525,18 @@ public class Epub2Out :
     /// </summary>
     public int? ChapterLevel { get; set; }
 
+    /// <summary>
+    /// Specify the heading level at which to split the EPUB into separate files.
+    /// https://pandoc.org/MANUAL.html#option--split-level
+    /// </summary>
+    public int? SplitLevel { get; set; }
+
+    /// <summary>
+    /// Determines whether a title page is included in the EPUB.
+    /// https://pandoc.org/MANUAL.html#option--epub-title-page
+    /// </summary>
+    public bool? EpubTitlePage { get; set; }
+
     public override IEnumerable<string> GetArguments()
     {
         foreach (var argument in base.GetArguments())
@@ -511,6 +576,14 @@ public class Epub2Out :
         if (SubDirectory != null)
         {
             yield return $"--epub-subdirectory={SubDirectory}";
+        }
+        if (SplitLevel != null)
+        {
+            yield return $"--split-level={SplitLevel}";
+        }
+        if (EpubTitlePage != null)
+        {
+            yield return $"--epub-title-page={EpubTitlePage.Value.ToString().ToLower()}";
         }
     }
 }
@@ -576,6 +649,18 @@ public class Epub3Out :
     /// </summary>
     public int? ChapterLevel { get; set; }
 
+    /// <summary>
+    /// Specify the heading level at which to split the EPUB into separate files.
+    /// https://pandoc.org/MANUAL.html#option--split-level
+    /// </summary>
+    public int? SplitLevel { get; set; }
+
+    /// <summary>
+    /// Determines whether a title page is included in the EPUB.
+    /// https://pandoc.org/MANUAL.html#option--epub-title-page
+    /// </summary>
+    public bool? EpubTitlePage { get; set; }
+
     public override IEnumerable<string> GetArguments()
     {
         foreach (var argument in base.GetArguments())
@@ -621,6 +706,16 @@ public class Epub3Out :
         if (SubDirectory != null)
         {
             yield return $"--epub-subdirectory={SubDirectory}";
+        }
+
+        if (SplitLevel != null)
+        {
+            yield return $"--split-level={SplitLevel}";
+        }
+
+        if (EpubTitlePage != null)
+        {
+            yield return $"--epub-title-page={EpubTitlePage.Value.ToString().ToLower()}";
         }
     }
 }
@@ -762,6 +857,12 @@ public class HtmlOut :
     /// </summary>
     public string? TitlePrefix { get; set; }
 
+    /// <summary>
+    /// Specify a method for obfuscating mailto: links in HTML documents.
+    /// https://pandoc.org/MANUAL.html#option--email-obfuscation
+    /// </summary>
+    public EmailObfuscation? EmailObfuscation { get; set; }
+
     public override IEnumerable<string> GetArguments()
     {
         foreach (var argument in base.GetArguments())
@@ -817,6 +918,11 @@ public class HtmlOut :
         if (TitlePrefix != null)
         {
             yield return $"--title-prefix={TitlePrefix}";
+        }
+
+        if (EmailObfuscation != null)
+        {
+            yield return $"--email-obfuscation={EmailObfuscation.Value.ToString().ToLower()}";
         }
     }
 }
@@ -1240,6 +1346,37 @@ public abstract class OutOptions
     public bool Sandbox { get; set; }
     public bool TableOfContents { get; set; }
     public int? TableOfContentsDepth { get; set; }
+
+    /// <summary>
+    /// Include an automatically generated list of figures.
+    /// https://pandoc.org/MANUAL.html#option--list-of-figures
+    /// </summary>
+    public bool ListOfFigures { get; set; }
+
+    /// <summary>
+    /// Include an automatically generated list of tables.
+    /// https://pandoc.org/MANUAL.html#option--list-of-tables
+    /// </summary>
+    public bool ListOfTables { get; set; }
+
+    /// <summary>
+    /// Specify where figure captions are placed relative to figures.
+    /// https://pandoc.org/MANUAL.html#option--figure-caption-position
+    /// </summary>
+    public CaptionPosition? FigureCaptionPosition { get; set; }
+
+    /// <summary>
+    /// Specify where table captions are placed relative to tables.
+    /// https://pandoc.org/MANUAL.html#option--table-caption-position
+    /// </summary>
+    public CaptionPosition? TableCaptionPosition { get; set; }
+
+    /// <summary>
+    /// Specify the method to use for code syntax highlighting.
+    /// https://pandoc.org/MANUAL.html#option--syntax-highlighting
+    /// </summary>
+    public string? SyntaxHighlighting { get; set; }
+
     public Eol? Eol { get; set; }
     public Wrap? Wrap { get; set; }
     public int? Dpi { get; set; }
@@ -1419,6 +1556,26 @@ public abstract class OutOptions
         {
             yield return $"--toc-depth={TableOfContentsDepth}";
         }
+        if (ListOfFigures)
+        {
+            yield return "--list-of-figures";
+        }
+        if (ListOfTables)
+        {
+            yield return "--list-of-tables";
+        }
+        if (FigureCaptionPosition != null)
+        {
+            yield return $"--figure-caption-position={FigureCaptionPosition.Value.ToString().ToLower()}";
+        }
+        if (TableCaptionPosition != null)
+        {
+            yield return $"--table-caption-position={TableCaptionPosition.Value.ToString().ToLower()}";
+        }
+        if (SyntaxHighlighting != null)
+        {
+            yield return $"--syntax-highlighting={SyntaxHighlighting}";
+        }
         if (StripComments)
         {
             yield return "--strip-comments";
@@ -1591,6 +1748,12 @@ public class RstOut :
     /// </summary>
     public bool ReferenceLinks { get; set; }
 
+    /// <summary>
+    /// Render tables as RST list tables.
+    /// https://pandoc.org/MANUAL.html#option--list-tables
+    /// </summary>
+    public bool ListTables { get; set; }
+
     public override IEnumerable<string> GetArguments()
     {
         foreach (var argument in base.GetArguments())
@@ -1601,6 +1764,11 @@ public class RstOut :
         if (ReferenceLinks)
         {
             yield return "--reference-links";
+        }
+
+        if (ListTables)
+        {
+            yield return "--list-tables";
         }
     }
 }
@@ -2298,6 +2466,12 @@ public class PdfOut :
     /// </remarks>
     public string? EnginePath { get; set; }
 
+    /// <summary>
+    /// Pass the given string as a command-line argument to the pdf-engine.
+    /// https://pandoc.org/MANUAL.html#option--pdf-engine-opt
+    /// </summary>
+    public string? EngineOpt { get; set; }
+
     public override IEnumerable<string> GetArguments()
     {
         foreach (var argument in base.GetArguments())
@@ -2312,6 +2486,11 @@ public class PdfOut :
         else if (Engine != null)
         {
             yield return $"--pdf-engine={Engine.Value.ToString().ToLower()}";
+        }
+
+        if (EngineOpt != null)
+        {
+            yield return $"--pdf-engine-opt={EngineOpt}";
         }
     }
 }
@@ -2518,6 +2697,12 @@ public class DzSlidesOut :
     /// </summary>
     public string? TitlePrefix { get; set; }
 
+    /// <summary>
+    /// Specify a method for obfuscating mailto: links in HTML documents.
+    /// https://pandoc.org/MANUAL.html#option--email-obfuscation
+    /// </summary>
+    public EmailObfuscation? EmailObfuscation { get; set; }
+
     public override IEnumerable<string> GetArguments()
     {
         foreach (var argument in base.GetArguments())
@@ -2566,6 +2751,10 @@ public class DzSlidesOut :
         if (TitlePrefix != null)
         {
             yield return $"--title-prefix={TitlePrefix}";
+        }
+        if (EmailObfuscation != null)
+        {
+            yield return $"--email-obfuscation={EmailObfuscation.Value.ToString().ToLower()}";
         }
     }
 }
@@ -2657,6 +2846,12 @@ public class RevealJsOut :
     /// </summary>
     public string? TitlePrefix { get; set; }
 
+    /// <summary>
+    /// Specify a method for obfuscating mailto: links in HTML documents.
+    /// https://pandoc.org/MANUAL.html#option--email-obfuscation
+    /// </summary>
+    public EmailObfuscation? EmailObfuscation { get; set; }
+
     public override IEnumerable<string> GetArguments()
     {
         foreach (var argument in base.GetArguments())
@@ -2697,6 +2892,10 @@ public class RevealJsOut :
         if (TitlePrefix != null)
         {
             yield return $"--title-prefix={TitlePrefix}";
+        }
+        if (EmailObfuscation != null)
+        {
+            yield return $"--email-obfuscation={EmailObfuscation.Value.ToString().ToLower()}";
         }
     }
 }
@@ -2760,6 +2959,12 @@ public class S5Out :
     /// </summary>
     public string? TitlePrefix { get; set; }
 
+    /// <summary>
+    /// Specify a method for obfuscating mailto: links in HTML documents.
+    /// https://pandoc.org/MANUAL.html#option--email-obfuscation
+    /// </summary>
+    public EmailObfuscation? EmailObfuscation { get; set; }
+
     public override IEnumerable<string> GetArguments()
     {
         foreach (var argument in base.GetArguments())
@@ -2804,6 +3009,10 @@ public class S5Out :
         if (TitlePrefix != null)
         {
             yield return $"--title-prefix={TitlePrefix}";
+        }
+        if (EmailObfuscation != null)
+        {
+            yield return $"--email-obfuscation={EmailObfuscation.Value.ToString().ToLower()}";
         }
     }
 }
@@ -2867,6 +3076,12 @@ public class SlideousOut :
     /// </summary>
     public string? TitlePrefix { get; set; }
 
+    /// <summary>
+    /// Specify a method for obfuscating mailto: links in HTML documents.
+    /// https://pandoc.org/MANUAL.html#option--email-obfuscation
+    /// </summary>
+    public EmailObfuscation? EmailObfuscation { get; set; }
+
     public override IEnumerable<string> GetArguments()
     {
         foreach (var argument in base.GetArguments())
@@ -2911,6 +3126,10 @@ public class SlideousOut :
         if (TitlePrefix != null)
         {
             yield return $"--title-prefix={TitlePrefix}";
+        }
+        if (EmailObfuscation != null)
+        {
+            yield return $"--email-obfuscation={EmailObfuscation.Value.ToString().ToLower()}";
         }
     }
 }
@@ -2974,6 +3193,12 @@ public class SlidyOut :
     /// </summary>
     public string? TitlePrefix { get; set; }
 
+    /// <summary>
+    /// Specify a method for obfuscating mailto: links in HTML documents.
+    /// https://pandoc.org/MANUAL.html#option--email-obfuscation
+    /// </summary>
+    public EmailObfuscation? EmailObfuscation { get; set; }
+
     public override IEnumerable<string> GetArguments()
     {
         foreach (var argument in base.GetArguments())
@@ -3023,6 +3248,10 @@ public class SlidyOut :
         if (TitlePrefix != null)
         {
             yield return $"--title-prefix={TitlePrefix}";
+        }
+        if (EmailObfuscation != null)
+        {
+            yield return $"--email-obfuscation={EmailObfuscation.Value.ToString().ToLower()}";
         }
     }
 }

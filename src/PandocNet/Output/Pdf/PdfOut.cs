@@ -24,6 +24,12 @@ public class PdfOut :
     /// </remarks>
     public string? EnginePath { get; set; }
 
+    /// <summary>
+    /// Pass the given string as a command-line argument to the pdf-engine.
+    /// https://pandoc.org/MANUAL.html#option--pdf-engine-opt
+    /// </summary>
+    public string? EngineOpt { get; set; }
+
     public override IEnumerable<string> GetArguments()
     {
         foreach (var argument in base.GetArguments())
@@ -38,6 +44,11 @@ public class PdfOut :
         else if (Engine != null)
         {
             yield return $"--pdf-engine={Engine.Value.ToString().ToLower()}";
+        }
+
+        if (EngineOpt != null)
+        {
+            yield return $"--pdf-engine-opt={EngineOpt}";
         }
     }
 }

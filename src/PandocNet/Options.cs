@@ -20,6 +20,24 @@ public class Options
     /// </summary>
     public string? LogFile { get; set; }
 
+    /// <summary>
+    /// Give verbose debugging output.
+    /// https://pandoc.org/MANUAL.html#option--verbose
+    /// </summary>
+    public bool Verbose { get; set; }
+
+    /// <summary>
+    /// Suppress warning messages.
+    /// https://pandoc.org/MANUAL.html#option--quiet
+    /// </summary>
+    public bool Quiet { get; set; }
+
+    /// <summary>
+    /// Exit with error status if there are any warnings.
+    /// https://pandoc.org/MANUAL.html#option--fail-if-warnings
+    /// </summary>
+    public bool FailIfWarnings { get; set; }
+
     public static IEnumerable<string> GetArguments(Options? options)
     {
         if (options == null)
@@ -40,6 +58,21 @@ public class Options
         if (options.LogFile != null)
         {
             yield return $"--log={options.LogFile}";
+        }
+
+        if (options.Verbose)
+        {
+            yield return "--verbose";
+        }
+
+        if (options.Quiet)
+        {
+            yield return "--quiet";
+        }
+
+        if (options.FailIfWarnings)
+        {
+            yield return "--fail-if-warnings";
         }
     }
 }

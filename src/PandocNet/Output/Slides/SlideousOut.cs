@@ -54,6 +54,12 @@ public class SlideousOut :
     /// </summary>
     public string? TitlePrefix { get; set; }
 
+    /// <summary>
+    /// Specify a method for obfuscating mailto: links in HTML documents.
+    /// https://pandoc.org/MANUAL.html#option--email-obfuscation
+    /// </summary>
+    public EmailObfuscation? EmailObfuscation { get; set; }
+
     public override IEnumerable<string> GetArguments()
     {
         foreach (var argument in base.GetArguments())
@@ -98,6 +104,10 @@ public class SlideousOut :
         if (TitlePrefix != null)
         {
             yield return $"--title-prefix={TitlePrefix}";
+        }
+        if (EmailObfuscation != null)
+        {
+            yield return $"--email-obfuscation={EmailObfuscation.Value.ToString().ToLower()}";
         }
     }
 }

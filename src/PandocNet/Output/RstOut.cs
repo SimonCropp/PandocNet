@@ -13,6 +13,12 @@ public class RstOut :
     /// </summary>
     public bool ReferenceLinks { get; set; }
 
+    /// <summary>
+    /// Render tables as RST list tables.
+    /// https://pandoc.org/MANUAL.html#option--list-tables
+    /// </summary>
+    public bool ListTables { get; set; }
+
     public override IEnumerable<string> GetArguments()
     {
         foreach (var argument in base.GetArguments())
@@ -23,6 +29,11 @@ public class RstOut :
         if (ReferenceLinks)
         {
             yield return "--reference-links";
+        }
+
+        if (ListTables)
+        {
+            yield return "--list-tables";
         }
     }
 }
