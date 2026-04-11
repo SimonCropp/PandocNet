@@ -1,27 +1,25 @@
-using System.Reflection;
-
 [TestFixture]
 public class FormatTests
 {
     static readonly MethodInfo convertToText = typeof(PandocInstance)
         .GetMethods()
-        .First(m =>
-            m.Name == "ConvertToText" &&
-            m.GetParameters()[0].ParameterType == typeof(string));
+        .First(_ =>
+            _.Name == "ConvertToText" &&
+            _.GetParameters()[0].ParameterType == typeof(string));
 
     static IEnumerable<Type> OutputFormats() =>
         typeof(OutOptions).Assembly
             .GetTypes()
-            .Where(t => t is { IsAbstract: false, IsClass: true } &&
-                        t.IsSubclassOf(typeof(OutOptions)))
-            .OrderBy(t => t.Name);
+            .Where(_ => _ is { IsAbstract: false, IsClass: true } &&
+                        _.IsSubclassOf(typeof(OutOptions)))
+            .OrderBy(_ => _.Name);
 
     static IEnumerable<Type> InputFormats() =>
         typeof(InOptions).Assembly
             .GetTypes()
-            .Where(t => t is { IsAbstract: false, IsClass: true } &&
-                        t.IsSubclassOf(typeof(InOptions)))
-            .OrderBy(t => t.Name);
+            .Where(_ => _ is { IsAbstract: false, IsClass: true } &&
+                        _.IsSubclassOf(typeof(InOptions)))
+            .OrderBy(_ => _.Name);
 
     [TestCaseSource(nameof(OutputFormats))]
     public async Task ConvertToOutput(Type outputType)
@@ -33,7 +31,7 @@ public class FormatTests
         }
 
         var method = convertToText.MakeGenericMethod(typeof(CommonMarkIn), outputType);
-        var task = (Task<StringResult>) method.Invoke(null, ["*text*", null, null, null, default(CancellationToken)])!;
+        var task = (Task<StringResult>) method.Invoke(null, ["*text*", null, null, null, Cancel.None])!;
         await task;
     }
 
@@ -64,7 +62,7 @@ public class FormatTests
         }
 
         var method = convertToText.MakeGenericMethod(inputType, typeof(TxtOut));
-        var task = (Task<StringResult>) method.Invoke(null, ["text", null, null, null, default(CancellationToken)])!;
+        var task = (Task<StringResult>) method.Invoke(null, ["text", null, null, null, Cancel.None])!;
         await task;
     }
 }
